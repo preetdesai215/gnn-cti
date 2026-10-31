@@ -1,12 +1,20 @@
-"""Download and parse the abuse.ch URLhaus recent malicious URL feed."""
+"""Download and parse the abuse.ch URLhaus recent malicious URL feed.
+
+Two ways to get data in:
+  1. Download automatically:   python -m src.ingest.urlhaus
+  2. Use a file you saved yourself (e.g. from your browser):
+                               python -m src.ingest.urlhaus path/to/file.csv
+"""
 import csv
 import io
+import shutil
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
 
-from src.config import DATA_RAW, REQUEST_TIMEOUT, URLHAUS_RECENT_CSV
+from src.config import DATA_RAW, REQUEST_TIMEOUT, URLHAUS_AUTH_KEY, URLHAUS_RECENT_CSV
 
 
 def download_feed(dest_dir: Path = DATA_RAW) -> Path:
@@ -14,9 +22,31 @@ def download_feed(dest_dir: Path = DATA_RAW) -> Path:
     dest_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     out = dest_dir / f"urlhaus_recent_{stamp}.csv"
-    resp = requests.get(URLHAUS_RECENT_CSV, timeout=REQUEST_TIMEOUT)
+    headers = {"Auth-Key": URLHAUS_AUTH_KEY} if URLHAUS_AUTH_KEY else {}
+    resp = requests.get(URLHAUS_RECENT_CSV, headers=headers, timeout=REQUEST_TIMEOUT)
+    if resp.status_code in (401, 403):
+        raise SystemExit(
+            "URLhaus rejected the request. Create a free account at abuse.ch, copy your "
+            "Auth-Key, and set URLHAUS_AUTH_KEY, or save the CSV manually and run: "
+            "python -m src.ingest.urlhaus path/to/file.csv"
+        )
+    if resp.status_code == 410:
+        raise SystemExit(
+            f"The endpoint {URLHAUS_RECENT_CSV} has been retired (HTTP 410). Find the current "
+            "URL at https://urlhaus.abuse.ch/api/ and set URLHAUS_RECENT_CSV, or save the "
+            "CSV manually and run: python -m src.ingest.urlhaus path/to/file.csv"
+        )
     resp.raise_for_status()
     out.write_bytes(resp.content)
+    return out
+
+
+def import_local_file(path: Path, dest_dir: Path = DATA_RAW) -> Path:
+    """Copy a manually downloaded feed into data/raw with the standard name."""
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    out = dest_dir / f"urlhaus_recent_{stamp}.csv"
+    shutil.copyfile(path, out)
     return out
 
 
@@ -40,6 +70,9 @@ def parse_feed(path: Path) -> list[dict]:
 
 
 if __name__ == "__main__":
-    path = download_feed()
+    if len(sys.argv) > 1:
+        path = import_local_file(Path(sys.argv[1]))
+    else:
+        path = download_feed()
     rows = parse_feed(path)
     print(f"Saved {path} with {len(rows)} records")
