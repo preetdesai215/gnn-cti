@@ -71,7 +71,50 @@ def train_and_evaluate(df: pd.DataFrame, feature_names: list[str] | None = None,
     }
 
 
+LENGTH_BINS = [0, 8, 12, 16, 20, 25, 1000]
+DIGIT_BINS = [-1, 0, 1, 2, 4, 1000]
+POOL_START_RANK = 100_000  # benign candidates are drawn from ranks at or below this
+
+
+def _cells(df: pd.DataFrame) -> list:
+    """Bucket each host by (length, digit count) so classes can be matched cell by cell."""
+    return list(zip(
+        pd.cut(df["host_length"], LENGTH_BINS, labels=False),
+        pd.cut(df["host_digits"], DIGIT_BINS, labels=False),
+    ))
+
+
+def match_benign(mal_records: list[dict], pool: list[str], seed: int = 42) -> list[str]:
+    """Pick benign domains with the same length/digit mix as the malicious domains.
+
+    For each (length, digit) bucket, sample up to as many benign domains as there are
+    malicious ones in that bucket. Buckets with too few candidates are left short.
+    """
+    rng = np.random.default_rng(seed)
+    mal_feats = pd.DataFrame([f for f in (url_features(r["url"]) for r in mal_records) if f])
+    mal_feats["cell"] = _cells(mal_feats)
+
+    pool_rows = []
+    for d in pool:
+        f = url_features(f"https://{d}/")
+        if f is not None:
+            f["domain"] = d
+            pool_rows.append(f)
+    pool_feats = pd.DataFrame(pool_rows)
+    pool_feats["cell"] = _cells(pool_feats)
+
+    chosen: list[str] = []
+    for cell, n in mal_feats["cell"].value_counts().items():
+        candidates = pool_feats.loc[pool_feats["cell"] == cell, "domain"].tolist()
+        take = min(int(n), len(candidates))
+        if take:
+            chosen += [str(x) for x in rng.choice(candidates, size=take, replace=False)]
+    return chosen
+
+
 if __name__ == "__main__":
+    from src.graph.build import extract_host
+
     feeds = sorted(DATA_RAW.glob("urlhaus_recent_*.csv"))
     if not feeds:
         raise SystemExit("No malicious feed in data/raw. Run the URLhaus import first.")
@@ -81,9 +124,22 @@ if __name__ == "__main__":
             "https://tranco-list.eu, save it as data/raw/tranco_top.csv, or set TRANCO_CSV."
         )
     malicious = parse_feed(feeds[-1])
-    benign = load_top_domains(Path(TRANCO_CSV), limit=len(malicious))
-    df = build_dataset(malicious, benign)
+    # Drop IP-address hosts: benign hosts are never IPs, so they are a free shortcut.
+    mal_domains = [r for r in malicious if extract_host(r["url"])[1] == "domain"]
+    ip_excluded = len(malicious) - len(mal_domains)
+
+    # Benign candidates come from lower-ranked (less famous) sites, matched to the
+    # malicious hosts on length and digit-count buckets.
+    pool = load_top_domains(Path(TRANCO_CSV), limit=1_000_000)[POOL_START_RANK:]
+    benign = match_benign(mal_domains, pool)
+    df = build_dataset(mal_domains, benign)
     results = {
+        "setup": {
+            "malicious_domain_hosts": len(mal_domains),
+            "ip_hosts_excluded": ip_excluded,
+            "benign_matched": len(benign),
+            "benign_pool_start_rank": POOL_START_RANK,
+        },
         "full_url_features": train_and_evaluate(df, FEATURE_NAMES),
         "host_only_features": train_and_evaluate(df, HOST_FEATURE_NAMES),
     }

@@ -43,6 +43,15 @@ def test_train_and_evaluate_runs():
     assert 0.0 <= m["pr_auc"] <= 1.0
 
 
+def test_match_benign_respects_cells_and_pool():
+    from src.models.baseline import match_benign
+    mal = [{"url": "http://abcdefghijkl.example/x"}, {"url": "http://abcdefghijkl2.example/x"}]
+    pool = ["google.com", "wikipedia.org", "xq7z9k2p0w4v.net", "zzzzzzzzzzzzzzzzzzz.org"]
+    chosen = match_benign(mal, pool, seed=1)
+    assert set(chosen).issubset(set(pool))
+    assert len(chosen) <= len(mal)
+
+
 def test_host_only_features_exclude_path_and_scheme():
     from src.models.features import HOST_FEATURE_NAMES
     banned = {"path_length", "query_length", "uses_https", "url_length", "path_entropy",
