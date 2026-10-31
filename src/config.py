@@ -14,4 +14,8 @@ URLHAUS_RECENT_CSV = os.getenv("URLHAUS_RECENT_CSV", "")
 # abuse.ch may require a free Auth-Key from your account. Set it here if needed.
 URLHAUS_AUTH_KEY = os.getenv("URLHAUS_AUTH_KEY")
 
+# Benign reference list: Tranco top sites CSV (rank,domain). Download from https://tranco-list.eu
+# and save as data/raw/tranco_top.csv, or point TRANCO_CSV at it.
+TRANCO_CSV = os.getenv("TRANCO_CSV", str(DATA_RAW / "tranco_top.csv"))
+
 REQUEST_TIMEOUT = 60  # seconds

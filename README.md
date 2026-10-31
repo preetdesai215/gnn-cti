@@ -9,7 +9,7 @@ for threat entity classification and suspicious relationship prediction.
 - [x] Project structure
 - [ ] Data ingestion (abuse.ch URLhaus)
 - [x] Knowledge graph construction (URL → domain/IP hosted_on edges)
-- [ ] Feature-only baseline (Random Forest / XGBoost)
+- [x] Feature-only baseline (Random Forest, URL features; run with python -m src.models.baseline)
 - [ ] GNN model (GraphSAGE / R-GCN)
 - [ ] Evaluation (temporal split, PR-AUC)
 - [ ] Explainability and demo app
