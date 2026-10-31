@@ -41,3 +41,11 @@ def test_train_and_evaluate_runs():
     m = train_and_evaluate(df)
     assert m["n_train"] > 0 and m["n_test"] > 0
     assert 0.0 <= m["pr_auc"] <= 1.0
+
+
+def test_host_only_features_exclude_path_and_scheme():
+    from src.models.features import HOST_FEATURE_NAMES
+    banned = {"path_length", "query_length", "uses_https", "url_length", "path_entropy",
+              "num_dots", "num_special", "has_port"}
+    assert set(HOST_FEATURE_NAMES).isdisjoint(banned)
+    assert set(HOST_FEATURE_NAMES).issubset(FEATURE_NAMES)

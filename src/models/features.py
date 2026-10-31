@@ -11,7 +11,14 @@ FEATURE_NAMES = [
     "url_length", "host_length", "path_length", "query_length",
     "num_dots", "num_hyphens", "num_digits", "num_special",
     "num_subdomains", "is_ip_host", "uses_https", "has_port",
-    "host_entropy", "path_entropy", "tld_length",
+    "host_entropy", "path_entropy", "tld_length", "host_digits", "host_hyphens",
+]
+
+# Host-only features: describe the domain or IP, not the path, query, or scheme.
+# Use these to check what the model can learn without the path shortcut.
+HOST_FEATURE_NAMES = [
+    "host_length", "host_digits", "host_hyphens", "num_subdomains",
+    "is_ip_host", "host_entropy", "tld_length",
 ]
 
 
@@ -43,6 +50,8 @@ def url_features(url: str) -> dict | None:
     return {
         "url_length": len(url),
         "host_length": len(host),
+        "host_digits": sum(ch.isdigit() for ch in host),
+        "host_hyphens": host.count("-"),
         "path_length": len(parts.path),
         "query_length": len(parts.query),
         "num_dots": url.count("."),

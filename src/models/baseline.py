@@ -17,7 +17,7 @@ import pandas as pd
 from src.config import DATA_PROCESSED, DATA_RAW, TRANCO_CSV
 from src.ingest.tranco import load_top_domains
 from src.ingest.urlhaus import parse_feed
-from src.models.features import FEATURE_NAMES, url_features
+from src.models.features import FEATURE_NAMES, HOST_FEATURE_NAMES, url_features
 
 
 def build_dataset(malicious: list[dict], benign_domains: list[str],
@@ -46,20 +46,23 @@ def build_dataset(malicious: list[dict], benign_domains: list[str],
     return pd.concat([df, pd.DataFrame(rows)], axis=1)
 
 
-def train_and_evaluate(df: pd.DataFrame, seed: int = 42) -> dict:
+def train_and_evaluate(df: pd.DataFrame, feature_names: list[str] | None = None,
+                       seed: int = 42) -> dict:
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.metrics import average_precision_score, f1_score
 
+    feature_names = feature_names or FEATURE_NAMES
     train = df[df["split"] == "train"]
     test = df[df["split"] == "test"]
     clf = RandomForestClassifier(
         n_estimators=200, class_weight="balanced", n_jobs=-1, random_state=seed
     )
-    clf.fit(train[FEATURE_NAMES], train["label"])
-    proba = clf.predict_proba(test[FEATURE_NAMES])[:, 1]
+    clf.fit(train[feature_names], train["label"])
+    proba = clf.predict_proba(test[feature_names])[:, 1]
     pred = (proba >= 0.5).astype(int)
     return {
-        "model": "random_forest_url_features",
+        "n_features": len(feature_names),
+        "model": "random_forest",
         "n_train": int(len(train)),
         "n_test": int(len(test)),
         "test_malicious_share": round(float(test["label"].mean()), 4),
@@ -80,7 +83,10 @@ if __name__ == "__main__":
     malicious = parse_feed(feeds[-1])
     benign = load_top_domains(Path(TRANCO_CSV), limit=len(malicious))
     df = build_dataset(malicious, benign)
-    metrics = train_and_evaluate(df)
+    results = {
+        "full_url_features": train_and_evaluate(df, FEATURE_NAMES),
+        "host_only_features": train_and_evaluate(df, HOST_FEATURE_NAMES),
+    }
     DATA_PROCESSED.mkdir(parents=True, exist_ok=True)
-    (DATA_PROCESSED / "baseline_metrics.json").write_text(json.dumps(metrics, indent=2))
-    print(json.dumps(metrics, indent=2))
+    (DATA_PROCESSED / "baseline_metrics.json").write_text(json.dumps(results, indent=2))
+    print(json.dumps(results, indent=2))
