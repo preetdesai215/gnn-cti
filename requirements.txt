@@ -1,0 +1,14 @@
+pandas>=2.0
+numpy>=1.24
+requests>=2.31
+tldextract>=5.1
+networkx>=3.2
+scikit-learn>=1.4
+xgboost>=2.0
+matplotlib>=3.8
+pyyaml>=6.0
+streamlit>=1.35
+pytest>=8.0
+# Install PyTorch from pytorch.org (match your CUDA version), then:
+# torch
+# torch-geometric
