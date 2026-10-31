@@ -19,6 +19,12 @@ from src.config import DATA_RAW, REQUEST_TIMEOUT, URLHAUS_AUTH_KEY, URLHAUS_RECE
 
 def download_feed(dest_dir: Path = DATA_RAW) -> Path:
     """Fetch the feed and save it with a UTC timestamp in the filename."""
+    if not URLHAUS_RECENT_CSV:
+        raise SystemExit(
+            "No download URL is set. Set URLHAUS_RECENT_CSV to the current feed link from "
+            "https://urlhaus.abuse.ch/api/, or import a saved file: "
+            "python -m src.ingest.urlhaus path/to/file.csv"
+        )
     dest_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     out = dest_dir / f"urlhaus_recent_{stamp}.csv"
