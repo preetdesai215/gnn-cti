@@ -86,7 +86,14 @@ def main() -> None:
     if not Path(TRANCO_CSV).exists():
         raise SystemExit("Benign list missing. Save the Tranco CSV as data/raw/tranco_top.csv.")
 
-    malicious = parse_feed(feeds[-1])
+    # Prefer the accumulated history (all days collected so far); fall back to the latest snapshot.
+    from src.ingest.history import HISTORY_PATH, load_history
+    if HISTORY_PATH.exists():
+        malicious = [{"url": r["url"], "first_seen": r["first_seen"]} for r in load_history()]
+        source = str(HISTORY_PATH)
+    else:
+        malicious = parse_feed(feeds[-1])
+        source = feeds[-1].name
     domain_level = [r for r in malicious if extract_host(r["url"])[1] == "domain"]
     capped = cap_per_domain(domain_level, cap=PER_DOMAIN_CAP)
     platform, clean = split_platform(capped)
@@ -95,7 +102,7 @@ def main() -> None:
     strip = lambda rows: [{"url": r["url"], "first_seen": r["first_seen"]} for r in rows]
     results = {
         "setup": {
-            "feed": feeds[-1].name,
+            "feed": source,
             "domain_hosted_urls_before_cap": len(domain_level),
             "after_cap": len(capped),
             "shared_hosting_urls_removed": len(platform),
