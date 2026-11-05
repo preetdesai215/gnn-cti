@@ -20,14 +20,44 @@ from src.ingest.urlhaus import parse_feed
 from src.models.features import FEATURE_NAMES, HOST_FEATURE_NAMES, url_features
 
 
+_EXTRACTOR = None
+
+
+def registered_domain(host: str) -> str:
+    """Return the registrable domain (e.g. 'evil.co.uk' for 'a.b.evil.co.uk').
+
+    Uses tldextract's bundled public-suffix snapshot, so no network access is needed.
+    """
+    global _EXTRACTOR
+    import tldextract
+    if _EXTRACTOR is None:
+        _EXTRACTOR = tldextract.TLDExtract(suffix_list_urls=())
+    ext = _EXTRACTOR(host)
+    return f"{ext.domain}.{ext.suffix}" if ext.suffix else host
+
+
+def grouped_split(df: pd.DataFrame, test_fraction: float = 0.2, seed: int = 42) -> pd.Series:
+    """Assign whole registered domains to train or test, so no family spans both sides."""
+    groups = np.array(df["reg_domain"].unique(), dtype=object)
+    rng = np.random.default_rng(seed)
+    rng.shuffle(groups)
+    n_test = int(len(groups) * test_fraction)
+    test_groups = set(groups[:n_test])
+    return df["reg_domain"].map(lambda g: "test" if g in test_groups else "train")
+
+
 def build_dataset(malicious: list[dict], benign_domains: list[str],
-                  test_fraction: float = 0.2, seed: int = 42) -> pd.DataFrame:
+                  test_fraction: float = 0.2, seed: int = 42,
+                  split_mode: str = "temporal") -> pd.DataFrame:
+    """split_mode: 'temporal' (newest malicious rows in test) or 'grouped' (whole
+    registered domains held out, so related domains never appear in both sets)."""
     mal = pd.DataFrame(malicious, columns=["url", "first_seen"])
     mal = mal[mal["url"] != ""].drop_duplicates("url").sort_values("first_seen", kind="stable")
-    cut = int(len(mal) * (1 - test_fraction))
     mal = mal.copy()
-    mal["split"] = ["train"] * cut + ["test"] * (len(mal) - cut)
     mal["label"] = 1
+    mal["split"] = ""
+    cut = int(len(mal) * (1 - test_fraction))
+    mal["split"] = ["train"] * cut + ["test"] * (len(mal) - cut)
 
     ben = pd.DataFrame({"url": [f"https://{d}/" for d in benign_domains]})
     rng = np.random.default_rng(seed)
@@ -43,7 +73,17 @@ def build_dataset(malicious: list[dict], benign_domains: list[str],
             rows.append(feats)
             keep.append(i)
     df = df.iloc[keep].reset_index(drop=True)
-    return pd.concat([df, pd.DataFrame(rows)], axis=1)
+    df = pd.concat([df, pd.DataFrame(rows)], axis=1)
+
+    from src.graph.build import extract_host
+    df["reg_domain"] = [
+        registered_domain(extract_host(u)[0] or "") for u in df["url"]
+    ]
+    if split_mode == "grouped":
+        df["split"] = grouped_split(df, test_fraction, seed)
+    elif split_mode != "temporal":
+        raise ValueError(f"unknown split_mode: {split_mode}")
+    return df
 
 
 def train_and_evaluate(df: pd.DataFrame, feature_names: list[str] | None = None,
@@ -132,16 +172,27 @@ if __name__ == "__main__":
     # malicious hosts on length and digit-count buckets.
     pool = load_top_domains(Path(TRANCO_CSV), limit=1_000_000)[POOL_START_RANK:]
     benign = match_benign(mal_domains, pool)
-    df = build_dataset(mal_domains, benign)
+    from src.graph.build import extract_host as _host
+
+    mal_reg = {registered_domain(_host(r["url"])[0] or "") for r in mal_domains}
+    df_temporal = build_dataset(mal_domains, benign, split_mode="temporal")
+    df_grouped = build_dataset(mal_domains, benign, split_mode="grouped")
     results = {
         "setup": {
             "malicious_domain_hosts": len(mal_domains),
+            "distinct_malicious_registered_domains": len(mal_reg),
             "ip_hosts_excluded": ip_excluded,
             "benign_matched": len(benign),
             "benign_pool_start_rank": POOL_START_RANK,
         },
-        "full_url_features": train_and_evaluate(df, FEATURE_NAMES),
-        "host_only_features": train_and_evaluate(df, HOST_FEATURE_NAMES),
+        "temporal_split": {
+            "full_url_features": train_and_evaluate(df_temporal, FEATURE_NAMES),
+            "host_only_features": train_and_evaluate(df_temporal, HOST_FEATURE_NAMES),
+        },
+        "grouped_split": {
+            "full_url_features": train_and_evaluate(df_grouped, FEATURE_NAMES),
+            "host_only_features": train_and_evaluate(df_grouped, HOST_FEATURE_NAMES),
+        },
     }
     DATA_PROCESSED.mkdir(parents=True, exist_ok=True)
     (DATA_PROCESSED / "baseline_metrics.json").write_text(json.dumps(results, indent=2))

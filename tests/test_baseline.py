@@ -43,6 +43,23 @@ def test_train_and_evaluate_runs():
     assert 0.0 <= m["pr_auc"] <= 1.0
 
 
+def test_registered_domain_collapses_subdomains():
+    from src.models.baseline import registered_domain
+    assert registered_domain("a.b.evil.com") == "evil.com"
+    assert registered_domain("x.evil.co.uk") == "evil.co.uk"
+
+
+def test_grouped_split_keeps_families_disjoint():
+    from src.models.baseline import build_dataset
+    mal = [{"url": f"http://s{i}.family{i % 5}.com/x", "first_seen": ""} for i in range(50)]
+    ben = [f"site{i}.org" for i in range(20)]
+    df = build_dataset(mal, ben, split_mode="grouped")
+    tr = set(df[df["split"] == "train"]["reg_domain"])
+    te = set(df[df["split"] == "test"]["reg_domain"])
+    assert tr.isdisjoint(te)
+    assert len(te) > 0
+
+
 def test_match_benign_respects_cells_and_pool():
     from src.models.baseline import match_benign
     mal = [{"url": "http://abcdefghijkl.example/x"}, {"url": "http://abcdefghijkl2.example/x"}]
