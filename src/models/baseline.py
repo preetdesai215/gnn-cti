@@ -161,6 +161,44 @@ def match_benign(mal_records: list[dict], pool: list[str], seed: int = 42) -> li
     return chosen
 
 
+def cap_per_domain(records: list[dict], cap: int = 200, seed: int = 42) -> list[dict]:
+    """Keep at most `cap` URLs per registered domain, so one campaign can't dominate."""
+    from src.graph.build import extract_host as _h
+    df = pd.DataFrame(records)
+    df["_reg"] = [registered_domain(_h(u)[0] or "") for u in df["url"]]
+    # Shuffle first so the rows kept within each domain are a random sample, not the first ones.
+    shuffled = df.sample(frac=1, random_state=seed)
+    kept = shuffled.groupby("_reg").head(cap)
+    return kept.drop(columns="_reg").to_dict("records")
+
+
+def family_report(df: pd.DataFrame, feature_names: list[str], seed: int = 42,
+                  threshold: float = 0.5) -> dict:
+    """Family-level view of the test set.
+
+    A malicious family counts as detected if at least half of its test URLs are flagged.
+    """
+    from sklearn.ensemble import RandomForestClassifier
+
+    train = df[df["split"] == "train"]
+    test = df[df["split"] == "test"]
+    clf = RandomForestClassifier(
+        n_estimators=200, class_weight="balanced", n_jobs=-1, random_state=seed
+    )
+    clf.fit(train[feature_names], train["label"])
+    test = test.assign(proba=clf.predict_proba(test[feature_names])[:, 1])
+    mal = test[test["label"] == 1]
+    if mal.empty:
+        return {"families_in_test": 0, "share_detected": None, "median_recall": None}
+    fam = (mal.assign(hit=mal["proba"] >= threshold)
+              .groupby("reg_domain")["hit"].mean())
+    return {
+        "families_in_test": int(len(fam)),
+        "share_detected": round(float((fam >= 0.5).mean()), 4),
+        "median_recall": round(float(fam.median()), 4),
+    }
+
+
 if __name__ == "__main__":
     from src.graph.build import extract_host
 
@@ -176,6 +214,8 @@ if __name__ == "__main__":
     # Drop IP-address hosts: benign hosts are never IPs, so they are a free shortcut.
     mal_domains = [r for r in malicious if extract_host(r["url"])[1] == "domain"]
     ip_excluded = len(malicious) - len(mal_domains)
+    # Cap each registered domain so one large campaign can't dominate the metrics.
+    mal_domains = cap_per_domain(mal_domains, cap=200)
 
     # Benign candidates come from lower-ranked (less famous) sites, matched to the
     # malicious hosts on length and digit-count buckets.
@@ -192,8 +232,12 @@ if __name__ == "__main__":
     for seed in range(N_SEEDS):
         df_g = build_dataset(mal_domains, benign, split_mode="grouped", seed=seed)
         m = train_and_evaluate(df_g, HOST_FEATURE_NAMES, seed=seed)
+        fam = family_report(df_g, HOST_FEATURE_NAMES, seed=seed)
         per_seed.append({"seed": seed, "pr_auc": m["pr_auc"], "f1_at_0.5": m["f1_at_0.5"],
-                         "n_test_malicious": m["n_test_malicious"]})
+                         "n_test_malicious": m["n_test_malicious"],
+                         "families_in_test": fam["families_in_test"],
+                         "share_families_detected": fam["share_detected"],
+                         "median_family_recall": fam["median_recall"]})
 
     def _summary(key: str) -> dict:
         vals = np.array([r[key] for r in per_seed], dtype=float)
@@ -211,11 +255,14 @@ if __name__ == "__main__":
             "benign_matched": len(benign),
             "benign_pool_start_rank": POOL_START_RANK,
             "grouped_split_seeds": N_SEEDS,
+            "cap_per_registered_domain": 200,
         },
         "main_result_host_only_grouped": {
             "pr_auc": _summary("pr_auc"),
             "f1_at_0.5": _summary("f1_at_0.5"),
             "n_test_malicious": _summary("n_test_malicious"),
+            "share_families_detected": _summary("share_families_detected"),
+            "median_family_recall": _summary("median_family_recall"),
             "per_seed": per_seed,
         },
         "reference_host_only_temporal_single_run": temporal_ref,

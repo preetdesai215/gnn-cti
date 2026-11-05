@@ -60,6 +60,28 @@ def test_grouped_split_keeps_families_disjoint():
     assert len(te) > 0
 
 
+def test_cap_per_domain_limits_each_family():
+    from src.models.baseline import cap_per_domain
+    recs = [{"url": f"http://a{i}.big.com/x", "first_seen": ""} for i in range(50)]
+    recs += [{"url": f"http://only.small.org/{i}", "first_seen": ""} for i in range(3)]
+    kept = cap_per_domain(recs, cap=10)
+    urls = [r["url"] for r in kept]
+    assert sum("big.com" in u for u in urls) == 10
+    assert sum("small.org" in u for u in urls) == 3
+
+
+def test_family_report_counts_families():
+    from src.models.baseline import build_dataset, family_report
+    from src.models.features import HOST_FEATURE_NAMES
+    mal = [{"url": f"http://{'a1b2c3' * 3}{i}.fam{i % 10}.com/x", "first_seen": f"2026-10-{i+1:02d}"}
+           for i in range(60)]
+    ben = [f"site{i}.org" for i in range(60)]
+    df = build_dataset(mal, ben, split_mode="grouped")
+    rep = family_report(df, HOST_FEATURE_NAMES)
+    assert rep["families_in_test"] >= 1
+    assert 0.0 <= rep["share_detected"] <= 1.0
+
+
 def test_match_benign_respects_cells_and_pool():
     from src.models.baseline import match_benign
     mal = [{"url": "http://abcdefghijkl.example/x"}, {"url": "http://abcdefghijkl2.example/x"}]
