@@ -3,7 +3,7 @@ import {
   Background, Controls, MiniMap, ReactFlow, useEdgesState, useNodesState,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
-import { X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { getGraph } from "../api/client";
 import { ENTITY_TYPES } from "../data/demo";
 import {
@@ -12,7 +12,7 @@ import {
 
 // Column per entity type, so the graph reads left (actors) to right (IPs)
 const COLUMN = { actor: 0, malware: 1, file: 2, url: 3, domain: 4, ip: 5 };
-const STATUS_RING = { malicious: "#ff4d6d", suspicious: "#ff9f1c", benign: "#39ff88" };
+const STATUS_RING = { malicious: "#ff4d6d", suspicious: "#ff9f1c", benign: "#34d399" };
 
 function layout(nodes) {
   const rowCount = {};
@@ -39,13 +39,14 @@ function toFlowNode(n) {
       ),
     },
     style: {
-      background: "rgba(10,20,40,0.9)",
+      background: "rgba(10,10,10,0.92)",
       color: "#e2e8f0",
       border: `1.5px solid ${STATUS_RING[n.status]}`,
       borderRadius: 14,
       padding: "8px 10px",
       boxShadow: n.status === "malicious" ? `0 0 18px -4px ${STATUS_RING[n.status]}` : `0 0 10px -6px ${color}`,
       width: 200,
+      transition: "opacity 200ms ease",
     },
   };
 }
@@ -56,6 +57,8 @@ export default function Graph() {
   const [visibleTypes, setVisibleTypes] = useState(Object.keys(ENTITY_TYPES));
   const [minRisk, setMinRisk] = useState(0);
   const [selected, setSelected] = useState(null);
+  const [query, setQuery] = useState("");
+  const [notice, setNotice] = useState("");
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
@@ -63,31 +66,59 @@ export default function Graph() {
     getGraph().then(setGraph).catch((e) => setError(e.message));
   }, []);
 
-  // Apply filters: type visibility and minimum risk. Edges are kept only if both ends are visible.
+  // Rebuild the view when filters or the selection change.
+  // Existing node positions are kept, so anything the user dragged stays where it is.
   useEffect(() => {
     if (!graph) return;
     const shown = graph.nodes.filter((n) => visibleTypes.includes(n.type) && n.risk >= minRisk);
     const shownIds = new Set(shown.map((n) => n.id));
-    setNodes(layout(shown).map(toFlowNode));
+
+    const focusIds = selected
+      ? new Set([
+          selected.id,
+          ...graph.edges
+            .filter((e) => e.source === selected.id || e.target === selected.id)
+            .flatMap((e) => [e.source, e.target]),
+        ])
+      : null;
+
+    setNodes((prev) => {
+      const saved = Object.fromEntries(prev.map((p) => [p.id, p.position]));
+      return layout(shown).map((n) => {
+        const flow = toFlowNode({ ...n, position: saved[n.id] || n.position });
+        if (focusIds && !focusIds.has(n.id)) flow.style = { ...flow.style, opacity: 0.2 };
+        if (selected && n.id === selected.id) {
+          flow.style = { ...flow.style, boxShadow: "0 0 0 3px rgba(255,92,108,0.6)" };
+        }
+        return flow;
+      });
+    });
+
     setEdges(
       graph.edges
         .filter((e) => shownIds.has(e.source) && shownIds.has(e.target))
         .map((e) => {
           const risky = graph.nodes.find((n) => n.id === e.source)?.status === "malicious" ||
             graph.nodes.find((n) => n.id === e.target)?.status === "malicious";
+          const touchesSelected = !!selected && (e.source === selected.id || e.target === selected.id);
+          const dimmed = !!focusIds && !touchesSelected;
           return {
             id: e.id,
             source: e.source,
             target: e.target,
             label: e.relation,
-            animated: risky,
+            animated: risky && !dimmed,
             labelStyle: { fill: "#94a3b8", fontSize: 10 },
-            labelBgStyle: { fill: "#050b18" },
-            style: { stroke: risky ? "#ff4d6d" : "#22d3ee", strokeWidth: risky ? 2 : 1.2, opacity: 0.8 },
+            labelBgStyle: { fill: "#070707" },
+            style: {
+              stroke: risky ? "#ff4d6d" : "#71717a",
+              strokeWidth: touchesSelected || risky ? 2 : 1.2,
+              opacity: dimmed ? 0.1 : 0.85,
+            },
           };
         })
     );
-  }, [graph, visibleTypes, minRisk, setNodes, setEdges]);
+  }, [graph, visibleTypes, minRisk, selected, setNodes, setEdges]);
 
   const selectedRelations = useMemo(() => {
     if (!selected || !graph) return [];
@@ -99,6 +130,20 @@ export default function Graph() {
       });
   }, [selected, graph]);
 
+  function findEntity(e) {
+    e.preventDefault();
+    const term = query.trim().toLowerCase();
+    if (!term || !graph) return;
+    const hit = graph.nodes.find((n) => n.value.toLowerCase().includes(term));
+    if (!hit) {
+      setNotice("No entity matches that search.");
+      return;
+    }
+    const visible = visibleTypes.includes(hit.type) && hit.risk >= minRisk;
+    setNotice(visible ? "" : "Found, but hidden by the current filters.");
+    setSelected(hit);
+  }
+
   const toggleType = (key) =>
     setVisibleTypes((cur) => (cur.includes(key) ? cur.filter((k) => k !== key) : [...cur, key]));
 
@@ -109,12 +154,31 @@ export default function Graph() {
       <PageHeader
         eyebrow="Graph visualization"
         title="Threat Relationship Graph"
-        description="Click a node for details. Drag to rearrange, scroll or use the controls to zoom. Red edges touch malicious entities."
+        description="Click a node to see its neighbourhood. Drag to rearrange, scroll or use the controls to zoom. Red edges touch malicious entities."
       />
       <SimulatedBanner />
 
+      <p className="mb-3 text-xs text-slate-500">
+        Showing {nodes.length} of {graph?.nodes.length ?? 0} entities and {edges.length} relationships.
+      </p>
+
       <div className="grid gap-4 lg:grid-cols-[260px_1fr]">
         <aside className="glass space-y-5 p-4">
+          <form onSubmit={findEntity} role="search">
+            <p className="label-eyebrow mb-2">Find entity</p>
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+              <input
+                className="input py-2 pl-9 text-sm"
+                placeholder="Part of an IP, domain or hash"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Find entity in graph"
+              />
+            </div>
+            {notice && <p className="mt-2 text-xs text-amber-300">{notice}</p>}
+          </form>
+
           <div>
             <p className="label-eyebrow mb-3">Entity types</p>
             <div className="space-y-2">
@@ -126,7 +190,7 @@ export default function Graph() {
                   </span>
                   <input
                     type="checkbox"
-                    className="accent-cyan-400"
+                    className="accent-red-500"
                     checked={visibleTypes.includes(key)}
                     onChange={() => toggleType(key)}
                   />
@@ -147,14 +211,14 @@ export default function Graph() {
 
           <div className="space-y-1 text-xs text-slate-400">
             <p className="flex items-center gap-2"><span className="h-0.5 w-6 bg-red-400" /> Edge touching a malicious node (animated)</p>
-            <p className="flex items-center gap-2"><span className="h-0.5 w-6 bg-cyan-400" /> Other relationship</p>
+            <p className="flex items-center gap-2"><span className="h-0.5 w-6 bg-zinc-500" /> Other relationship</p>
           </div>
 
           {selected ? (
-            <div className="rounded-xl border border-cyan-400/20 bg-navy-900/60 p-4">
+            <div className="rounded-xl border border-red-400/20 bg-navy-900/60 p-4">
               <div className="mb-2 flex items-start justify-between gap-2">
                 <EntityBadge type={selected.type} />
-                <button aria-label="Close details" onClick={() => setSelected(null)} className="rounded p-1 hover:bg-white/5">
+                <button aria-label="Clear selection" onClick={() => setSelected(null)} className="rounded p-1 hover:bg-white/5">
                   <X className="h-4 w-4" />
                 </button>
               </div>
@@ -168,15 +232,18 @@ export default function Graph() {
               <ul className="space-y-2 text-xs">
                 {selectedRelations.map((r, i) => (
                   <li key={i} className="flex flex-col">
-                    <span className="text-neon-cyan">{r.relation}</span>
+                    <span className="text-accent-light">{r.relation}</span>
                     <span className="break-all font-mono text-slate-300">{r.entity?.value}</span>
                   </li>
                 ))}
                 {selectedRelations.length === 0 && <li className="text-slate-500">No relationships in this view.</li>}
               </ul>
+              <a href={`/analysis?q=${encodeURIComponent(selected.value)}`} className="mt-4 inline-block text-xs text-accent-light hover:underline">
+                Open in Threat Analysis →
+              </a>
             </div>
           ) : (
-            <p className="text-xs text-slate-500">Select a node to see its details.</p>
+            <p className="text-xs text-slate-500">Select a node to see its neighbourhood.</p>
           )}
         </aside>
 
@@ -195,7 +262,7 @@ export default function Graph() {
               maxZoom={2}
               proOptions={{ hideAttribution: true }}
             >
-              <Background color="#1e3a5f" gap={24} />
+              <Background color="#2a2a2a" gap={24} />
               <Controls />
               <MiniMap pannable zoomable nodeColor={(n) => ENTITY_TYPES[n.data?.entity?.type]?.color || "#64748b"} />
             </ReactFlow>

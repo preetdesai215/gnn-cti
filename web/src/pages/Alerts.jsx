@@ -16,6 +16,7 @@ export default function Alerts() {
   const [severity, setSeverity] = useState("all");
   const [status, setStatus] = useState("all");
   const [query, setQuery] = useState("");
+  const [sortBy, setSortBy] = useState("risk");
 
   useEffect(() => {
     getAlerts().then(setAlerts).catch((e) => setError(e.message));
@@ -24,13 +25,14 @@ export default function Alerts() {
   const filtered = useMemo(() => {
     if (!alerts) return [];
     const q = query.trim().toLowerCase();
-    return alerts.filter((a) =>
+    const rows = alerts.filter((a) =>
       (severity === "all" || a.severity === severity) &&
       (status === "all" || a.status === status) &&
       (!q || a.title.toLowerCase().includes(q) || a.description.toLowerCase().includes(q) ||
         a.id.toLowerCase().includes(q) || a.entities.some((id) => NODE_BY_ID[id]?.value.toLowerCase().includes(q)))
     );
-  }, [alerts, severity, status, query]);
+    return [...rows].sort((x, y) => (sortBy === "risk" ? y.risk - x.risk : y.time.localeCompare(x.time)));
+  }, [alerts, severity, status, query, sortBy]);
 
   function setAlertStatus(id, next) {
     setAlerts((cur) => cur.map((a) => (a.id === id ? { ...a, status: next } : a)));
@@ -63,7 +65,16 @@ export default function Alerts() {
 
       {!alerts ? <LoadingBlock /> : (
         <>
-          <p className="mb-3 text-xs text-slate-500">{filtered.length} of {alerts.length} alerts</p>
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <p className="text-xs text-slate-500">{filtered.length} of {alerts.length} alerts</p>
+            <label className="flex items-center gap-2 text-xs text-slate-400">
+              Sort by
+              <select className="input w-auto py-1 text-xs" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+                <option value="risk">Highest risk</option>
+                <option value="time">Most recent</option>
+              </select>
+            </label>
+          </div>
           <div className="glass overflow-x-auto">
             <table className="w-full min-w-[760px] text-left text-sm">
               <thead className="border-b border-white/10 text-xs uppercase tracking-wider text-slate-500">
@@ -89,7 +100,7 @@ export default function Alerts() {
                       <div className="flex items-center gap-2">
                         <span className="w-8 font-bold text-white">{a.risk}</span>
                         <div className="h-1.5 w-20 rounded-full bg-white/5">
-                          <div className="h-full rounded-full bg-gradient-to-r from-neon-green to-sev-high" style={{ width: `${a.risk}%` }} />
+                          <div className="h-full rounded-full bg-gradient-to-r from-accent to-sev-high" style={{ width: `${a.risk}%` }} />
                         </div>
                       </div>
                     </td>

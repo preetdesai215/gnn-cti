@@ -23,7 +23,7 @@ export function PageHeader({ eyebrow, title, description, right }) {
   );
 }
 
-export function StatCard({ icon: Icon, label, value, hint, accent = "text-neon-cyan" }) {
+export function StatCard({ icon: Icon, label, value, hint, accent = "text-accent-light" }) {
   return (
     <div className="glass glass-hover p-5">
       <div className="flex items-center justify-between">
@@ -80,7 +80,7 @@ export function EntityBadge({ type }) {
 export function LoadingBlock({ label = "Loading simulated data…" }) {
   return (
     <div className="glass flex items-center gap-3 p-6 text-sm text-slate-400">
-      <span className="h-2.5 w-2.5 animate-ping rounded-full bg-neon-green" />
+      <span className="h-2.5 w-2.5 animate-ping rounded-full bg-accent" />
       {label}
     </div>
   );

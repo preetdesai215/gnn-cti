@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Info, Search } from "lucide-react";
 import { analyzeIndicator, classifyInput } from "../api/client";
 import {
@@ -25,10 +26,17 @@ function entropy(s) {
 }
 
 export default function Analysis() {
-  const [text, setText] = useState("");
+  const [params] = useSearchParams();
+  const [text, setText] = useState(params.get("q") || "");
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Run the lookup straight away when arriving from the top-bar search or a table link
+  useEffect(() => {
+    if (params.get("q")) submit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function submit(e) {
     e?.preventDefault();
@@ -93,7 +101,7 @@ export default function Analysis() {
           <span className="text-xs text-slate-500">Try:</span>
           {EXAMPLES.map((ex) => (
             <button key={ex} type="button" onClick={() => pick(ex)}
-              className="max-w-full truncate rounded-full border border-white/10 px-3 py-1 font-mono text-xs text-slate-300 transition hover:border-cyan-400/40 hover:text-white">
+              className="max-w-full truncate rounded-full border border-white/10 px-3 py-1 font-mono text-xs text-slate-300 transition hover:border-red-400/40 hover:text-white">
               {ex}
             </button>
           ))}
@@ -105,7 +113,7 @@ export default function Analysis() {
       {result && !result.found && (
         <section className="glass mt-6 p-6">
           <div className="flex items-start gap-3">
-            <Info className="mt-0.5 h-5 w-5 text-neon-cyan" />
+            <Info className="mt-0.5 h-5 w-5 text-accent-light" />
             <div>
               <h2 className="font-semibold text-white">Not in the simulated dataset</h2>
               <p className="mt-1 text-sm text-slate-400">
@@ -144,7 +152,7 @@ export default function Analysis() {
                   className="h-full rounded-full transition-all duration-700"
                   style={{
                     width: `${result.node.risk}%`,
-                    background: result.node.risk >= 75 ? "#ff4d6d" : result.node.risk >= 50 ? "#ff9f1c" : "#39ff88",
+                    background: result.node.risk >= 75 ? "#ff4d6d" : result.node.risk >= 50 ? "#ff9f1c" : "#34d399",
                   }}
                 />
               </div>
@@ -161,7 +169,7 @@ export default function Analysis() {
                 {result.related.map((r, i) => (
                   <li key={i} className="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
                     <div className="min-w-0">
-                      <p className="text-xs text-neon-cyan">
+                      <p className="text-xs text-accent-light">
                         {r.direction === "out" ? `→ ${r.relation}` : `← ${r.relation}`}
                       </p>
                       <p className="break-all font-mono text-sm text-slate-200">{r.entity?.value}</p>

@@ -61,7 +61,7 @@ export default function Reports() {
           <span className="text-slate-400">Scope:</span>
           {[["all", "All entities"], ["malicious", "Suspicious and malicious only"]].map(([v, label]) => (
             <button key={v} onClick={() => setScope(v)}
-              className={`rounded-full border px-3 py-1 transition ${scope === v ? "border-neon-green/60 bg-neon-green/10 text-white" : "border-white/10 text-slate-400 hover:text-white"}`}>
+              className={`rounded-full border px-3 py-1 transition ${scope === v ? "border-accent/60 bg-accent/10 text-white" : "border-white/10 text-slate-400 hover:text-white"}`}>
               {label}
             </button>
           ))}
@@ -100,7 +100,7 @@ export default function Reports() {
             <div className="grid gap-2 sm:grid-cols-2">
               {Object.entries(report.relationCounts).map(([rel, count]) => (
                 <div key={rel} className="flex justify-between rounded-lg border border-white/10 px-3 py-2 text-sm">
-                  <span className="text-neon-cyan">{rel}</span>
+                  <span className="text-accent-light">{rel}</span>
                   <span className="text-slate-300">{count}</span>
                 </div>
               ))}

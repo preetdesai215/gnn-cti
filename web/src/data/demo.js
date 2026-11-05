@@ -4,12 +4,12 @@
 // Replace this module with calls to the FastAPI backend once it exists (see src/api/client.js).
 
 export const ENTITY_TYPES = {
-  ip: { label: "IP Address", color: "#22d3ee" },
-  domain: { label: "Domain", color: "#3b82f6" },
+  ip: { label: "IP Address", color: "#38bdf8" },
+  domain: { label: "Domain", color: "#a3a3a3" },
   url: { label: "URL", color: "#a78bfa" },
-  malware: { label: "Malware", color: "#ff4d6d" },
+  malware: { label: "Malware", color: "#ff3b3b" },
   file: { label: "File / Hash", color: "#facc15" },
-  actor: { label: "Threat Actor", color: "#39ff88" },
+  actor: { label: "Threat Actor", color: "#f472b6" },
 };
 
 // risk: 0-100 (model risk score in the demo). status: malicious | suspicious | benign

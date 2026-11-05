@@ -10,22 +10,22 @@
 
 @layer components {
   .glass {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-cyan-400/10 rounded-2xl shadow-[0_0_30px_-12px_rgba(34,211,238,0.25)];
+    @apply bg-white/[0.04] backdrop-blur-xl border border-red-400/10 rounded-2xl shadow-[0_0_30px_-12px_rgba(255,92,108,0.25)];
   }
   .glass-hover {
-    @apply transition-all duration-300 hover:border-cyan-400/40 hover:-translate-y-0.5 hover:shadow-[0_0_30px_-8px_rgba(57,255,136,0.35)];
+    @apply transition-all duration-300 hover:border-red-400/40 hover:-translate-y-0.5 hover:shadow-[0_0_30px_-8px_rgba(225,29,46,0.35)];
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-neon-green/90 to-neon-cyan/90 px-5 py-2.5 font-semibold text-navy-950 transition hover:brightness-110 hover:shadow-[0_0_25px_-5px_rgba(57,255,136,0.6)];
+    @apply inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-accent/90 to-accent-light/90 px-5 py-2.5 font-semibold text-white transition hover:brightness-110 hover:shadow-[0_0_25px_-5px_rgba(225,29,46,0.6)];
   }
   .btn-ghost {
-    @apply inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 px-5 py-2.5 font-medium text-cyan-200 transition hover:bg-cyan-400/10;
+    @apply inline-flex items-center gap-2 rounded-xl border border-red-400/30 px-5 py-2.5 font-medium text-red-200 transition hover:bg-red-400/10;
   }
   .input {
-    @apply w-full rounded-xl border border-cyan-400/20 bg-navy-900/70 px-4 py-2.5 text-slate-100 placeholder-slate-500 outline-none transition focus:border-neon-cyan focus:shadow-[0_0_0_3px_rgba(34,211,238,0.15)];
+    @apply w-full rounded-xl border border-red-400/20 bg-navy-900/70 px-4 py-2.5 text-slate-100 placeholder-slate-500 outline-none transition focus:border-accent-light focus:shadow-[0_0_0_3px_rgba(255,92,108,0.15)];
   }
   .label-eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-neon-cyan/80;
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-accent-light/80;
   }
 }
 
@@ -57,4 +57,10 @@
   .report-print { background: #fff !important; border: none !important; box-shadow: none !important; color: #111 !important; backdrop-filter: none !important; }
   .report-print * { color: #111 !important; }
   main { padding: 0 !important; }
+}
+
+/* Keyboard focus visible on every control */
+:focus-visible {
+  outline: 2px solid #ff5c6c;
+  outline-offset: 2px;
 }

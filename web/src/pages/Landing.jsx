@@ -12,9 +12,9 @@ function NetworkBackdrop() {
     <svg className="pointer-events-none absolute inset-0 h-full w-full opacity-70" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient id="edge" x1="0" x2="1">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.1" />
-          <stop offset="50%" stopColor="#39ff88" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.1" />
+          <stop offset="0%" stopColor="#ff5c6c" stopOpacity="0.1" />
+          <stop offset="50%" stopColor="#e11d2e" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#b91c1c" stopOpacity="0.1" />
         </linearGradient>
       </defs>
       {EDGE_PAIRS.map(([a, b], i) => (
@@ -22,7 +22,7 @@ function NetworkBackdrop() {
           stroke="url(#edge)" strokeWidth="0.25" className="animate-flow" />
       ))}
       {NODE_POS.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r="0.9" fill={i % 3 === 0 ? "#39ff88" : i % 3 === 1 ? "#22d3ee" : "#3b82f6"}
+        <circle key={i} cx={x} cy={y} r="0.9" fill={i % 3 === 0 ? "#e11d2e" : i % 3 === 1 ? "#ff5c6c" : "#b91c1c"}
           className="animate-drift" style={{ animationDelay: `${i * 0.4}s` }} />
       ))}
     </svg>
@@ -39,13 +39,13 @@ const CAPABILITIES = [
 export default function Landing() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-navy-950">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.12),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,92,108,0.12),transparent_60%)]" />
       <NetworkBackdrop />
 
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-4 py-8 sm:px-6">
         <header className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-neon-green to-neon-blue">
+            <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-accent to-accent-dark">
               <ShieldHalf className="h-5 w-5 text-navy-950" />
             </div>
             <span className="font-bold text-white">GNN-CTI</span>
@@ -60,7 +60,7 @@ export default function Landing() {
           <h1 className="max-w-3xl text-4xl font-extrabold leading-tight text-white sm:text-6xl">
             GNN-Based Cyber Threat Intelligence System
           </h1>
-          <p className="mt-4 bg-gradient-to-r from-neon-green to-neon-cyan bg-clip-text text-xl font-semibold text-transparent sm:text-2xl">
+          <p className="mt-4 bg-gradient-to-r from-accent to-accent-light bg-clip-text text-xl font-semibold text-transparent sm:text-2xl">
             "Intelligent Threat Detection Through Graph Neural Networks."
           </p>
           <p className="mt-6 max-w-2xl text-slate-400">
@@ -79,7 +79,7 @@ export default function Landing() {
           <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {CAPABILITIES.map(({ icon: Icon, title, text }) => (
               <div key={title} className="glass glass-hover p-5">
-                <Icon className="mb-3 h-6 w-6 text-neon-green" />
+                <Icon className="mb-3 h-6 w-6 text-accent" />
                 <h3 className="font-semibold text-white">{title}</h3>
                 <p className="mt-1 text-sm text-slate-400">{text}</p>
               </div>

@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: { 950: "#050b18", 900: "#0a1428", 800: "#101d36", 700: "#18294a" },
-        neon: { green: "#39ff88", cyan: "#22d3ee", blue: "#3b82f6" },
-        sev: { critical: "#ff4d6d", high: "#ff9f1c", medium: "#facc15", low: "#39ff88" },
+        navy: { 950: "#070707", 900: "#111111", 800: "#1a1a1a", 700: "#262626" },
+        accent: { DEFAULT: "#e11d2e", light: "#ff5c6c", dark: "#7f1d1d" },
+        sev: { critical: "#ff4d6d", high: "#ff9f1c", medium: "#facc15", low: "#34d399" },
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],

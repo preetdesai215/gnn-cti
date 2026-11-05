@@ -6,14 +6,15 @@ import {
   Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart,
   ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from "recharts";
+import { Link } from "react-router-dom";
 import { getActivity, getAlerts, getGraph } from "../api/client";
 import { ENTITY_TYPES, NODES } from "../data/demo";
 import {
-  ErrorBlock, LoadingBlock, PageHeader, SeverityBadge, SimulatedBanner, StatCard, formatTime,
+  ErrorBlock, LoadingBlock, PageHeader, SeverityBadge, SimulatedBanner, StatCard, StatusBadge, formatTime,
 } from "../components/common";
 
-const SEVERITY_COLORS = { critical: "#ff4d6d", high: "#ff9f1c", medium: "#facc15", low: "#39ff88" };
-const tooltipStyle = { background: "#0a1428", border: "1px solid rgba(34,211,238,0.3)", borderRadius: 12, color: "#e2e8f0" };
+const SEVERITY_COLORS = { critical: "#ff4d6d", high: "#ff9f1c", medium: "#facc15", low: "#34d399" };
+const tooltipStyle = { background: "#0a1428", border: "1px solid rgba(255,92,108,0.3)", borderRadius: 12, color: "#e2e8f0" };
 
 function threatLevel(alerts) {
   const open = alerts.filter((a) => a.status === "open" || a.status === "investigating");
@@ -57,6 +58,8 @@ export default function Dashboard() {
       name: t.label, count: NODES.filter((n) => n.type === key).length, color: t.color,
     })), []);
 
+  const topRisk = useMemo(() => [...NODES].sort((a, b) => b.risk - a.risk).slice(0, 6), []);
+
   if (error) return <ErrorBlock message={`Could not load dashboard data: ${error}`} />;
 
   return (
@@ -73,11 +76,11 @@ export default function Dashboard() {
         <StatCard icon={Globe} label="Malicious IPs" value={stats.maliciousIps} accent="text-sev-critical" hint="Status: malicious" />
         <StatCard icon={AlertTriangle} label="Suspicious Domains" value={stats.suspiciousDomains} accent="text-sev-high" hint="Suspicious or malicious" />
         <StatCard icon={Bug} label="Malware Entities" value={stats.malware} accent="text-sev-critical" hint="Demo families" />
-        <StatCard icon={Gauge} label="Detection Rate" value={`${stats.detectionRate}%`} accent="text-neon-green" hint="Flagged share of demo nodes" />
+        <StatCard icon={Gauge} label="Detection Rate" value={`${stats.detectionRate}%`} accent="text-accent" hint="Flagged share of demo nodes" />
         <div className="glass glass-hover p-5">
           <div className="flex items-center justify-between">
             <p className="text-sm text-slate-400">Current Threat Level</p>
-            <ShieldAlert className="h-5 w-5 text-neon-cyan" />
+            <ShieldAlert className="h-5 w-5 text-accent-light" />
           </div>
           {alerts ? (
             <p className={`mt-3 text-3xl font-bold ${threatLevel(alerts).color}`}>{threatLevel(alerts).label}</p>
@@ -100,8 +103,8 @@ export default function Dashboard() {
                   <YAxis stroke="#64748b" fontSize={12} />
                   <Tooltip contentStyle={tooltipStyle} />
                   <Legend />
-                  <Line type="monotone" dataKey="indicators" stroke="#22d3ee" strokeWidth={2} dot={false} />
-                  <Line type="monotone" dataKey="detections" stroke="#39ff88" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="indicators" stroke="#9ca3af" strokeWidth={2} dot={false} />
+                  <Line type="monotone" dataKey="detections" stroke="#e11d2e" strokeWidth={2} dot={false} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -162,6 +165,46 @@ export default function Dashboard() {
           <p className="mt-4 flex items-center gap-2 text-xs text-slate-500">
             <Activity className="h-3.5 w-3.5" /> Simulated events. Not live detections.
           </p>
+        </div>
+      </section>
+
+      <section className="glass mt-6 p-5">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="font-semibold text-white">Highest-risk entities</h2>
+          <Link to="/graph" className="text-xs text-accent-light hover:underline">Open graph →</Link>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[620px] text-left text-sm">
+            <thead className="text-xs uppercase tracking-wider text-slate-500">
+              <tr>
+                <th className="pb-2 font-semibold">Entity</th>
+                <th className="pb-2 font-semibold">Type</th>
+                <th className="pb-2 font-semibold">Status</th>
+                <th className="pb-2 font-semibold">Risk</th>
+                <th className="pb-2"><span className="sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {topRisk.map((n) => (
+                <tr key={n.id} className="transition hover:bg-white/[0.03]">
+                  <td className="max-w-[320px] truncate py-2.5 font-mono text-xs text-slate-200">{n.value}</td>
+                  <td className="py-2.5 text-slate-400">{ENTITY_TYPES[n.type].label}</td>
+                  <td className="py-2.5"><StatusBadge status={n.status} /></td>
+                  <td className="py-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="w-8 font-bold text-white">{n.risk}</span>
+                      <div className="h-1.5 w-24 rounded-full bg-white/5">
+                        <div className="h-full rounded-full bg-gradient-to-r from-accent to-sev-high" style={{ width: `${n.risk}%` }} />
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-2.5 text-right">
+                    <Link to={`/analysis?q=${encodeURIComponent(n.value)}`} className="text-xs text-accent-light hover:underline">Analyse</Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
     </>

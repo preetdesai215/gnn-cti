@@ -45,7 +45,7 @@ export default function GnnModel() {
         <ol className="grid gap-3 md:grid-cols-2">
           {PIPELINE.map((step, i) => (
             <li key={step.title} className="glass glass-hover flex gap-4 p-4">
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-neon-green/30 to-neon-blue/30 text-sm font-bold text-white">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-accent/30 to-accent-dark/30 text-sm font-bold text-white">
                 {i + 1}
               </span>
               <div>
@@ -62,10 +62,10 @@ export default function GnnModel() {
         <div className="flex flex-col items-center gap-2 text-center text-sm">
           {["Input graph: nodes + typed edges", "Node features (per entity)", "GNN layer 1: message passing", "GNN layer 2: message passing", "Classification head", "Output: class + confidence"].map((label, i, arr) => (
             <div key={label} className="flex flex-col items-center gap-2">
-              <div className="w-full max-w-md rounded-xl border border-cyan-400/25 bg-navy-900/70 px-5 py-2.5 text-slate-200 shadow-[0_0_20px_-10px_#22d3ee]">
+              <div className="w-full max-w-md rounded-xl border border-red-400/25 bg-navy-900/70 px-5 py-2.5 text-slate-200 shadow-[0_0_20px_-10px_#ff5c6c]">
                 {label}
               </div>
-              {i < arr.length - 1 && <ArrowDown className="h-4 w-4 text-neon-cyan/60" />}
+              {i < arr.length - 1 && <ArrowDown className="h-4 w-4 text-accent-light/60" />}
             </div>
           ))}
         </div>
@@ -76,9 +76,9 @@ export default function GnnModel() {
         {metrics ? (
           <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             <StatCard label="Accuracy" value={pct(metrics.accuracy)} />
-            <StatCard label="Precision" value={pct(metrics.precision)} accent="text-neon-green" />
-            <StatCard label="Recall" value={pct(metrics.recall)} accent="text-neon-blue" />
-            <StatCard label="F1-Score" value={pct(metrics.f1)} accent="text-neon-green" />
+            <StatCard label="Precision" value={pct(metrics.precision)} accent="text-accent" />
+            <StatCard label="Recall" value={pct(metrics.recall)} accent="text-accent-dark" />
+            <StatCard label="F1-Score" value={pct(metrics.f1)} accent="text-accent" />
           </div>
         ) : <LoadingBlock />}
 
@@ -107,7 +107,7 @@ export default function GnnModel() {
                       <span className="text-slate-400">{ENTITY_TYPES[n.type].label} · {n.risk}%</span>
                     </div>
                     <div className="mt-1 h-2 rounded-full bg-white/5">
-                      <div className="h-full rounded-full bg-gradient-to-r from-neon-green to-neon-cyan" style={{ width: `${n.risk}%` }} />
+                      <div className="h-full rounded-full bg-gradient-to-r from-accent to-accent-light" style={{ width: `${n.risk}%` }} />
                     </div>
                   </li>
                 ))}
