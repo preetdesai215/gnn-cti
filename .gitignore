@@ -4,3 +4,5 @@ models/*.pt
 __pycache__/
 .ipynb_checkpoints/
 .env
+web/node_modules/
+web/dist/

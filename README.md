@@ -12,6 +12,7 @@ for threat entity classification and suspicious relationship prediction.
 - [x] Feature-only baseline (Random Forest, URL features; run with python -m src.models.baseline)
 - [ ] GNN model (GraphSAGE / R-GCN)
 - [ ] Evaluation (temporal split, PR-AUC)
+- [x] Frontend dashboard (React, simulated data); backend still to do
 - [ ] Explainability and demo app
 
 ## Setup
@@ -44,3 +45,20 @@ redistributing data. Raw malicious URLs and samples are not included in this rep
 
 Threat feeds contain false positives and stale labels. Results depend on feed quality and
 collection date.
+
+## Web dashboard (frontend)
+
+A React dashboard in `web/` presents the project. All data is simulated: indicators use reserved
+names (`.example`, `.test`, `.invalid`) and documentation IP ranges, and each page is labeled as
+demo data. Pages: landing, dashboard, interactive graph, indicator analysis, GNN model, alerts,
+reports (print to PDF), and about.
+
+```bash
+cd web
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # production build in web/dist
+```
+
+Data access goes through `web/src/api/client.js`. Replace the simulated functions there with
+calls to the FastAPI backend once it exists.

@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-950 text-slate-200 antialiased;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-cyan-400/10 rounded-2xl shadow-[0_0_30px_-12px_rgba(34,211,238,0.25)];
+  }
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-cyan-400/40 hover:-translate-y-0.5 hover:shadow-[0_0_30px_-8px_rgba(57,255,136,0.35)];
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-neon-green/90 to-neon-cyan/90 px-5 py-2.5 font-semibold text-navy-950 transition hover:brightness-110 hover:shadow-[0_0_25px_-5px_rgba(57,255,136,0.6)];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 px-5 py-2.5 font-medium text-cyan-200 transition hover:bg-cyan-400/10;
+  }
+  .input {
+    @apply w-full rounded-xl border border-cyan-400/20 bg-navy-900/70 px-4 py-2.5 text-slate-100 placeholder-slate-500 outline-none transition focus:border-neon-cyan focus:shadow-[0_0_0_3px_rgba(34,211,238,0.15)];
+  }
+  .label-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-neon-cyan/80;
+  }
+}
+
+/* Animated network background used on the landing page */
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(12px, -8px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes flow {
+  to { stroke-dashoffset: -40; }
+}
+.animate-drift { animation: drift 9s ease-in-out infinite; }
+.animate-flow { stroke-dasharray: 6 10; animation: flow 2.5s linear infinite; }
+
+/* React Flow theming to match the dashboard */
+.react-flow__controls button {
+  background: #101d36;
+  border-color: rgba(34, 211, 238, 0.2);
+  fill: #a5f3fc;
+}
+.react-flow__controls button:hover { background: #18294a; }
+.react-flow__minimap { background: #0a1428 !important; }
+
+/* Print / PDF export: show only the report, on a white page */
+@media print {
+  body { background: #fff !important; color: #111 !important; }
+  .no-print, aside, header, footer { display: none !important; }
+  .report-print { background: #fff !important; border: none !important; box-shadow: none !important; color: #111 !important; backdrop-filter: none !important; }
+  .report-print * { color: #111 !important; }
+  main { padding: 0 !important; }
+}
