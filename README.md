@@ -85,3 +85,22 @@ Scheduling options:
   `wsl.exe -d Ubuntu -- /home/YOURNAME/projects/gnn-cti/scripts/daily_update.sh`.
 - **cron inside WSL:** `sudo apt install -y cron && sudo service cron start`, then `crontab -e` and add
   `0 8 * * * /home/YOURNAME/projects/gnn-cti/scripts/daily_update.sh`. Cron only runs while WSL is running.
+
+## GNN and website data (setup)
+
+Install the GNN libraries once (GPU machine). Get the PyTorch command for your CUDA version from
+https://pytorch.org (choose Linux, Pip, CUDA), then:
+
+```bash
+conda activate gnn-cti
+# paste the pytorch.org command here, for example: pip install torch --index-url <URL from pytorch.org>
+pip install torch-geometric
+```
+
+Run the experiment (after the history has data):
+
+```bash
+python -m src.ingest.dns_resolve        # A records for new domains (DNS only)
+python -m src.models.gnn_experiment     # GNN vs Random Forest, 10 seeds
+python -m src.export.summary            # writes web/public/data/latest.json
+```

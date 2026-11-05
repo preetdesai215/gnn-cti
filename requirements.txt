@@ -12,3 +12,5 @@ pytest>=8.0
 # Install PyTorch from pytorch.org (match your CUDA version), then:
 # torch
 # torch-geometric
+dnspython>=2.6
+# GNN (install separately, see README): torch, torch-geometric

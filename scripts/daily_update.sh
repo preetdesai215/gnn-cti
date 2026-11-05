@@ -68,6 +68,14 @@ else
   exit 1
 fi
 
+# DNS A records for new domains only (cached), then refresh the website summary
+if ! python -m src.ingest.dns_resolve; then
+  echo "WARNING: DNS step failed (history is still updated)"
+fi
+if ! python -m src.export.summary; then
+  echo "WARNING: summary export failed"
+fi
+
 # Back up data after every successful update (warning only, the update still counts)
 if ! "$PROJECT/scripts/backup.sh" > /dev/null; then
   echo "WARNING: backup failed"
