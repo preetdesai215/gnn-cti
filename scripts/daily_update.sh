@@ -68,4 +68,9 @@ else
   exit 1
 fi
 
+# Back up data after every successful update (warning only, the update still counts)
+if ! "$PROJECT/scripts/backup.sh" > /dev/null; then
+  echo "WARNING: backup failed"
+fi
+
 echo "=== $(date -u +%FT%TZ) daily update done"
