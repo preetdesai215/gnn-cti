@@ -184,8 +184,25 @@ if __name__ == "__main__":
     from src.graph.build import extract_host as _host
 
     mal_reg = {registered_domain(_host(r["url"])[0] or "") for r in mal_domains}
-    df_temporal = build_dataset(mal_domains, benign, split_mode="temporal")
-    df_grouped = build_dataset(mal_domains, benign, split_mode="grouped")
+
+    # Main result: host-only features, grouped split, repeated over several seeds.
+    # Full URL features are excluded here because the path shortcut inflates them.
+    N_SEEDS = 10
+    per_seed = []
+    for seed in range(N_SEEDS):
+        df_g = build_dataset(mal_domains, benign, split_mode="grouped", seed=seed)
+        m = train_and_evaluate(df_g, HOST_FEATURE_NAMES, seed=seed)
+        per_seed.append({"seed": seed, "pr_auc": m["pr_auc"], "f1_at_0.5": m["f1_at_0.5"],
+                         "n_test_malicious": m["n_test_malicious"]})
+
+    def _summary(key: str) -> dict:
+        vals = np.array([r[key] for r in per_seed], dtype=float)
+        return {"mean": round(float(vals.mean()), 4), "std": round(float(vals.std()), 4),
+                "min": round(float(vals.min()), 4), "max": round(float(vals.max()), 4)}
+
+    df_t = build_dataset(mal_domains, benign, split_mode="temporal")
+    temporal_ref = train_and_evaluate(df_t, HOST_FEATURE_NAMES)
+
     results = {
         "setup": {
             "malicious_domain_hosts": len(mal_domains),
@@ -193,15 +210,15 @@ if __name__ == "__main__":
             "ip_hosts_excluded": ip_excluded,
             "benign_matched": len(benign),
             "benign_pool_start_rank": POOL_START_RANK,
+            "grouped_split_seeds": N_SEEDS,
         },
-        "temporal_split": {
-            "full_url_features": train_and_evaluate(df_temporal, FEATURE_NAMES),
-            "host_only_features": train_and_evaluate(df_temporal, HOST_FEATURE_NAMES),
+        "main_result_host_only_grouped": {
+            "pr_auc": _summary("pr_auc"),
+            "f1_at_0.5": _summary("f1_at_0.5"),
+            "n_test_malicious": _summary("n_test_malicious"),
+            "per_seed": per_seed,
         },
-        "grouped_split": {
-            "full_url_features": train_and_evaluate(df_grouped, FEATURE_NAMES),
-            "host_only_features": train_and_evaluate(df_grouped, HOST_FEATURE_NAMES),
-        },
+        "reference_host_only_temporal_single_run": temporal_ref,
     }
     DATA_PROCESSED.mkdir(parents=True, exist_ok=True)
     (DATA_PROCESSED / "baseline_metrics.json").write_text(json.dumps(results, indent=2))
