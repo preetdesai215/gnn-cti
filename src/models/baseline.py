@@ -37,12 +37,19 @@ def registered_domain(host: str) -> str:
 
 
 def grouped_split(df: pd.DataFrame, test_fraction: float = 0.2, seed: int = 42) -> pd.Series:
-    """Assign whole registered domains to train or test, so no family spans both sides."""
-    groups = np.array(df["reg_domain"].unique(), dtype=object)
+    """Assign whole registered domains to train or test, so no family spans both sides.
+
+    Groups are shuffled separately within each class, so both classes contribute about
+    test_fraction of their families to the test set. Without this, a few very large
+    malicious families can leave almost no malicious rows in test.
+    """
     rng = np.random.default_rng(seed)
-    rng.shuffle(groups)
-    n_test = int(len(groups) * test_fraction)
-    test_groups = set(groups[:n_test])
+    test_groups: set = set()
+    for label in (0, 1):
+        groups = np.array(df.loc[df["label"] == label, "reg_domain"].unique(), dtype=object)
+        rng.shuffle(groups)
+        n_test = int(len(groups) * test_fraction)
+        test_groups.update(groups[:n_test])
     return df["reg_domain"].map(lambda g: "test" if g in test_groups else "train")
 
 
@@ -106,6 +113,8 @@ def train_and_evaluate(df: pd.DataFrame, feature_names: list[str] | None = None,
         "n_train": int(len(train)),
         "n_test": int(len(test)),
         "test_malicious_share": round(float(test["label"].mean()), 4),
+        "n_test_malicious": int((test["label"] == 1).sum()),
+        "n_test_benign": int((test["label"] == 0).sum()),
         "pr_auc": round(float(average_precision_score(test["label"], proba)), 4),
         "f1_at_0.5": round(float(f1_score(test["label"], pred)), 4),
     }
