@@ -22,6 +22,23 @@ export const getAlerts = () => simulated(ALERTS);
 export const getActivity = () => simulated(ACTIVITY);
 export const getModelMetrics = () => simulated(ILLUSTRATIVE_METRICS);
 
+// Real results written by `python -m src.export.summary` to web/public/data/latest.json.
+// Returns null when the file is missing or unreadable, so pages can say so instead of failing.
+export async function getLatestSummary() {
+  try {
+    const res = await fetch(`${import.meta.env.BASE_URL}data/latest.json`, { cache: "no-store" });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+export async function getGnnExperiment() {
+  const summary = await getLatestSummary();
+  return summary?.gnn_experiment ?? null;
+}
+
 // Input validation for the analysis page. Pure string checks: nothing is fetched or resolved.
 const IPV4 = /^(25[0-5]|2[0-4]\d|1?\d?\d)(\.(25[0-5]|2[0-4]\d|1?\d?\d)){3}$/;
 const DOMAIN = /^(?=.{1,253}$)([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$/i;

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Printer } from "lucide-react";
-import { getAlerts } from "../api/client";
+import { getAlerts, getGnnExperiment } from "../api/client";
 import { EDGES, ENTITY_TYPES, NODES } from "../data/demo";
 import { ErrorBlock, LoadingBlock, PageHeader, SeverityBadge, SimulatedBanner, StatusBadge, formatTime } from "../components/common";
 
@@ -14,11 +14,13 @@ const RECOMMENDATIONS = [
 
 export default function Reports() {
   const [alerts, setAlerts] = useState(null);
+  const [exp, setExp] = useState(undefined); // undefined = loading, null = no results file
   const [error, setError] = useState("");
   const [scope, setScope] = useState("all");
 
   useEffect(() => {
     getAlerts().then(setAlerts).catch((e) => setError(e.message));
+    getGnnExperiment().then(setExp);
   }, []);
 
   const report = useMemo(() => {
@@ -107,10 +109,11 @@ export default function Reports() {
             </div>
           </Section>
 
-          <Section title="4. GNN prediction results (illustrative)">
-            <p className="text-sm text-slate-400">
-              Predicted classes and risk values here are the demo values. Model performance figures are illustrative
-              and are shown on the GNN Model page; they are not measured results.
+          <Section title="4. GNN experiment results (measured)">
+            <ExperimentSummary exp={exp} />
+            <p className="mt-3 text-sm text-slate-400">
+              The entity list and alerts above are demo data. The experiment figures come from public URLhaus data and are
+              the only measured results in this report.
             </p>
           </Section>
 
@@ -145,6 +148,36 @@ export default function Reports() {
         </article>
       )}
     </>
+  );
+}
+
+function ExperimentSummary({ exp }) {
+  if (exp === undefined) return <p className="text-sm text-slate-500">Loading experiment results…</p>;
+  if (exp === null || !exp.setup?.ip_edge_share_by_class) {
+    return <p className="text-sm text-slate-400">No current experiment results. Run the GNN experiment and export the summary first.</p>;
+  }
+  const rf = exp.random_forest_host_features?.pr_auc;
+  const ablation = exp.gnn_no_edges_ablation?.pr_auc;
+  const gnn = exp.gnn_graphsage?.pr_auc;
+  const graphHelped = gnn && ablation && rf && gnn.mean > Math.max(rf.mean, ablation.mean);
+  const fmt = (x) => (x ? `${x.mean.toFixed(3)} ± ${x.std.toFixed(3)}` : "n/a");
+  return (
+    <div className="space-y-3 text-sm text-slate-300">
+      <p>
+        PR-AUC over {exp.setup.seeds} grouped seeds, {exp.setup.domain_nodes} domains ({exp.setup.malicious_domains} malicious,{" "}
+        {exp.setup.benign_domains} benign):
+      </p>
+      <ul className="space-y-1 font-mono text-slate-200">
+        <li>Random Forest, host features: {fmt(rf)}</li>
+        <li>GNN without edges: {fmt(ablation)}</li>
+        <li>GNN with IP/DNS edges: {fmt(gnn)}</li>
+      </ul>
+      <p>
+        {graphHelped
+          ? "In this run the graph model scored above both feature-only models. Verify the IP-record shares before relying on it."
+          : "The graph model did not beat the feature-only models in this setup. The feature-only baseline is the headline result."}
+      </p>
+    </div>
   );
 }
 

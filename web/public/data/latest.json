@@ -1,0 +1,461 @@
+{
+  "generated_utc": "2026-11-06T02:25:58+00:00",
+  "data_source": "URLhaus public feed, accumulated history",
+  "simulated": false,
+  "history": {
+    "urls": 127044,
+    "collection_days": 2,
+    "first_collected": "2026-11-05",
+    "last_collected": "2026-11-06"
+  },
+  "top_hosts_defanged": [
+    {
+      "host": "raw[.]githubusercontent[.]com",
+      "urls": 57101
+    },
+    {
+      "host": "github[.]com",
+      "urls": 53359
+    },
+    {
+      "host": "gitlab[.]com",
+      "urls": 820
+    },
+    {
+      "host": "cdn[.]discordapp[.]com",
+      "urls": 240
+    },
+    {
+      "host": "107[.]175[.]82[.]242",
+      "urls": 205
+    },
+    {
+      "host": "31[.]56[.]209[.]86",
+      "urls": 128
+    },
+    {
+      "host": "drive[.]google[.]com",
+      "urls": 109
+    },
+    {
+      "host": "176[.]65[.]139[.]40",
+      "urls": 90
+    },
+    {
+      "host": "45[.]153[.]34[.]235",
+      "urls": 69
+    },
+    {
+      "host": "5[.]39[.]10[.]241",
+      "urls": 63
+    },
+    {
+      "host": "play[.]nopixel-rp[.]ir",
+      "urls": 60
+    },
+    {
+      "host": "154[.]83[.]85[.]63",
+      "urls": 52
+    },
+    {
+      "host": "45[.]135[.]194[.]96",
+      "urls": 47
+    },
+    {
+      "host": "176[.]65[.]139[.]51",
+      "urls": 47
+    },
+    {
+      "host": "130[.]12[.]180[.]212",
+      "urls": 47
+    },
+    {
+      "host": "94[.]154[.]43[.]26",
+      "urls": 46
+    },
+    {
+      "host": "www[.]dropbox[.]com",
+      "urls": 45
+    },
+    {
+      "host": "176[.]65[.]139[.]201",
+      "urls": 41
+    },
+    {
+      "host": "45[.]153[.]34[.]206",
+      "urls": 40
+    },
+    {
+      "host": "13[.]140[.]181[.]222",
+      "urls": 39
+    }
+  ],
+  "platform_comparison": {
+    "setup": {
+      "feed": "/home/stingray/projects/gnn-cti/data/processed/urlhaus_history.csv",
+      "domain_hosted_urls_before_cap": 113266,
+      "after_cap": 2537,
+      "shared_hosting_urls_removed": 1109,
+      "remaining_urls": 1428,
+      "shared_hosting_domains": 26,
+      "grouped_split_seeds": 10,
+      "cap_per_registered_domain": 200
+    },
+    "A_all_malicious_including_platforms": {
+      "malicious_urls": 2537,
+      "benign_urls": 2537,
+      "pr_auc": {
+        "mean": 0.8585,
+        "std": 0.0799,
+        "min": 0.7164,
+        "max": 0.9568
+      },
+      "f1_at_0.5": {
+        "mean": 0.7439,
+        "std": 0.1003,
+        "min": 0.5929,
+        "max": 0.8751
+      },
+      "share_families_detected": {
+        "mean": 0.3896,
+        "std": 0.0599,
+        "min": 0.2957,
+        "max": 0.4696
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "pr_auc": 0.8862,
+          "f1_at_0.5": 0.7636,
+          "n_test_malicious": 502,
+          "share_families_detected": 0.3826,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 1,
+          "pr_auc": 0.9568,
+          "f1_at_0.5": 0.8738,
+          "n_test_malicious": 801,
+          "share_families_detected": 0.4696,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 2,
+          "pr_auc": 0.9233,
+          "f1_at_0.5": 0.8266,
+          "n_test_malicious": 612,
+          "share_families_detected": 0.3652,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 3,
+          "pr_auc": 0.7164,
+          "f1_at_0.5": 0.5929,
+          "n_test_malicious": 343,
+          "share_families_detected": 0.4522,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 4,
+          "pr_auc": 0.7641,
+          "f1_at_0.5": 0.621,
+          "n_test_malicious": 327,
+          "share_families_detected": 0.3652,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 5,
+          "pr_auc": 0.8681,
+          "f1_at_0.5": 0.7379,
+          "n_test_malicious": 548,
+          "share_families_detected": 0.3304,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 6,
+          "pr_auc": 0.7702,
+          "f1_at_0.5": 0.6065,
+          "n_test_malicious": 390,
+          "share_families_detected": 0.2957,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 7,
+          "pr_auc": 0.9122,
+          "f1_at_0.5": 0.7942,
+          "n_test_malicious": 743,
+          "share_families_detected": 0.3304,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 8,
+          "pr_auc": 0.9523,
+          "f1_at_0.5": 0.8751,
+          "n_test_malicious": 822,
+          "share_families_detected": 0.4348,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 9,
+          "pr_auc": 0.8355,
+          "f1_at_0.5": 0.7477,
+          "n_test_malicious": 483,
+          "share_families_detected": 0.4696,
+          "median_family_recall": 0.0
+        }
+      ]
+    },
+    "B_excluding_shared_hosting": {
+      "malicious_urls": 1428,
+      "benign_urls": 1428,
+      "pr_auc": {
+        "mean": 0.7455,
+        "std": 0.0314,
+        "min": 0.704,
+        "max": 0.803
+      },
+      "f1_at_0.5": {
+        "mean": 0.5886,
+        "std": 0.0592,
+        "min": 0.4689,
+        "max": 0.6853
+      },
+      "share_families_detected": {
+        "mean": 0.4714,
+        "std": 0.0513,
+        "min": 0.375,
+        "max": 0.5714
+      },
+      "per_seed": [
+        {
+          "seed": 0,
+          "pr_auc": 0.7102,
+          "f1_at_0.5": 0.5092,
+          "n_test_malicious": 277,
+          "share_families_detected": 0.4732,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 1,
+          "pr_auc": 0.7715,
+          "f1_at_0.5": 0.6085,
+          "n_test_malicious": 312,
+          "share_families_detected": 0.4375,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 2,
+          "pr_auc": 0.7435,
+          "f1_at_0.5": 0.5996,
+          "n_test_malicious": 257,
+          "share_families_detected": 0.4821,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 3,
+          "pr_auc": 0.704,
+          "f1_at_0.5": 0.5556,
+          "n_test_malicious": 248,
+          "share_families_detected": 0.4732,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 4,
+          "pr_auc": 0.803,
+          "f1_at_0.5": 0.6853,
+          "n_test_malicious": 278,
+          "share_families_detected": 0.4196,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 5,
+          "pr_auc": 0.7596,
+          "f1_at_0.5": 0.6309,
+          "n_test_malicious": 271,
+          "share_families_detected": 0.5714,
+          "median_family_recall": 1.0
+        },
+        {
+          "seed": 6,
+          "pr_auc": 0.7119,
+          "f1_at_0.5": 0.4689,
+          "n_test_malicious": 314,
+          "share_families_detected": 0.375,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 7,
+          "pr_auc": 0.7712,
+          "f1_at_0.5": 0.6255,
+          "n_test_malicious": 324,
+          "share_families_detected": 0.4643,
+          "median_family_recall": 0.0
+        },
+        {
+          "seed": 8,
+          "pr_auc": 0.7192,
+          "f1_at_0.5": 0.5982,
+          "n_test_malicious": 263,
+          "share_families_detected": 0.5179,
+          "median_family_recall": 1.0
+        },
+        {
+          "seed": 9,
+          "pr_auc": 0.7607,
+          "f1_at_0.5": 0.6045,
+          "n_test_malicious": 293,
+          "share_families_detected": 0.5,
+          "median_family_recall": 0.25
+        }
+      ]
+    }
+  },
+  "gnn_experiment": {
+    "setup": {
+      "domain_nodes": 2074,
+      "malicious_domains": 668,
+      "benign_domains": 1406,
+      "ip_nodes": 2508,
+      "edges_directed": 5664,
+      "ip_edge_share_by_class": {
+        "malicious": 0.6557,
+        "benign": 0.909
+      },
+      "dns_resolution": {
+        "hosts_already_cached": 731,
+        "hosts_resolved_now": 1406,
+        "host_ip_pairs_total": 2942,
+        "cache_file": "/home/stingray/projects/gnn-cti/data/processed/dns_a_records.csv"
+      },
+      "epochs": 200,
+      "hidden": 32,
+      "seeds": 10
+    },
+    "random_forest_host_features": {
+      "pr_auc": {
+        "mean": 0.6277,
+        "std": 0.0365,
+        "min": 0.5796,
+        "max": 0.6836
+      }
+    },
+    "gnn_no_edges_ablation": {
+      "pr_auc": {
+        "mean": 0.6995,
+        "std": 0.0345,
+        "min": 0.6233,
+        "max": 0.7433
+      }
+    },
+    "gnn_graphsage": {
+      "pr_auc": {
+        "mean": 0.4581,
+        "std": 0.0811,
+        "min": 0.2562,
+        "max": 0.5529
+      }
+    },
+    "per_seed": [
+      {
+        "seed": 0,
+        "test_domains": 408,
+        "test_malicious": 127,
+        "random_forest_pr_auc": 0.6047,
+        "random_forest_f1": 0.5353,
+        "gnn_no_edges_pr_auc": 0.6626,
+        "gnn_pr_auc": 0.4229,
+        "gnn_f1": 0.3617
+      },
+      {
+        "seed": 1,
+        "test_domains": 407,
+        "test_malicious": 126,
+        "random_forest_pr_auc": 0.601,
+        "random_forest_f1": 0.5018,
+        "gnn_no_edges_pr_auc": 0.6821,
+        "gnn_pr_auc": 0.4315,
+        "gnn_f1": 0.4577
+      },
+      {
+        "seed": 2,
+        "test_domains": 412,
+        "test_malicious": 131,
+        "random_forest_pr_auc": 0.6337,
+        "random_forest_f1": 0.5543,
+        "gnn_no_edges_pr_auc": 0.717,
+        "gnn_pr_auc": 0.4931,
+        "gnn_f1": 0.4623
+      },
+      {
+        "seed": 3,
+        "test_domains": 422,
+        "test_malicious": 141,
+        "random_forest_pr_auc": 0.6836,
+        "random_forest_f1": 0.5831,
+        "gnn_no_edges_pr_auc": 0.6976,
+        "gnn_pr_auc": 0.5529,
+        "gnn_f1": 0.5297
+      },
+      {
+        "seed": 4,
+        "test_domains": 419,
+        "test_malicious": 138,
+        "random_forest_pr_auc": 0.6383,
+        "random_forest_f1": 0.522,
+        "gnn_no_edges_pr_auc": 0.7373,
+        "gnn_pr_auc": 0.4453,
+        "gnn_f1": 0.4955
+      },
+      {
+        "seed": 5,
+        "test_domains": 406,
+        "test_malicious": 125,
+        "random_forest_pr_auc": 0.5796,
+        "random_forest_f1": 0.5075,
+        "gnn_no_edges_pr_auc": 0.716,
+        "gnn_pr_auc": 0.5142,
+        "gnn_f1": 0.4898
+      },
+      {
+        "seed": 6,
+        "test_domains": 409,
+        "test_malicious": 128,
+        "random_forest_pr_auc": 0.6815,
+        "random_forest_f1": 0.5714,
+        "gnn_no_edges_pr_auc": 0.7433,
+        "gnn_pr_auc": 0.2562,
+        "gnn_f1": 0.4767
+      },
+      {
+        "seed": 7,
+        "test_domains": 396,
+        "test_malicious": 115,
+        "random_forest_pr_auc": 0.5809,
+        "random_forest_f1": 0.49,
+        "gnn_no_edges_pr_auc": 0.6233,
+        "gnn_pr_auc": 0.4248,
+        "gnn_f1": 0.4501
+      },
+      {
+        "seed": 8,
+        "test_domains": 417,
+        "test_malicious": 136,
+        "random_forest_pr_auc": 0.6619,
+        "random_forest_f1": 0.5473,
+        "gnn_no_edges_pr_auc": 0.7218,
+        "gnn_pr_auc": 0.5382,
+        "gnn_f1": 0.5068
+      },
+      {
+        "seed": 9,
+        "test_domains": 402,
+        "test_malicious": 121,
+        "random_forest_pr_auc": 0.6119,
+        "random_forest_f1": 0.4921,
+        "gnn_no_edges_pr_auc": 0.6938,
+        "gnn_pr_auc": 0.5023,
+        "gnn_f1": 0.4456
+      }
+    ]
+  }
+}
