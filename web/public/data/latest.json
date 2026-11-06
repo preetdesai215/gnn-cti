@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-06T02:25:58+00:00",
+  "generated_utc": "2026-11-06T03:19:01+00:00",
   "data_source": "URLhaus public feed, accumulated history",
   "simulated": false,
   "history": {
@@ -8,6 +8,28 @@
     "first_collected": "2026-11-05",
     "last_collected": "2026-11-06"
   },
+  "entity_counts": {
+    "domains": 739,
+    "ip_hosts": 5738,
+    "domains_with_dns_ip": 506,
+    "unique_resolved_ips": 653
+  },
+  "daily_additions": [
+    {
+      "day": "2026-11-05",
+      "new_urls": 126629
+    },
+    {
+      "day": "2026-11-06",
+      "new_urls": 415
+    }
+  ],
+  "threat_types": [
+    {
+      "threat": "malware_download",
+      "urls": 127044
+    }
+  ],
   "top_hosts_defanged": [
     {
       "host": "raw[.]githubusercontent[.]com",
@@ -58,7 +80,7 @@
       "urls": 52
     },
     {
-      "host": "45[.]135[.]194[.]96",
+      "host": "130[.]12[.]180[.]212",
       "urls": 47
     },
     {
@@ -66,7 +88,7 @@
       "urls": 47
     },
     {
-      "host": "130[.]12[.]180[.]212",
+      "host": "45[.]135[.]194[.]96",
       "urls": 47
     },
     {
@@ -90,6 +112,13 @@
       "urls": 39
     }
   ],
+  "phishing_feed": {
+    "urls": 300,
+    "collection_days": 1,
+    "first_collected": "2026-11-06",
+    "last_collected": "2026-11-06",
+    "source": "OpenPhish community feed (non-commercial use only)"
+  },
   "platform_comparison": {
     "setup": {
       "feed": "/home/stingray/projects/gnn-cti/data/processed/urlhaus_history.csv",
@@ -457,5 +486,6 @@
         "gnn_f1": 0.4456
       }
     ]
-  }
+  },
+  "phishing_experiment": null
 }

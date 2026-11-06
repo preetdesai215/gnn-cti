@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Info, Search } from "lucide-react";
-import { analyzeIndicator, classifyInput } from "../api/client";
-import {
-  EntityBadge, ErrorBlock, PageHeader, SimulatedBanner, StatusBadge,
-} from "../components/common";
+import { analyzeIndicator, classifyInput, getIndicatorHosts, getReference } from "../api/client";
+import { brandsFromReference, lookalikeMatch } from "../api/lookalike";
+import { useFreshness } from "../components/freshness";
+import { EntityBadge, ErrorBlock, LoadingBlock, PageHeader } from "../components/common";
 
-const EXAMPLES = [
-  "update-check.evil-demo.example",
-  "192.0.2.14",
-  "http://mirror.fastfiles-demo.example/setup.exe",
-  "3f2a0000000000000000000000000000000000000000000000000000000000c9",
-  "docs.company-demo.example",
-];
+const EXAMPLES = ["example.com", "203.0.113.5", "http://example.com/setup.exe"];
 
 // Shannon entropy of a string, in bits per character. Computed locally, from the text only.
 function entropy(s) {
@@ -28,34 +22,50 @@ function entropy(s) {
 export default function Analysis() {
   const [params] = useSearchParams();
   const [text, setText] = useState(params.get("q") || "");
+  const { version } = useFreshness();
+  const [hosts, setHosts] = useState(undefined); // undefined = loading, null = no file
+  const [reference, setReference] = useState(undefined); // popularity list, same loading pattern
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [autoRan, setAutoRan] = useState(false);
+
+  useEffect(() => {
+    getIndicatorHosts().then(setHosts).catch(() => setHosts(null));
+    getReference().then(setReference).catch(() => setReference(null));
+  }, [version]);
 
   // Run the lookup straight away when arriving from the top-bar search or a table link
   useEffect(() => {
-    if (params.get("q")) submit();
+    if (hosts && reference !== undefined && params.get("q") && !autoRan) {
+      setAutoRan(true);
+      runLookup(params.get("q"));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [hosts, reference]);
 
-  async function submit(e) {
-    e?.preventDefault();
+  function runLookup(value) {
     setError("");
+    try {
+      setResult(analyzeIndicator(value, hosts, reference));
+    } catch (err) {
+      setResult(null);
+      setError(err.message);
+    }
+  }
+
+  function submit(e) {
+    e?.preventDefault();
     const check = classifyInput(text);
     if (!check.ok) {
       setResult(null);
       setError(check.error);
       return;
     }
-    setLoading(true);
-    try {
-      setResult(await analyzeIndicator(text));
-    } catch (err) {
-      setResult(null);
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    if (!hosts) {
+      setError("No indicator index found. Run python -m src.export.summary, then reload.");
+      return;
     }
+    runLookup(text);
   }
 
   function pick(value) {
@@ -68,17 +78,23 @@ export default function Analysis() {
     ? result.input.value.replace(/^https?:\/\//i, "").split(/[/?#]/)[0]
     : null;
 
+  const brands = useMemo(() => brandsFromReference(reference), [reference]);
+  const lookHost = localHost ? localHost.split(":")[0].toLowerCase() : null;
+  const lookalike = lookHost && brands.length ? lookalikeMatch(lookHost, brands) : null;
+  const lookalikeText = {
+    homoglyph: "look-alike characters are swapped in",
+    typo: "one character is different",
+    combo: "the popular name is a word in this name",
+    subdomain: "the popular name is used as a subdomain of an unrelated domain",
+  };
+
   return (
     <>
       <PageHeader
         eyebrow="Threat analysis"
         title="Indicator Analysis"
-        description="Enter an IP address, domain, URL or file hash. The input is checked and looked up in the simulated dataset only."
+        description="Look up a domain, IP address or URL in your URLhaus history. Lookups use the local index only: nothing is resolved, visited or scanned."
       />
-      <SimulatedBanner>
-        Lookup uses simulated demo data. This tool does not resolve, visit, scan or query any external threat
-        intelligence service.
-      </SimulatedBanner>
 
       <form onSubmit={submit} className="glass p-5">
         <label htmlFor="indicator" className="label-eyebrow mb-3 block">Indicator</label>
@@ -86,15 +102,15 @@ export default function Analysis() {
           <input
             id="indicator"
             className="input font-mono"
-            placeholder="e.g. update-check.evil-demo.example or 192.0.2.14"
+            placeholder="e.g. example.com or 203.0.113.5"
             value={text}
             maxLength={2048}
             onChange={(e) => setText(e.target.value)}
             autoComplete="off"
             spellCheck="false"
           />
-          <button type="submit" className="btn-primary justify-center" disabled={loading}>
-            <Search className="h-4 w-4" /> {loading ? "Analysing…" : "Analyse"}
+          <button type="submit" className="btn-primary justify-center" disabled={hosts === undefined}>
+            <Search className="h-4 w-4" /> {hosts === undefined ? "Loading…" : "Analyse"}
           </button>
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -108,18 +124,43 @@ export default function Analysis() {
         </div>
       </form>
 
+      {hosts === undefined && <div className="mt-4"><LoadingBlock label="Loading indicator index…" /></div>}
       {error && <div className="mt-4"><ErrorBlock message={error} /></div>}
+
+      {lookalike && (
+        <section className="mt-6 rounded-2xl border border-amber-400/30 bg-amber-400/5 p-5 text-sm text-amber-100">
+          <p className="font-semibold">Possible lookalike of {lookalike.brand}</p>
+          <p className="mt-1 text-amber-100/80">
+            This name resembles a popular site ({lookalikeText[lookalike.rule]}). That is a rule-based candidate for review,
+            not a verdict. Check the address carefully before trusting it, and never enter credentials on a lookalike site.
+          </p>
+        </section>
+      )}
 
       {result && !result.found && (
         <section className="glass mt-6 p-6">
           <div className="flex items-start gap-3">
             <Info className="mt-0.5 h-5 w-5 text-accent-light" />
             <div>
-              <h2 className="font-semibold text-white">Not in the simulated dataset</h2>
+              <h2 className="font-semibold text-white">Not in your URLhaus history</h2>
               <p className="mt-1 text-sm text-slate-400">
-                This indicator is a valid {result.input.type}, but it is not in the demo data, so no classification
-                is available. The platform will return a model score once the trained GNN is connected.
+                URLhaus lists sites that distribute malware. This {result.input.type} did not appear in the feed on the days
+                your update ran. That is not a safety check, and most popular sites are never listed.
               </p>
+              {result.popularity && (
+                <p className="mt-3 rounded-xl border border-emerald-400/20 bg-emerald-400/5 p-3 text-sm text-emerald-200">
+                  Popular site: ranked #{result.popularity.rank.toLocaleString()} in the Tranco top{" "}
+                  {result.popularity.topN.toLocaleString()} list (matched {result.popularity.matched}). Popularity is not a safety verdict.
+                </p>
+              )}
+              {result.referenceAvailable && !result.popularity && (
+                <p className="mt-3 text-xs text-slate-500">Not in the Tranco top list either.</p>
+              )}
+              {result.referenceAvailable === false && (
+                <p className="mt-3 text-xs text-slate-500">
+                  The popularity list is not exported yet. Run <code className="font-mono">python -m src.export.summary</code> to add it.
+                </p>
+              )}
             </div>
           </div>
           {localHost && (
@@ -137,60 +178,69 @@ export default function Analysis() {
         <section className="mt-6 grid gap-6 lg:grid-cols-3">
           <div className="glass p-6 lg:col-span-1">
             <div className="flex items-center justify-between">
-              <EntityBadge type={result.node.type} />
-              <StatusBadge status={result.node.status} />
+              <EntityBadge type={result.record.kind} />
+              <span className="rounded-full border border-red-400/30 bg-red-500/10 px-2.5 py-0.5 text-xs text-red-200">Listed in URLhaus</span>
             </div>
-            <p className="mt-4 break-all font-mono text-sm text-slate-100">{result.node.value}</p>
+            <p className="mt-4 break-all font-mono text-sm text-slate-100">{result.record.host}</p>
 
-            <div className="mt-6">
-              <div className="flex items-end justify-between">
-                <p className="text-sm text-slate-400">Risk score (demo)</p>
-                <p className="text-3xl font-bold text-white">{result.node.risk}<span className="text-base text-slate-500">/100</span></p>
-              </div>
-              <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-white/5">
-                <div
-                  className="h-full rounded-full transition-all duration-700"
-                  style={{
-                    width: `${result.node.risk}%`,
-                    background: result.node.risk >= 75 ? "#ff4d6d" : result.node.risk >= 50 ? "#ff9f1c" : "#34d399",
-                  }}
-                />
-              </div>
-            </div>
-            <p className="mt-6 text-xs text-slate-500">Simulated classification from the demo graph. Not a live result.</p>
+            <dl className="mt-6 space-y-3 text-sm">
+              <Row label="URLs in history" value={result.record.urls} />
+              <Row label="First seen (URLhaus)" value={result.record.first_seen || "unknown"} />
+              <Row label="Last added to history" value={result.record.last_added || "unknown"} />
+              <Row label="Most common threat" value={result.record.threat} />
+              <Row label="Tags" value={result.record.tags.length ? result.record.tags.join(", ") : "none"} />
+              {result.record.kind === "domain" && (
+                <Row label="DNS lookup" value={result.record.dns_status} />
+              )}
+              <Row
+                label="Popularity"
+                value={result.popularity
+                  ? `Ranked #${result.popularity.rank.toLocaleString()} in Tranco top ${result.popularity.topN.toLocaleString()}. Possibly a compromised legitimate site.`
+                  : "Not in the Tranco top list"}
+              />
+              <Row label="IP addresses" value={result.record.ips.length ? result.record.ips.join("  ") : "none"} mono />
+            </dl>
+            <p className="mt-6 text-xs text-slate-500">Facts from the feed and the DNS cache. Nothing here is a model score.</p>
           </div>
 
           <div className="glass p-6 lg:col-span-2">
-            <h2 className="font-semibold text-white">Related entities and relationships</h2>
+            <h2 className="font-semibold text-white">Shares an IP address with</h2>
             {result.related.length === 0 ? (
-              <p className="mt-3 text-sm text-slate-400">No relationships recorded for this entity.</p>
+              <p className="mt-3 text-sm text-slate-400">No other host in the history shares an IP address with this one.</p>
             ) : (
-              <ul className="mt-4 divide-y divide-white/5">
-                {result.related.map((r, i) => (
-                  <li key={i} className="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="min-w-0">
-                      <p className="text-xs text-accent-light">
-                        {r.direction === "out" ? `→ ${r.relation}` : `← ${r.relation}`}
-                      </p>
-                      <p className="break-all font-mono text-sm text-slate-200">{r.entity?.value}</p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <EntityBadge type={r.entity?.type} />
-                      {r.entity && <StatusBadge status={r.entity.status} />}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {result.related.some((r) => r.entity?.status === "malicious") && (
-              <div className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200">
-                Suspicious relationship: this entity is linked to at least one malicious entity in the demo graph.
-              </div>
+              <>
+                <p className="mt-1 text-xs text-slate-500">
+                  {result.relatedCount} host{result.relatedCount === 1 ? "" : "s"} in the history share an IP address. Most URLs first.
+                </p>
+                <ul className="mt-4 divide-y divide-white/5">
+                  {result.related.map((r) => (
+                    <li key={r.host} className="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="min-w-0">
+                        <p className="break-all font-mono text-sm text-slate-200">{r.host}</p>
+                        <p className="text-xs text-slate-500">Shared: {r.shared.join(", ")}</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <EntityBadge type={r.kind} />
+                        <span className="text-xs text-slate-400">{r.urls} URL{r.urls === 1 ? "" : "s"}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
           </div>
         </section>
       )}
     </>
+  );
+}
+
+function Row({ label, value, mono }) {
+  return (
+    <div>
+      <dt className="text-xs text-slate-500">{label}</dt>
+      <dd className={`mt-0.5 text-slate-200 ${mono ? "break-all font-mono text-xs" : ""}`}>{value}</dd>
+    </div>
   );
 }
 

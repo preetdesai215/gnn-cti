@@ -38,7 +38,7 @@ const TECH = [
   { name: "React Flow (@xyflow/react)", status: "implemented", note: "Interactive graph view." },
   { name: "Lucide React", status: "implemented", note: "Icons." },
   { name: "PyTorch / PyTorch Geometric", status: "planned", note: "GNN model. Not trained or served yet." },
-  { name: "FastAPI", status: "planned", note: "REST endpoints. Frontend uses simulated data until then." },
+  { name: "FastAPI", status: "planned", note: "REST endpoints for live lookups. Until then the pages read exported files." },
   { name: "PostgreSQL or MongoDB", status: "planned", note: "Storage for indicators and alerts. Not integrated." },
 ];
 

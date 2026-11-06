@@ -61,11 +61,21 @@ if ! python -m src.ingest.history "$TMP"; then
   exit 1
 fi
 
+# OpenPhish phishing feed (warning only: the URLhaus update still counts)
+if ! python -m src.ingest.phishing; then
+  echo "WARNING: phishing feed step failed (URLhaus history is still updated)"
+fi
+
 if python -m src.models.run_eval > /dev/null; then
   echo "evaluation finished: data/processed/platform_comparison.json updated"
 else
   echo "ERROR: evaluation failed (history was updated)"
   exit 1
+fi
+
+# Phishing evaluation on the accumulated phishing history (warning only)
+if ! python -m src.models.phish_eval > /dev/null; then
+  echo "WARNING: phishing evaluation failed or has too little data"
 fi
 
 # DNS A records for new domains only (cached), then refresh the website summary

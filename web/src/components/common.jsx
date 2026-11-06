@@ -1,5 +1,35 @@
+import { useEffect, useRef, useState } from "react";
 import { ShieldAlert } from "lucide-react";
 import { ENTITY_TYPES } from "../data/demo";
+
+// Counts from the previous value to the new one, so changes after a refresh are visible.
+export function AnimatedNumber({ value, duration = 700 }) {
+  const [shown, setShown] = useState(value);
+  const current = useRef(value);
+
+  useEffect(() => {
+    if (typeof value !== "number" || Number.isNaN(value)) {
+      current.current = value;
+      setShown(value);
+      return undefined;
+    }
+    const from = typeof current.current === "number" ? current.current : 0;
+    const start = performance.now();
+    let frame;
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const next = from + (value - from) * eased;
+      current.current = next;
+      setShown(next);
+      if (t < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [value, duration]);
+
+  return typeof shown === "number" ? Math.round(shown).toLocaleString() : shown;
+}
 
 export function SimulatedBanner({ children }) {
   return (
@@ -26,12 +56,14 @@ export function PageHeader({ eyebrow, title, description, right }) {
 export function StatCard({ icon: Icon, label, value, hint, accent = "text-accent-light" }) {
   return (
     <div className="glass glass-hover p-5">
-      <div className="flex items-center justify-between">
-        <p className="text-sm text-slate-400">{label}</p>
-        {Icon && <Icon className={`h-5 w-5 ${accent}`} />}
+      <div className="flex items-center justify-between gap-2">
+        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500">{label}</p>
+        {Icon && <Icon className={`h-4 w-4 shrink-0 ${accent}`} />}
       </div>
-      <p className="mt-3 text-3xl font-bold text-white">{value}</p>
-      {hint && <p className="mt-1 text-xs text-slate-500">{hint}</p>}
+      <p className="num mt-3 text-3xl font-semibold text-white">
+        {typeof value === "number" ? <AnimatedNumber value={value} /> : value}
+      </p>
+      {hint && <p className="mt-1 truncate text-xs text-slate-500" title={hint}>{hint}</p>}
     </div>
   );
 }
@@ -77,7 +109,7 @@ export function EntityBadge({ type }) {
   );
 }
 
-export function LoadingBlock({ label = "Loading simulated data…" }) {
+export function LoadingBlock({ label = "Loading data…" }) {
   return (
     <div className="glass flex items-center gap-3 p-6 text-sm text-slate-400">
       <span className="h-2.5 w-2.5 animate-ping rounded-full bg-accent" />

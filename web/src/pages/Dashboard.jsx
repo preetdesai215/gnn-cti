@@ -1,212 +1,183 @@
-import { useEffect, useMemo, useState } from "react";
-import {
-  Activity, AlertTriangle, Bug, Database, Gauge, Globe, ShieldAlert,
-} from "lucide-react";
-import {
-  Bar, BarChart, CartesianGrid, Cell, Legend, Line, LineChart, Pie, PieChart,
-  ResponsiveContainer, Tooltip, XAxis, YAxis,
-} from "recharts";
+import { useEffect, useState } from "react";
+import { CalendarDays, Database, FlaskConical, Globe, Network, ShieldAlert } from "lucide-react";
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Link } from "react-router-dom";
-import { getActivity, getAlerts, getGraph } from "../api/client";
-import { ENTITY_TYPES, NODES } from "../data/demo";
-import {
-  ErrorBlock, LoadingBlock, PageHeader, SeverityBadge, SimulatedBanner, StatCard, StatusBadge, formatTime,
-} from "../components/common";
+import { getAlerts, getLatestSummary } from "../api/client";
+import { useFreshness } from "../components/freshness";
+import { ErrorBlock, LoadingBlock, PageHeader, SeverityBadge, StatCard, formatTime } from "../components/common";
 
-const SEVERITY_COLORS = { critical: "#ff4d6d", high: "#ff9f1c", medium: "#facc15", low: "#34d399" };
 const tooltipStyle = { background: "#0a1428", border: "1px solid rgba(255,92,108,0.3)", borderRadius: 12, color: "#e2e8f0" };
 
-function threatLevel(alerts) {
-  const open = alerts.filter((a) => a.status === "open" || a.status === "investigating");
-  if (open.some((a) => a.severity === "critical")) return { label: "Critical", color: "text-sev-critical" };
-  if (open.some((a) => a.severity === "high")) return { label: "High", color: "text-sev-high" };
-  if (open.length) return { label: "Elevated", color: "text-sev-medium" };
-  return { label: "Low", color: "text-sev-low" };
+function SourceTag() {
+  return (
+    <span className="rounded-full border border-emerald-400/30 bg-emerald-400/5 px-2.5 py-0.5 text-[11px] uppercase tracking-wider text-emerald-300">
+      Real data
+    </span>
+  );
 }
 
 export default function Dashboard() {
-  const [alerts, setAlerts] = useState(null);
-  const [activity, setActivity] = useState(null);
+  const { version } = useFreshness();
+  const [summary, setSummary] = useState(undefined); // undefined = loading, null = no file
+  const [alerts, setAlerts] = useState(undefined);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    Promise.all([getAlerts(), getActivity(), getGraph()])
-      .then(([a, act]) => { setAlerts(a); setActivity(act); })
+    Promise.all([getLatestSummary(), getAlerts()])
+      .then(([sum, al]) => { setSummary(sum); setAlerts(al); })
       .catch((e) => setError(e.message));
-  }, []);
-
-  const stats = useMemo(() => {
-    const flagged = NODES.filter((n) => n.status !== "benign");
-    return {
-      total: NODES.length,
-      maliciousIps: NODES.filter((n) => n.type === "ip" && n.status === "malicious").length,
-      suspiciousDomains: NODES.filter((n) => n.type === "domain" && n.status !== "benign").length,
-      malware: NODES.filter((n) => n.type === "malware").length,
-      detectionRate: Math.round((flagged.length / NODES.length) * 100),
-    };
-  }, []);
-
-  const severityData = useMemo(() => {
-    if (!alerts) return [];
-    return ["critical", "high", "medium", "low"].map((s) => ({
-      name: s, value: alerts.filter((a) => a.severity === s).length,
-    }));
-  }, [alerts]);
-
-  const typeData = useMemo(() =>
-    Object.entries(ENTITY_TYPES).map(([key, t]) => ({
-      name: t.label, count: NODES.filter((n) => n.type === key).length, color: t.color,
-    })), []);
-
-  const topRisk = useMemo(() => [...NODES].sort((a, b) => b.risk - a.risk).slice(0, 6), []);
+  }, [version]);
 
   if (error) return <ErrorBlock message={`Could not load dashboard data: ${error}`} />;
+
+  const exp = summary?.gnn_experiment;
+  const rfPr = exp?.random_forest_host_features?.pr_auc;
+  const counts = summary?.entity_counts;
 
   return (
     <>
       <PageHeader
         eyebrow="Overview"
         title="Threat Intelligence Dashboard"
-        description="Indicator counts, alert distribution and recent activity across the monitored graph."
+        description="Collection statistics from the public URLhaus feed, accumulated day by day. Priorities are fixed rules based on URL counts, not model scores."
       />
-      <SimulatedBanner />
 
-      <section className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-6">
-        <StatCard icon={Database} label="Total Threat Indicators" value={stats.total} hint="Demo graph nodes" />
-        <StatCard icon={Globe} label="Malicious IPs" value={stats.maliciousIps} accent="text-sev-critical" hint="Status: malicious" />
-        <StatCard icon={AlertTriangle} label="Suspicious Domains" value={stats.suspiciousDomains} accent="text-sev-high" hint="Suspicious or malicious" />
-        <StatCard icon={Bug} label="Malware Entities" value={stats.malware} accent="text-sev-critical" hint="Demo families" />
-        <StatCard icon={Gauge} label="Detection Rate" value={`${stats.detectionRate}%`} accent="text-accent" hint="Flagged share of demo nodes" />
-        <div className="glass glass-hover p-5">
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-slate-400">Current Threat Level</p>
-            <ShieldAlert className="h-5 w-5 text-accent-light" />
+      <section className="mb-4 flex flex-wrap items-center gap-3">
+        <h2 className="font-semibold text-white">Collection status</h2>
+        <SourceTag />
+      </section>
+
+      {summary === undefined && <LoadingBlock label="Loading real data…" />}
+      {summary === null && (
+        <div className="glass p-5 text-sm text-slate-300">
+          No data file found. Run <code className="font-mono text-accent-light">python -m src.export.summary</code> in the
+          project folder, then reload this page.
+        </div>
+      )}
+
+      {summary && !summary.daily_additions && (
+        <div className="glass p-5 text-sm text-amber-200">
+          This data file is from an older export. Run <code className="font-mono">python -m src.export.summary</code> again.
+        </div>
+      )}
+
+      {summary && summary.daily_additions && (
+        <>
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <StatCard icon={Database} label="URLs collected" value={summary.history.urls} hint="Unique URLs in the history" />
+            <StatCard
+              icon={CalendarDays}
+              label="Collection days"
+              value={summary.history.collection_days}
+              hint={summary.history.first_collected ? `${summary.history.first_collected} to ${summary.history.last_collected}` : "No collection yet"}
+            />
+            <StatCard icon={Globe} label="Domains tracked" value={counts?.domains ?? 0} hint={`${counts?.ip_hosts ?? 0} IP-address hosts`} />
+            <StatCard
+              icon={Network}
+              label="Domains with an IP"
+              value={counts?.domains_with_dns_ip ?? 0}
+              hint={`${counts?.unique_resolved_ips ?? 0} unique IPs from DNS A records`}
+            />
           </div>
-          {alerts ? (
-            <p className={`mt-3 text-3xl font-bold ${threatLevel(alerts).color}`}>{threatLevel(alerts).label}</p>
-          ) : (
-            <p className="mt-3 text-slate-500">…</p>
-          )}
-          <p className="mt-1 text-xs text-slate-500">From open alerts</p>
-        </div>
-      </section>
 
-      <section className="mt-6 grid gap-6 lg:grid-cols-3">
-        <div className="glass p-5 lg:col-span-2">
-          <h2 className="mb-4 font-semibold text-white">Indicator and detection activity (14 days, simulated)</h2>
-          {activity ? (
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={activity}>
-                  <CartesianGrid stroke="rgba(148,163,184,0.1)" />
-                  <XAxis dataKey="day" stroke="#64748b" fontSize={12} />
-                  <YAxis stroke="#64748b" fontSize={12} />
-                  <Tooltip contentStyle={tooltipStyle} />
-                  <Legend />
-                  <Line type="monotone" dataKey="indicators" stroke="#9ca3af" strokeWidth={2} dot={false} />
-                  <Line type="monotone" dataKey="detections" stroke="#e11d2e" strokeWidth={2} dot={false} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          ) : <LoadingBlock />}
-        </div>
-
-        <div className="glass p-5">
-          <h2 className="mb-4 font-semibold text-white">Severity distribution</h2>
-          {alerts ? (
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={severityData} dataKey="value" nameKey="name" innerRadius={55} outerRadius={85} paddingAngle={3}>
-                    {severityData.map((d) => <Cell key={d.name} fill={SEVERITY_COLORS[d.name]} />)}
-                  </Pie>
-                  <Tooltip contentStyle={tooltipStyle} />
-                  <Legend />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-          ) : <LoadingBlock />}
-        </div>
-      </section>
-
-      <section className="mt-6 grid gap-6 lg:grid-cols-5">
-        <div className="glass p-5 lg:col-span-2">
-          <h2 className="mb-4 font-semibold text-white">Indicators by entity type</h2>
-          <div className="h-72">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={typeData} layout="vertical" margin={{ left: 10 }}>
-                <CartesianGrid stroke="rgba(148,163,184,0.1)" horizontal={false} />
-                <XAxis type="number" stroke="#64748b" fontSize={12} allowDecimals={false} />
-                <YAxis type="category" dataKey="name" stroke="#64748b" fontSize={11} width={100} />
-                <Tooltip contentStyle={tooltipStyle} />
-                <Bar dataKey="count" radius={[0, 6, 6, 0]}>
-                  {typeData.map((d) => <Cell key={d.name} fill={d.color} />)}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+          <div className="mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <StatCard
+              icon={FlaskConical}
+              label="Baseline PR-AUC"
+              value={rfPr ? rfPr.mean.toFixed(3) : "n/a"}
+              hint={rfPr ? `Random Forest, ±${rfPr.std.toFixed(3)} over seeds` : "Run the GNN experiment"}
+            />
+            <StatCard
+              icon={ShieldAlert}
+              label="Phishing URLs"
+              value={summary.phishing_feed?.urls ?? 0}
+              hint={summary.phishing_feed?.collection_days
+                ? `${summary.phishing_feed.collection_days} collection day(s), OpenPhish`
+                : "Run python -m src.ingest.phishing"}
+            />
           </div>
-        </div>
 
-        <div className="glass p-5 lg:col-span-3">
-          <h2 className="mb-4 font-semibold text-white">Recent threat activity</h2>
-          {alerts ? (
-            <ul className="divide-y divide-white/5">
-              {alerts.slice(0, 6).map((a) => (
-                <li key={a.id} className="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-slate-100">{a.title}</p>
-                    <p className="text-xs text-slate-500">{formatTime(a.time)} · risk {a.risk}</p>
-                  </div>
-                  <SeverityBadge severity={a.severity} />
-                </li>
-              ))}
-            </ul>
-          ) : <LoadingBlock />}
-          <p className="mt-4 flex items-center gap-2 text-xs text-slate-500">
-            <Activity className="h-3.5 w-3.5" /> Simulated events. Not live detections.
-          </p>
-        </div>
-      </section>
+          <section className="mt-6 grid gap-6 lg:grid-cols-2">
+            <div className="glass p-5">
+              <h3 className="mb-1 font-semibold text-white">New URLs per collection day</h3>
+              <p className="mb-4 text-xs text-slate-500">URLs added to the history on each day the update ran.</p>
+              {summary.daily_additions.length ? (
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={summary.daily_additions.map((d) => ({ day: d.day, urls: d.new_urls }))}>
+                      <CartesianGrid stroke="rgba(148,163,184,0.1)" />
+                      <XAxis dataKey="day" stroke="#64748b" fontSize={11} />
+                      <YAxis stroke="#64748b" fontSize={12} allowDecimals={false} />
+                      <Tooltip contentStyle={tooltipStyle} />
+                      <Bar dataKey="urls" fill="#e11d2e" radius={[6, 6, 0, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              ) : <p className="text-sm text-slate-500">No collection days yet.</p>}
+            </div>
 
-      <section className="glass mt-6 p-5">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="font-semibold text-white">Highest-risk entities</h2>
-          <Link to="/graph" className="text-xs text-accent-light hover:underline">Open graph →</Link>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[620px] text-left text-sm">
-            <thead className="text-xs uppercase tracking-wider text-slate-500">
-              <tr>
-                <th className="pb-2 font-semibold">Entity</th>
-                <th className="pb-2 font-semibold">Type</th>
-                <th className="pb-2 font-semibold">Status</th>
-                <th className="pb-2 font-semibold">Risk</th>
-                <th className="pb-2"><span className="sr-only">Actions</span></th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/5">
-              {topRisk.map((n) => (
-                <tr key={n.id} className="transition hover:bg-white/[0.03]">
-                  <td className="max-w-[320px] truncate py-2.5 font-mono text-xs text-slate-200">{n.value}</td>
-                  <td className="py-2.5 text-slate-400">{ENTITY_TYPES[n.type].label}</td>
-                  <td className="py-2.5"><StatusBadge status={n.status} /></td>
-                  <td className="py-2.5">
-                    <div className="flex items-center gap-2">
-                      <span className="w-8 font-bold text-white">{n.risk}</span>
-                      <div className="h-1.5 w-24 rounded-full bg-white/5">
-                        <div className="h-full rounded-full bg-gradient-to-r from-accent to-sev-high" style={{ width: `${n.risk}%` }} />
-                      </div>
+            <div className="glass p-5">
+              <h3 className="mb-1 font-semibold text-white">Threat types in the feed</h3>
+              <p className="mb-4 text-xs text-slate-500">Threat labels from URLhaus, by number of URLs.</p>
+              {summary.threat_types.length ? (
+                <div className="h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={summary.threat_types} layout="vertical" margin={{ left: 10 }}>
+                      <CartesianGrid stroke="rgba(148,163,184,0.1)" horizontal={false} />
+                      <XAxis type="number" stroke="#64748b" fontSize={12} allowDecimals={false} />
+                      <YAxis type="category" dataKey="threat" stroke="#64748b" fontSize={11} width={150} />
+                      <Tooltip contentStyle={tooltipStyle} />
+                      <Bar dataKey="urls" fill="#ff5c6c" radius={[0, 6, 6, 0]} />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              ) : <p className="text-sm text-slate-500">No threat labels yet.</p>}
+            </div>
+          </section>
+
+          <section className="glass mt-6 p-5">
+            <h3 className="mb-1 font-semibold text-white">Most frequent hosts</h3>
+            <p className="mb-4 text-xs text-slate-500">Hosts with the most URLs in the history. Names are defanged, so they cannot be clicked.</p>
+            {summary.top_hosts_defanged.length ? (
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={summary.top_hosts_defanged} layout="vertical" margin={{ left: 10 }}>
+                    <CartesianGrid stroke="rgba(148,163,184,0.1)" horizontal={false} />
+                    <XAxis type="number" stroke="#64748b" fontSize={12} allowDecimals={false} />
+                    <YAxis type="category" dataKey="host" stroke="#64748b" fontSize={11} width={220} />
+                    <Tooltip contentStyle={tooltipStyle} />
+                    <Bar dataKey="urls" fill="#e11d2e" radius={[0, 6, 6, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            ) : <p className="text-sm text-slate-500">No hosts yet.</p>}
+          </section>
+
+          <section className="glass mt-6 p-5">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-semibold text-white">Recent alerts</h3>
+              <Link to="/alerts" className="text-xs text-accent-light hover:underline">Open alerts →</Link>
+            </div>
+            {alerts === undefined && <LoadingBlock />}
+            {alerts === null && <p className="text-sm text-slate-500">No alerts file found.</p>}
+            {alerts && alerts.length === 0 && <p className="text-sm text-slate-500">No hosts added in the last 7 collection days.</p>}
+            {alerts && alerts.length > 0 && (
+              <ul className="divide-y divide-white/5">
+                {alerts.slice(0, 6).map((a) => (
+                  <li key={a.id} className="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
+                    <div className="min-w-0">
+                      <p className="truncate font-mono text-sm text-slate-100">{a.title}</p>
+                      <p className="text-xs text-slate-500">{formatTime(a.time)} · {a.urls} URL{a.urls === 1 ? "" : "s"} in history</p>
                     </div>
-                  </td>
-                  <td className="py-2.5 text-right">
-                    <Link to={`/analysis?q=${encodeURIComponent(n.value)}`} className="text-xs text-accent-light hover:underline">Analyse</Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+                    <SeverityBadge severity={a.severity} />
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="mt-4 text-xs text-slate-500">Severity follows a fixed rule on URL count: 10 or more is critical, 5 or more high, 2 or more medium.</p>
+          </section>
+        </>
+      )}
     </>
   );
 }

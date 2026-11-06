@@ -18,4 +18,11 @@ URLHAUS_AUTH_KEY = os.getenv("URLHAUS_AUTH_KEY")
 # and save as data/raw/tranco_top.csv, or point TRANCO_CSV at it.
 TRANCO_CSV = os.getenv("TRANCO_CSV", str(DATA_RAW / "tranco_top.csv"))
 
+# OpenPhish community phishing feed (plain text, one URL per line, updated about every 12 hours).
+# Non-commercial use only: see https://openphish.com/terms.html. No key is needed for this link.
+PHISH_FEED_URL = os.getenv(
+    "PHISH_FEED_URL",
+    "https://raw.githubusercontent.com/openphish/public_feed/refs/heads/main/feed.txt",
+)
+
 REQUEST_TIMEOUT = 60  # seconds

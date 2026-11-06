@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowDown, FlaskConical } from "lucide-react";
 import { getGnnExperiment } from "../api/client";
 import { LoadingBlock, PageHeader } from "../components/common";
+import { useFreshness } from "../components/freshness";
 
 const PIPELINE = [
   { title: "Feed ingestion", text: "The URLhaus recent feed is collected daily and merged into a history file. Each URL is kept once, with its first-seen date." },
@@ -32,11 +33,12 @@ const LIMITATIONS = [
 
 export default function GnnModel() {
   // undefined = still loading, null = no results file, object = results
+  const { version } = useFreshness();
   const [exp, setExp] = useState(undefined);
 
   useEffect(() => {
     getGnnExperiment().then(setExp);
-  }, []);
+  }, [version]);
 
   return (
     <>

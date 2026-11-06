@@ -4,15 +4,19 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { Search, X } from "lucide-react";
-import { getGraph } from "../api/client";
+import { getGraphData } from "../api/client";
 import { ENTITY_TYPES } from "../data/demo";
 import {
-  EntityBadge, ErrorBlock, LoadingBlock, PageHeader, SimulatedBanner, StatusBadge,
+  EntityBadge, ErrorBlock, LoadingBlock, PageHeader, StatusBadge,
 } from "../components/common";
+import { useFreshness } from "../components/freshness";
 
 // Column per entity type, so the graph reads left (actors) to right (IPs)
 const COLUMN = { actor: 0, malware: 1, file: 2, url: 3, domain: 4, ip: 5 };
 const STATUS_RING = { malicious: "#ff4d6d", suspicious: "#ff9f1c", benign: "#34d399" };
+const TYPE_LIST = ["domain", "ip"].map((k) => [k, ENTITY_TYPES[k]]);
+// Rule-based: a node with at least this relative URL count is drawn as high-volume (red)
+const HIGH_VOLUME = 50;
 
 function layout(nodes) {
   const rowCount = {};
@@ -52,9 +56,10 @@ function toFlowNode(n) {
 }
 
 export default function Graph() {
+  const { version } = useFreshness();
   const [graph, setGraph] = useState(null);
   const [error, setError] = useState("");
-  const [visibleTypes, setVisibleTypes] = useState(Object.keys(ENTITY_TYPES));
+  const [visibleTypes, setVisibleTypes] = useState(["domain", "ip"]);
   const [minRisk, setMinRisk] = useState(0);
   const [selected, setSelected] = useState(null);
   const [query, setQuery] = useState("");
@@ -63,8 +68,17 @@ export default function Graph() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   useEffect(() => {
-    getGraph().then(setGraph).catch((e) => setError(e.message));
-  }, []);
+    getGraphData()
+      .then((data) => {
+        if (!data) {
+          setError("No graph file found. Run python -m src.export.summary, then reload this page.");
+          return;
+        }
+        const nodes = data.nodes.map((n) => ({ ...n, status: n.risk >= HIGH_VOLUME ? "malicious" : "suspicious" }));
+        setGraph({ ...data, nodes });
+      })
+      .catch((e) => setError(e.message));
+  }, [version]);
 
   // Rebuild the view when filters or the selection change.
   // Existing node positions are kept, so anything the user dragged stays where it is.
@@ -103,7 +117,7 @@ export default function Graph() {
           const touchesSelected = !!selected && (e.source === selected.id || e.target === selected.id);
           const dimmed = !!focusIds && !touchesSelected;
           return {
-            id: e.id,
+            id: `${e.source}|${e.target}`,
             source: e.source,
             target: e.target,
             label: e.relation,
@@ -134,7 +148,7 @@ export default function Graph() {
     e.preventDefault();
     const term = query.trim().toLowerCase();
     if (!term || !graph) return;
-    const hit = graph.nodes.find((n) => n.value.toLowerCase().includes(term));
+    const hit = graph.nodes.find((n) => n.value.replace(/\[\.\]/g, ".").toLowerCase().includes(term));
     if (!hit) {
       setNotice("No entity matches that search.");
       return;
@@ -154,9 +168,8 @@ export default function Graph() {
       <PageHeader
         eyebrow="Graph visualization"
         title="Threat Relationship Graph"
-        description="Click a node to see its neighbourhood. Drag to rearrange, scroll or use the controls to zoom. Red edges touch malicious entities."
+        description="Domains from the URLhaus history and the IPs they resolved to. Click a node to see its neighbourhood. Red marks high-volume entities (fixed rule on URL count)."
       />
-      <SimulatedBanner />
 
       <p className="mb-3 text-xs text-slate-500">
         Showing {nodes.length} of {graph?.nodes.length ?? 0} entities and {edges.length} relationships.
@@ -170,7 +183,7 @@ export default function Graph() {
               <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <input
                 className="input py-2 pl-9 text-sm"
-                placeholder="Part of an IP, domain or hash"
+                placeholder="Part of an IP or domain"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 aria-label="Find entity in graph"
@@ -182,7 +195,7 @@ export default function Graph() {
           <div>
             <p className="label-eyebrow mb-3">Entity types</p>
             <div className="space-y-2">
-              {Object.entries(ENTITY_TYPES).map(([key, t]) => (
+              {TYPE_LIST.map(([key, t]) => (
                 <label key={key} className="flex cursor-pointer items-center justify-between gap-2 rounded-lg px-2 py-1.5 text-sm text-slate-300 hover:bg-white/5">
                   <span className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full" style={{ background: t.color }} />
@@ -210,7 +223,7 @@ export default function Graph() {
           </div>
 
           <div className="space-y-1 text-xs text-slate-400">
-            <p className="flex items-center gap-2"><span className="h-0.5 w-6 bg-red-400" /> Edge touching a malicious node (animated)</p>
+            <p className="flex items-center gap-2"><span className="h-0.5 w-6 bg-red-400" /> Edge touching a high-volume node (animated)</p>
             <p className="flex items-center gap-2"><span className="h-0.5 w-6 bg-zinc-500" /> Other relationship</p>
           </div>
 

@@ -1,0 +1,2301 @@
+{
+  "generated_utc": "2026-11-06T03:19:01+00:00",
+  "note": "Top domains by URL count and the IPs they resolved to. Risk is relative URL count, not a model score.",
+  "nodes": [
+    {
+      "id": "domain:raw[.]githubusercontent[.]com",
+      "type": "domain",
+      "value": "raw[.]githubusercontent[.]com",
+      "urls": 57101,
+      "risk": 100
+    },
+    {
+      "id": "domain:github[.]com",
+      "type": "domain",
+      "value": "github[.]com",
+      "urls": 53359,
+      "risk": 93
+    },
+    {
+      "id": "domain:gitlab[.]com",
+      "type": "domain",
+      "value": "gitlab[.]com",
+      "urls": 820,
+      "risk": 1
+    },
+    {
+      "id": "domain:cdn[.]discordapp[.]com",
+      "type": "domain",
+      "value": "cdn[.]discordapp[.]com",
+      "urls": 240,
+      "risk": 0
+    },
+    {
+      "id": "domain:drive[.]google[.]com",
+      "type": "domain",
+      "value": "drive[.]google[.]com",
+      "urls": 109,
+      "risk": 0
+    },
+    {
+      "id": "domain:play[.]nopixel-rp[.]ir",
+      "type": "domain",
+      "value": "play[.]nopixel-rp[.]ir",
+      "urls": 60,
+      "risk": 0
+    },
+    {
+      "id": "domain:www[.]dropbox[.]com",
+      "type": "domain",
+      "value": "www[.]dropbox[.]com",
+      "urls": 45,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutclients[.]st",
+      "type": "domain",
+      "value": "donutclients[.]st",
+      "urls": 31,
+      "risk": 0
+    },
+    {
+      "id": "domain:green-breeze-ca3a[.]fortunespromailsd[.]workers[.]dev",
+      "type": "domain",
+      "value": "green-breeze-ca3a[.]fortunespromailsd[.]workers[.]dev",
+      "urls": 25,
+      "risk": 0
+    },
+    {
+      "id": "domain:rough-truth-e072[.]publicftpresend[.]workers[.]dev",
+      "type": "domain",
+      "value": "rough-truth-e072[.]publicftpresend[.]workers[.]dev",
+      "urls": 22,
+      "risk": 0
+    },
+    {
+      "id": "domain:jscdncloude[.]beer",
+      "type": "domain",
+      "value": "jscdncloude[.]beer",
+      "urls": 21,
+      "risk": 0
+    },
+    {
+      "id": "domain:lingering-cloud-8a93[.]zinhoooo[.]workers[.]dev",
+      "type": "domain",
+      "value": "lingering-cloud-8a93[.]zinhoooo[.]workers[.]dev",
+      "urls": 19,
+      "risk": 0
+    },
+    {
+      "id": "domain:bot[.]lithium[.]zone",
+      "type": "domain",
+      "value": "bot[.]lithium[.]zone",
+      "urls": 18,
+      "risk": 0
+    },
+    {
+      "id": "domain:a[.]g6[.]wtf",
+      "type": "domain",
+      "value": "a[.]g6[.]wtf",
+      "urls": 17,
+      "risk": 0
+    },
+    {
+      "id": "domain:g6[.]wtf",
+      "type": "domain",
+      "value": "g6[.]wtf",
+      "urls": 17,
+      "risk": 0
+    },
+    {
+      "id": "domain:cloud-browse[.]codes",
+      "type": "domain",
+      "value": "cloud-browse[.]codes",
+      "urls": 16,
+      "risk": 0
+    },
+    {
+      "id": "domain:melonandworld[.]top",
+      "type": "domain",
+      "value": "melonandworld[.]top",
+      "urls": 14,
+      "risk": 0
+    },
+    {
+      "id": "domain:scribblebubblebibi[.]top",
+      "type": "domain",
+      "value": "scribblebubblebibi[.]top",
+      "urls": 14,
+      "risk": 0
+    },
+    {
+      "id": "domain:steelstanleystaystrong[.]top",
+      "type": "domain",
+      "value": "steelstanleystaystrong[.]top",
+      "urls": 14,
+      "risk": 0
+    },
+    {
+      "id": "domain:plochcarsportsball[.]top",
+      "type": "domain",
+      "value": "plochcarsportsball[.]top",
+      "urls": 14,
+      "risk": 0
+    },
+    {
+      "id": "domain:aksiyononline[.]best",
+      "type": "domain",
+      "value": "aksiyononline[.]best",
+      "urls": 14,
+      "risk": 0
+    },
+    {
+      "id": "domain:im-quirky[.]com",
+      "type": "domain",
+      "value": "im-quirky[.]com",
+      "urls": 13,
+      "risk": 0
+    },
+    {
+      "id": "domain:sc[.]c1s[.]su",
+      "type": "domain",
+      "value": "sc[.]c1s[.]su",
+      "urls": 13,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutclients[.]space",
+      "type": "domain",
+      "value": "donutclients[.]space",
+      "urls": 13,
+      "risk": 0
+    },
+    {
+      "id": "domain:pingl[.]vip",
+      "type": "domain",
+      "value": "pingl[.]vip",
+      "urls": 13,
+      "risk": 0
+    },
+    {
+      "id": "domain:uber-joeleasing[.]de",
+      "type": "domain",
+      "value": "uber-joeleasing[.]de",
+      "urls": 12,
+      "risk": 0
+    },
+    {
+      "id": "domain:nd[.]tdpqnf[.]com",
+      "type": "domain",
+      "value": "nd[.]tdpqnf[.]com",
+      "urls": 12,
+      "risk": 0
+    },
+    {
+      "id": "domain:yaniatbisb[.]duckdns[.]org",
+      "type": "domain",
+      "value": "yaniatbisb[.]duckdns[.]org",
+      "urls": 12,
+      "risk": 0
+    },
+    {
+      "id": "domain:csgroup[.]host",
+      "type": "domain",
+      "value": "csgroup[.]host",
+      "urls": 12,
+      "risk": 0
+    },
+    {
+      "id": "domain:white-band-a6fb[.]to-o-ls-mee[.]workers[.]dev",
+      "type": "domain",
+      "value": "white-band-a6fb[.]to-o-ls-mee[.]workers[.]dev",
+      "urls": 11,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutclientsmods[.]xyz",
+      "type": "domain",
+      "value": "donutclientsmods[.]xyz",
+      "urls": 11,
+      "risk": 0
+    },
+    {
+      "id": "domain:phubotnet[.]duckdns[.]org",
+      "type": "domain",
+      "value": "phubotnet[.]duckdns[.]org",
+      "urls": 10,
+      "risk": 0
+    },
+    {
+      "id": "domain:orexports[.]com",
+      "type": "domain",
+      "value": "orexports[.]com",
+      "urls": 10,
+      "risk": 0
+    },
+    {
+      "id": "domain:mc-modhub[.]vercel[.]app",
+      "type": "domain",
+      "value": "mc-modhub[.]vercel[.]app",
+      "urls": 10,
+      "risk": 0
+    },
+    {
+      "id": "domain:wemqmewkqewq[.]work[.]gd",
+      "type": "domain",
+      "value": "wemqmewkqewq[.]work[.]gd",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "domain:file[.]garden",
+      "type": "domain",
+      "value": "file[.]garden",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "domain:handsorneindo[.]com",
+      "type": "domain",
+      "value": "handsorneindo[.]com",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutsmpclients[.]store",
+      "type": "domain",
+      "value": "donutsmpclients[.]store",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutsmpclientts[.]lovable[.]app",
+      "type": "domain",
+      "value": "donutsmpclientts[.]lovable[.]app",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "domain:dellabetgiris[.]live",
+      "type": "domain",
+      "value": "dellabetgiris[.]live",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "domain:www[.]mediafire[.]com",
+      "type": "domain",
+      "value": "www[.]mediafire[.]com",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "domain:vtivision-fi[.]com",
+      "type": "domain",
+      "value": "vtivision-fi[.]com",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "domain:release-assets[.]githubusercontent[.]com",
+      "type": "domain",
+      "value": "release-assets[.]githubusercontent[.]com",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "domain:astroliper[.]ac",
+      "type": "domain",
+      "value": "astroliper[.]ac",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "domain:tronzadorasnng[.]com",
+      "type": "domain",
+      "value": "tronzadorasnng[.]com",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "domain:qpwot[.]cfd",
+      "type": "domain",
+      "value": "qpwot[.]cfd",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "domain:files[.]mcclients[.]com",
+      "type": "domain",
+      "value": "files[.]mcclients[.]com",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "domain:zumvu[.]net",
+      "type": "domain",
+      "value": "zumvu[.]net",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutclientz[.]netlify[.]app",
+      "type": "domain",
+      "value": "donutclientz[.]netlify[.]app",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "domain:d-j-d[.]com",
+      "type": "domain",
+      "value": "d-j-d[.]com",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "domain:antibotchecker[.]pro",
+      "type": "domain",
+      "value": "antibotchecker[.]pro",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "domain:fcitantibot[.]pro",
+      "type": "domain",
+      "value": "fcitantibot[.]pro",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "domain:twejamaica[.]org",
+      "type": "domain",
+      "value": "twejamaica[.]org",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:flicargo[.]com",
+      "type": "domain",
+      "value": "flicargo[.]com",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:rosidlhassan[.]com",
+      "type": "domain",
+      "value": "rosidlhassan[.]com",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:tmcksa[.]com",
+      "type": "domain",
+      "value": "tmcksa[.]com",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutsmphackclient[.]netlify[.]app",
+      "type": "domain",
+      "value": "donutsmphackclient[.]netlify[.]app",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:gfisoda[.]biz",
+      "type": "domain",
+      "value": "gfisoda[.]biz",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:v-w-v[.]com",
+      "type": "domain",
+      "value": "v-w-v[.]com",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:c-f-u[.]com",
+      "type": "domain",
+      "value": "c-f-u[.]com",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:ld-cf[.]com",
+      "type": "domain",
+      "value": "ld-cf[.]com",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:software[.]security-analyze[.]ltd",
+      "type": "domain",
+      "value": "software[.]security-analyze[.]ltd",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:skyblock-qol[.]com",
+      "type": "domain",
+      "value": "skyblock-qol[.]com",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:adcentral[.]com[.]mx",
+      "type": "domain",
+      "value": "adcentral[.]com[.]mx",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:kronemedia[.]de",
+      "type": "domain",
+      "value": "kronemedia[.]de",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:glcdn[.]githack[.]com",
+      "type": "domain",
+      "value": "glcdn[.]githack[.]com",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:xsealslogisticsltd[.]com",
+      "type": "domain",
+      "value": "xsealslogisticsltd[.]com",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:dulkirsmod[.]net",
+      "type": "domain",
+      "value": "dulkirsmod[.]net",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:skymods[.]download",
+      "type": "domain",
+      "value": "skymods[.]download",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:btorsercoyt31[.]cc",
+      "type": "domain",
+      "value": "btorsercoyt31[.]cc",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:skymods[.]top",
+      "type": "domain",
+      "value": "skymods[.]top",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutclients[.]top",
+      "type": "domain",
+      "value": "donutclients[.]top",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:donutclientss[.]netlify[.]app",
+      "type": "domain",
+      "value": "donutclientss[.]netlify[.]app",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:gitrm[.]sbs",
+      "type": "domain",
+      "value": "gitrm[.]sbs",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:app-artifacts-1305923417[.]cos[.]ap-guangzhou[.]myqcloud[.]com",
+      "type": "domain",
+      "value": "app-artifacts-1305923417[.]cos[.]ap-guangzhou[.]myqcloud[.]com",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:clientsorgnet[.]netlify[.]app",
+      "type": "domain",
+      "value": "clientsorgnet[.]netlify[.]app",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:briannacorporation[.]com",
+      "type": "domain",
+      "value": "briannacorporation[.]com",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:locservice[.]short[.]gy",
+      "type": "domain",
+      "value": "locservice[.]short[.]gy",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:niggersmp[.]net",
+      "type": "domain",
+      "value": "niggersmp[.]net",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:trickgs-demo[.]vercel[.]app",
+      "type": "domain",
+      "value": "trickgs-demo[.]vercel[.]app",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:andbake[.]cam",
+      "type": "domain",
+      "value": "andbake[.]cam",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "domain:www[.]payap[.]ir",
+      "type": "domain",
+      "value": "www[.]payap[.]ir",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:skyvault[.]fun",
+      "type": "domain",
+      "value": "skyvault[.]fun",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:i[.]ibb[.]co",
+      "type": "domain",
+      "value": "i[.]ibb[.]co",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:trustchecknes[.]com",
+      "type": "domain",
+      "value": "trustchecknes[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:seasquadshipping[.]com",
+      "type": "domain",
+      "value": "seasquadshipping[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:detek[.]com[.]mx",
+      "type": "domain",
+      "value": "detek[.]com[.]mx",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:denizcerceve[.]com",
+      "type": "domain",
+      "value": "denizcerceve[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:www[.]runeliteplus[.]net",
+      "type": "domain",
+      "value": "www[.]runeliteplus[.]net",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:fastly[.]jsdelivr[.]net",
+      "type": "domain",
+      "value": "fastly[.]jsdelivr[.]net",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:sugarfreedcupcake[.]co[.]za",
+      "type": "domain",
+      "value": "sugarfreedcupcake[.]co[.]za",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:soniamart[.]com",
+      "type": "domain",
+      "value": "soniamart[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:sugarfreedcup[.]co[.]za",
+      "type": "domain",
+      "value": "sugarfreedcup[.]co[.]za",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:crackedclients[.]online",
+      "type": "domain",
+      "value": "crackedclients[.]online",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:bioprot[.]com[.]ar",
+      "type": "domain",
+      "value": "bioprot[.]com[.]ar",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:crojam[.]com",
+      "type": "domain",
+      "value": "crojam[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:hanasrmt[.]ca",
+      "type": "domain",
+      "value": "hanasrmt[.]ca",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:purelypulse[.]media",
+      "type": "domain",
+      "value": "purelypulse[.]media",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:publiempresa[.]es",
+      "type": "domain",
+      "value": "publiempresa[.]es",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:cdn4324[.]com",
+      "type": "domain",
+      "value": "cdn4324[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:cdm[.]wovplaying[.]help",
+      "type": "domain",
+      "value": "cdm[.]wovplaying[.]help",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:ela-bo[.]com",
+      "type": "domain",
+      "value": "ela-bo[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:res[.]cloudinary[.]com",
+      "type": "domain",
+      "value": "res[.]cloudinary[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:policysync[.]pro",
+      "type": "domain",
+      "value": "policysync[.]pro",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:adiyamancamkornis[.]com[.]tr",
+      "type": "domain",
+      "value": "adiyamancamkornis[.]com[.]tr",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:skyvault[.]help",
+      "type": "domain",
+      "value": "skyvault[.]help",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:tycons[.]com",
+      "type": "domain",
+      "value": "tycons[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:user-iota-lake[.]vercel[.]app",
+      "type": "domain",
+      "value": "user-iota-lake[.]vercel[.]app",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:cloubflare[.]net",
+      "type": "domain",
+      "value": "cloubflare[.]net",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:gitview[.]sbs",
+      "type": "domain",
+      "value": "gitview[.]sbs",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:gitsl[.]xyz",
+      "type": "domain",
+      "value": "gitsl[.]xyz",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:viewgit[.]sbs",
+      "type": "domain",
+      "value": "viewgit[.]sbs",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:api[.]recapcha[.]fun",
+      "type": "domain",
+      "value": "api[.]recapcha[.]fun",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:autohaus-bender[.]de",
+      "type": "domain",
+      "value": "autohaus-bender[.]de",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:bvmatqnam[.]com[.]vn",
+      "type": "domain",
+      "value": "bvmatqnam[.]com[.]vn",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:c--617b5f35-a107-4800-9047-a429934c0483-prod[.]lovable[.]cloud",
+      "type": "domain",
+      "value": "c--617b5f35-a107-4800-9047-a429934c0483-prod[.]lovable[.]cloud",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:www[.]tmcksa[.]com",
+      "type": "domain",
+      "value": "www[.]tmcksa[.]com",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:www[.]beinke-aufzuege[.]de",
+      "type": "domain",
+      "value": "www[.]beinke-aufzuege[.]de",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:modhollow[.]netlify[.]app",
+      "type": "domain",
+      "value": "modhollow[.]netlify[.]app",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "domain:0807[.]st",
+      "type": "domain",
+      "value": "0807[.]st",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:185[.]199[.]108[.]133",
+      "type": "ip",
+      "value": "185[.]199[.]108[.]133",
+      "urls": 57108,
+      "risk": 100
+    },
+    {
+      "id": "ip:185[.]199[.]109[.]133",
+      "type": "ip",
+      "value": "185[.]199[.]109[.]133",
+      "urls": 57108,
+      "risk": 100
+    },
+    {
+      "id": "ip:185[.]199[.]110[.]133",
+      "type": "ip",
+      "value": "185[.]199[.]110[.]133",
+      "urls": 57108,
+      "risk": 100
+    },
+    {
+      "id": "ip:185[.]199[.]111[.]133",
+      "type": "ip",
+      "value": "185[.]199[.]111[.]133",
+      "urls": 57108,
+      "risk": 100
+    },
+    {
+      "id": "ip:20[.]207[.]73[.]82",
+      "type": "ip",
+      "value": "20[.]207[.]73[.]82",
+      "urls": 53359,
+      "risk": 93
+    },
+    {
+      "id": "ip:172[.]65[.]251[.]78",
+      "type": "ip",
+      "value": "172[.]65[.]251[.]78",
+      "urls": 820,
+      "risk": 1
+    },
+    {
+      "id": "ip:162[.]159[.]129[.]233",
+      "type": "ip",
+      "value": "162[.]159[.]129[.]233",
+      "urls": 240,
+      "risk": 0
+    },
+    {
+      "id": "ip:162[.]159[.]130[.]233",
+      "type": "ip",
+      "value": "162[.]159[.]130[.]233",
+      "urls": 240,
+      "risk": 0
+    },
+    {
+      "id": "ip:162[.]159[.]133[.]233",
+      "type": "ip",
+      "value": "162[.]159[.]133[.]233",
+      "urls": 240,
+      "risk": 0
+    },
+    {
+      "id": "ip:162[.]159[.]134[.]233",
+      "type": "ip",
+      "value": "162[.]159[.]134[.]233",
+      "urls": 240,
+      "risk": 0
+    },
+    {
+      "id": "ip:162[.]159[.]135[.]233",
+      "type": "ip",
+      "value": "162[.]159[.]135[.]233",
+      "urls": 240,
+      "risk": 0
+    },
+    {
+      "id": "ip:142[.]251[.]221[.]142",
+      "type": "ip",
+      "value": "142[.]251[.]221[.]142",
+      "urls": 109,
+      "risk": 0
+    },
+    {
+      "id": "ip:162[.]125[.]81[.]18",
+      "type": "ip",
+      "value": "162[.]125[.]81[.]18",
+      "urls": 45,
+      "risk": 0
+    },
+    {
+      "id": "ip:196[.]251[.]107[.]204",
+      "type": "ip",
+      "value": "196[.]251[.]107[.]204",
+      "urls": 31,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]19[.]186",
+      "type": "ip",
+      "value": "104[.]21[.]19[.]186",
+      "urls": 25,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]188[.]123",
+      "type": "ip",
+      "value": "172[.]67[.]188[.]123",
+      "urls": 25,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]91[.]242",
+      "type": "ip",
+      "value": "104[.]21[.]91[.]242",
+      "urls": 22,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]182[.]41",
+      "type": "ip",
+      "value": "172[.]67[.]182[.]41",
+      "urls": 22,
+      "risk": 0
+    },
+    {
+      "id": "ip:178[.]16[.]52[.]101",
+      "type": "ip",
+      "value": "178[.]16[.]52[.]101",
+      "urls": 37,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]42[.]33",
+      "type": "ip",
+      "value": "104[.]21[.]42[.]33",
+      "urls": 19,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]199[.]187",
+      "type": "ip",
+      "value": "172[.]67[.]199[.]187",
+      "urls": 19,
+      "risk": 0
+    },
+    {
+      "id": "ip:217[.]60[.]102[.]62",
+      "type": "ip",
+      "value": "217[.]60[.]102[.]62",
+      "urls": 18,
+      "risk": 0
+    },
+    {
+      "id": "ip:31[.]59[.]41[.]172",
+      "type": "ip",
+      "value": "31[.]59[.]41[.]172",
+      "urls": 17,
+      "risk": 0
+    },
+    {
+      "id": "ip:160[.]119[.]71[.]27",
+      "type": "ip",
+      "value": "160[.]119[.]71[.]27",
+      "urls": 17,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]48[.]76",
+      "type": "ip",
+      "value": "104[.]21[.]48[.]76",
+      "urls": 13,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]181[.]186",
+      "type": "ip",
+      "value": "172[.]67[.]181[.]186",
+      "urls": 13,
+      "risk": 0
+    },
+    {
+      "id": "ip:45[.]156[.]87[.]87",
+      "type": "ip",
+      "value": "45[.]156[.]87[.]87",
+      "urls": 13,
+      "risk": 0
+    },
+    {
+      "id": "ip:178[.]254[.]0[.]79",
+      "type": "ip",
+      "value": "178[.]254[.]0[.]79",
+      "urls": 12,
+      "risk": 0
+    },
+    {
+      "id": "ip:77[.]239[.]124[.]15",
+      "type": "ip",
+      "value": "77[.]239[.]124[.]15",
+      "urls": 12,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]9[.]173",
+      "type": "ip",
+      "value": "104[.]21[.]9[.]173",
+      "urls": 11,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]161[.]33",
+      "type": "ip",
+      "value": "172[.]67[.]161[.]33",
+      "urls": 11,
+      "risk": 0
+    },
+    {
+      "id": "ip:201[.]79[.]108[.]167",
+      "type": "ip",
+      "value": "201[.]79[.]108[.]167",
+      "urls": 10,
+      "risk": 0
+    },
+    {
+      "id": "ip:208[.]91[.]199[.]118",
+      "type": "ip",
+      "value": "208[.]91[.]199[.]118",
+      "urls": 10,
+      "risk": 0
+    },
+    {
+      "id": "ip:216[.]198[.]79[.]131",
+      "type": "ip",
+      "value": "216[.]198[.]79[.]131",
+      "urls": 14,
+      "risk": 0
+    },
+    {
+      "id": "ip:64[.]29[.]17[.]131",
+      "type": "ip",
+      "value": "64[.]29[.]17[.]131",
+      "urls": 14,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]78[.]115",
+      "type": "ip",
+      "value": "104[.]21[.]78[.]115",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]220[.]156",
+      "type": "ip",
+      "value": "172[.]67[.]220[.]156",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "ip:64[.]20[.]38[.]10",
+      "type": "ip",
+      "value": "64[.]20[.]38[.]10",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "ip:185[.]41[.]148[.]1",
+      "type": "ip",
+      "value": "185[.]41[.]148[.]1",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "ip:185[.]41[.]148[.]2",
+      "type": "ip",
+      "value": "185[.]41[.]148[.]2",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]7[.]56",
+      "type": "ip",
+      "value": "104[.]21[.]7[.]56",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]187[.]127",
+      "type": "ip",
+      "value": "172[.]67[.]187[.]127",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]18[.]213[.]225",
+      "type": "ip",
+      "value": "104[.]18[.]213[.]225",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]18[.]214[.]225",
+      "type": "ip",
+      "value": "104[.]18[.]214[.]225",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "ip:209[.]182[.]195[.]215",
+      "type": "ip",
+      "value": "209[.]182[.]195[.]215",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]11[.]159",
+      "type": "ip",
+      "value": "104[.]21[.]11[.]159",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]166[.]104",
+      "type": "ip",
+      "value": "172[.]67[.]166[.]104",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]43[.]126",
+      "type": "ip",
+      "value": "104[.]21[.]43[.]126",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]179[.]134",
+      "type": "ip",
+      "value": "172[.]67[.]179[.]134",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "ip:66[.]96[.]84[.]154",
+      "type": "ip",
+      "value": "66[.]96[.]84[.]154",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "ip:13[.]215[.]239[.]219",
+      "type": "ip",
+      "value": "13[.]215[.]239[.]219",
+      "urls": 22,
+      "risk": 0
+    },
+    {
+      "id": "ip:52[.]74[.]6[.]109",
+      "type": "ip",
+      "value": "52[.]74[.]6[.]109",
+      "urls": 22,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]80[.]92",
+      "type": "ip",
+      "value": "104[.]21[.]80[.]92",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]176[.]164",
+      "type": "ip",
+      "value": "172[.]67[.]176[.]164",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]91[.]171",
+      "type": "ip",
+      "value": "104[.]21[.]91[.]171",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]175[.]208",
+      "type": "ip",
+      "value": "172[.]67[.]175[.]208",
+      "urls": 6,
+      "risk": 0
+    },
+    {
+      "id": "ip:193[.]26[.]115[.]221",
+      "type": "ip",
+      "value": "193[.]26[.]115[.]221",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "ip:180[.]235[.]151[.]11",
+      "type": "ip",
+      "value": "180[.]235[.]151[.]11",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "ip:92[.]42[.]104[.]18",
+      "type": "ip",
+      "value": "92[.]42[.]104[.]18",
+      "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "ip:192[.]254[.]185[.]123",
+      "type": "ip",
+      "value": "192[.]254[.]185[.]123",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "ip:195[.]58[.]146[.]210",
+      "type": "ip",
+      "value": "195[.]58[.]146[.]210",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]90[.]151",
+      "type": "ip",
+      "value": "104[.]21[.]90[.]151",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]157[.]228",
+      "type": "ip",
+      "value": "172[.]67[.]157[.]228",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "ip:192[.]254[.]185[.]223",
+      "type": "ip",
+      "value": "192[.]254[.]185[.]223",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:202[.]61[.]237[.]224",
+      "type": "ip",
+      "value": "202[.]61[.]237[.]224",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]60[.]54",
+      "type": "ip",
+      "value": "104[.]21[.]60[.]54",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]192[.]117",
+      "type": "ip",
+      "value": "172[.]67[.]192[.]117",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:185[.]53[.]179[.]149",
+      "type": "ip",
+      "value": "185[.]53[.]179[.]149",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:159[.]75[.]57[.]118",
+      "type": "ip",
+      "value": "159[.]75[.]57[.]118",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:159[.]75[.]57[.]7",
+      "type": "ip",
+      "value": "159[.]75[.]57[.]7",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:23[.]111[.]189[.]133",
+      "type": "ip",
+      "value": "23[.]111[.]189[.]133",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:207[.]174[.]61[.]1",
+      "type": "ip",
+      "value": "207[.]174[.]61[.]1",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:91[.]197[.]243[.]143",
+      "type": "ip",
+      "value": "91[.]197[.]243[.]143",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]71[.]232",
+      "type": "ip",
+      "value": "104[.]21[.]71[.]232",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]172[.]19",
+      "type": "ip",
+      "value": "172[.]67[.]172[.]19",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:45[.]43[.]142[.]2",
+      "type": "ip",
+      "value": "45[.]43[.]142[.]2",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:45[.]43[.]142[.]3",
+      "type": "ip",
+      "value": "45[.]43[.]142[.]3",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:45[.]43[.]142[.]4",
+      "type": "ip",
+      "value": "45[.]43[.]142[.]4",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:45[.]43[.]142[.]5",
+      "type": "ip",
+      "value": "45[.]43[.]142[.]5",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]52[.]200",
+      "type": "ip",
+      "value": "104[.]21[.]52[.]200",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]203[.]95",
+      "type": "ip",
+      "value": "172[.]67[.]203[.]95",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:65[.]108[.]198[.]197",
+      "type": "ip",
+      "value": "65[.]108[.]198[.]197",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:192[.]185[.]183[.]204",
+      "type": "ip",
+      "value": "192[.]185[.]183[.]204",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:94[.]138[.]203[.]135",
+      "type": "ip",
+      "value": "94[.]138[.]203[.]135",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:192[.]142[.]10[.]5",
+      "type": "ip",
+      "value": "192[.]142[.]10[.]5",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:151[.]101[.]1[.]229",
+      "type": "ip",
+      "value": "151[.]101[.]1[.]229",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:151[.]101[.]129[.]229",
+      "type": "ip",
+      "value": "151[.]101[.]129[.]229",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:151[.]101[.]193[.]229",
+      "type": "ip",
+      "value": "151[.]101[.]193[.]229",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:151[.]101[.]65[.]229",
+      "type": "ip",
+      "value": "151[.]101[.]65[.]229",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:102[.]68[.]98[.]222",
+      "type": "ip",
+      "value": "102[.]68[.]98[.]222",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:103[.]17[.]37[.]252",
+      "type": "ip",
+      "value": "103[.]17[.]37[.]252",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:102[.]68[.]98[.]148",
+      "type": "ip",
+      "value": "102[.]68[.]98[.]148",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:198[.]54[.]117[.]242",
+      "type": "ip",
+      "value": "198[.]54[.]117[.]242",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:69[.]46[.]16[.]210",
+      "type": "ip",
+      "value": "69[.]46[.]16[.]210",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:147[.]79[.]69[.]10",
+      "type": "ip",
+      "value": "147[.]79[.]69[.]10",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:93[.]127[.]173[.]242",
+      "type": "ip",
+      "value": "93[.]127[.]173[.]242",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:167[.]114[.]83[.]239",
+      "type": "ip",
+      "value": "167[.]114[.]83[.]239",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:185[.]181[.]255[.]109",
+      "type": "ip",
+      "value": "185[.]181[.]255[.]109",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:94[.]143[.]137[.]204",
+      "type": "ip",
+      "value": "94[.]143[.]137[.]204",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]90[.]142",
+      "type": "ip",
+      "value": "104[.]21[.]90[.]142",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]157[.]191",
+      "type": "ip",
+      "value": "172[.]67[.]157[.]191",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:209[.]145[.]55[.]118",
+      "type": "ip",
+      "value": "209[.]145[.]55[.]118",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:23[.]222[.]30[.]47",
+      "type": "ip",
+      "value": "23[.]222[.]30[.]47",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]94[.]119",
+      "type": "ip",
+      "value": "104[.]21[.]94[.]119",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]223[.]68",
+      "type": "ip",
+      "value": "172[.]67[.]223[.]68",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:89[.]252[.]182[.]2",
+      "type": "ip",
+      "value": "89[.]252[.]182[.]2",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:203[.]159[.]95[.]26",
+      "type": "ip",
+      "value": "203[.]159[.]95[.]26",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:216[.]198[.]79[.]67",
+      "type": "ip",
+      "value": "216[.]198[.]79[.]67",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:64[.]29[.]17[.]67",
+      "type": "ip",
+      "value": "64[.]29[.]17[.]67",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:14[.]225[.]23[.]19",
+      "type": "ip",
+      "value": "14[.]225[.]23[.]19",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]45[.]161",
+      "type": "ip",
+      "value": "104[.]21[.]45[.]161",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]216[.]163",
+      "type": "ip",
+      "value": "172[.]67[.]216[.]163",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]10[.]213",
+      "type": "ip",
+      "value": "104[.]21[.]10[.]213",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]164[.]136",
+      "type": "ip",
+      "value": "172[.]67[.]164[.]136",
+      "urls": 3,
+      "risk": 0
+    }
+  ],
+  "edges": [
+    {
+      "source": "domain:raw[.]githubusercontent[.]com",
+      "target": "ip:185[.]199[.]108[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:raw[.]githubusercontent[.]com",
+      "target": "ip:185[.]199[.]109[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:raw[.]githubusercontent[.]com",
+      "target": "ip:185[.]199[.]110[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:raw[.]githubusercontent[.]com",
+      "target": "ip:185[.]199[.]111[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:github[.]com",
+      "target": "ip:20[.]207[.]73[.]82",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:gitlab[.]com",
+      "target": "ip:172[.]65[.]251[.]78",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:cdn[.]discordapp[.]com",
+      "target": "ip:162[.]159[.]129[.]233",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:cdn[.]discordapp[.]com",
+      "target": "ip:162[.]159[.]130[.]233",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:cdn[.]discordapp[.]com",
+      "target": "ip:162[.]159[.]133[.]233",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:cdn[.]discordapp[.]com",
+      "target": "ip:162[.]159[.]134[.]233",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:cdn[.]discordapp[.]com",
+      "target": "ip:162[.]159[.]135[.]233",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:drive[.]google[.]com",
+      "target": "ip:142[.]251[.]221[.]142",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:www[.]dropbox[.]com",
+      "target": "ip:162[.]125[.]81[.]18",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutclients[.]st",
+      "target": "ip:196[.]251[.]107[.]204",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:green-breeze-ca3a[.]fortunespromailsd[.]workers[.]dev",
+      "target": "ip:104[.]21[.]19[.]186",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:green-breeze-ca3a[.]fortunespromailsd[.]workers[.]dev",
+      "target": "ip:172[.]67[.]188[.]123",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:rough-truth-e072[.]publicftpresend[.]workers[.]dev",
+      "target": "ip:104[.]21[.]91[.]242",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:rough-truth-e072[.]publicftpresend[.]workers[.]dev",
+      "target": "ip:172[.]67[.]182[.]41",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:jscdncloude[.]beer",
+      "target": "ip:178[.]16[.]52[.]101",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:lingering-cloud-8a93[.]zinhoooo[.]workers[.]dev",
+      "target": "ip:104[.]21[.]42[.]33",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:lingering-cloud-8a93[.]zinhoooo[.]workers[.]dev",
+      "target": "ip:172[.]67[.]199[.]187",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:bot[.]lithium[.]zone",
+      "target": "ip:217[.]60[.]102[.]62",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:a[.]g6[.]wtf",
+      "target": "ip:31[.]59[.]41[.]172",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:g6[.]wtf",
+      "target": "ip:160[.]119[.]71[.]27",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:cloud-browse[.]codes",
+      "target": "ip:178[.]16[.]52[.]101",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutclients[.]space",
+      "target": "ip:104[.]21[.]48[.]76",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutclients[.]space",
+      "target": "ip:172[.]67[.]181[.]186",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:pingl[.]vip",
+      "target": "ip:45[.]156[.]87[.]87",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:uber-joeleasing[.]de",
+      "target": "ip:178[.]254[.]0[.]79",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:yaniatbisb[.]duckdns[.]org",
+      "target": "ip:77[.]239[.]124[.]15",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:white-band-a6fb[.]to-o-ls-mee[.]workers[.]dev",
+      "target": "ip:104[.]21[.]9[.]173",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:white-band-a6fb[.]to-o-ls-mee[.]workers[.]dev",
+      "target": "ip:172[.]67[.]161[.]33",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:phubotnet[.]duckdns[.]org",
+      "target": "ip:201[.]79[.]108[.]167",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:orexports[.]com",
+      "target": "ip:208[.]91[.]199[.]118",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:mc-modhub[.]vercel[.]app",
+      "target": "ip:216[.]198[.]79[.]131",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:mc-modhub[.]vercel[.]app",
+      "target": "ip:64[.]29[.]17[.]131",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:file[.]garden",
+      "target": "ip:104[.]21[.]78[.]115",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:file[.]garden",
+      "target": "ip:172[.]67[.]220[.]156",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:handsorneindo[.]com",
+      "target": "ip:64[.]20[.]38[.]10",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutsmpclientts[.]lovable[.]app",
+      "target": "ip:185[.]41[.]148[.]1",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutsmpclientts[.]lovable[.]app",
+      "target": "ip:185[.]41[.]148[.]2",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:dellabetgiris[.]live",
+      "target": "ip:104[.]21[.]7[.]56",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:dellabetgiris[.]live",
+      "target": "ip:172[.]67[.]187[.]127",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:www[.]mediafire[.]com",
+      "target": "ip:104[.]18[.]213[.]225",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:www[.]mediafire[.]com",
+      "target": "ip:104[.]18[.]214[.]225",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:vtivision-fi[.]com",
+      "target": "ip:209[.]182[.]195[.]215",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:release-assets[.]githubusercontent[.]com",
+      "target": "ip:185[.]199[.]108[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:release-assets[.]githubusercontent[.]com",
+      "target": "ip:185[.]199[.]109[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:release-assets[.]githubusercontent[.]com",
+      "target": "ip:185[.]199[.]110[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:release-assets[.]githubusercontent[.]com",
+      "target": "ip:185[.]199[.]111[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:astroliper[.]ac",
+      "target": "ip:104[.]21[.]11[.]159",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:astroliper[.]ac",
+      "target": "ip:172[.]67[.]166[.]104",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:files[.]mcclients[.]com",
+      "target": "ip:104[.]21[.]43[.]126",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:files[.]mcclients[.]com",
+      "target": "ip:172[.]67[.]179[.]134",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:zumvu[.]net",
+      "target": "ip:66[.]96[.]84[.]154",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutclientz[.]netlify[.]app",
+      "target": "ip:13[.]215[.]239[.]219",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutclientz[.]netlify[.]app",
+      "target": "ip:52[.]74[.]6[.]109",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:antibotchecker[.]pro",
+      "target": "ip:104[.]21[.]80[.]92",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:antibotchecker[.]pro",
+      "target": "ip:172[.]67[.]176[.]164",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:fcitantibot[.]pro",
+      "target": "ip:104[.]21[.]91[.]171",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:fcitantibot[.]pro",
+      "target": "ip:172[.]67[.]175[.]208",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:twejamaica[.]org",
+      "target": "ip:193[.]26[.]115[.]221",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:flicargo[.]com",
+      "target": "ip:180[.]235[.]151[.]11",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:rosidlhassan[.]com",
+      "target": "ip:92[.]42[.]104[.]18",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:tmcksa[.]com",
+      "target": "ip:192[.]254[.]185[.]123",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutsmphackclient[.]netlify[.]app",
+      "target": "ip:13[.]215[.]239[.]219",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutsmphackclient[.]netlify[.]app",
+      "target": "ip:52[.]74[.]6[.]109",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:gfisoda[.]biz",
+      "target": "ip:195[.]58[.]146[.]210",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:software[.]security-analyze[.]ltd",
+      "target": "ip:104[.]21[.]90[.]151",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:software[.]security-analyze[.]ltd",
+      "target": "ip:172[.]67[.]157[.]228",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:adcentral[.]com[.]mx",
+      "target": "ip:192[.]254[.]185[.]223",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:kronemedia[.]de",
+      "target": "ip:202[.]61[.]237[.]224",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:glcdn[.]githack[.]com",
+      "target": "ip:104[.]21[.]60[.]54",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:glcdn[.]githack[.]com",
+      "target": "ip:172[.]67[.]192[.]117",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:xsealslogisticsltd[.]com",
+      "target": "ip:92[.]42[.]104[.]18",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:skymods[.]download",
+      "target": "ip:185[.]53[.]179[.]149",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutclientss[.]netlify[.]app",
+      "target": "ip:13[.]215[.]239[.]219",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:donutclientss[.]netlify[.]app",
+      "target": "ip:52[.]74[.]6[.]109",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:app-artifacts-1305923417[.]cos[.]ap-guangzhou[.]myqcloud[.]com",
+      "target": "ip:159[.]75[.]57[.]118",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:app-artifacts-1305923417[.]cos[.]ap-guangzhou[.]myqcloud[.]com",
+      "target": "ip:159[.]75[.]57[.]7",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:clientsorgnet[.]netlify[.]app",
+      "target": "ip:13[.]215[.]239[.]219",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:clientsorgnet[.]netlify[.]app",
+      "target": "ip:52[.]74[.]6[.]109",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:briannacorporation[.]com",
+      "target": "ip:23[.]111[.]189[.]133",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:locservice[.]short[.]gy",
+      "target": "ip:207[.]174[.]61[.]1",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:locservice[.]short[.]gy",
+      "target": "ip:91[.]197[.]243[.]143",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:trickgs-demo[.]vercel[.]app",
+      "target": "ip:216[.]198[.]79[.]131",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:trickgs-demo[.]vercel[.]app",
+      "target": "ip:64[.]29[.]17[.]131",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:skyvault[.]fun",
+      "target": "ip:104[.]21[.]71[.]232",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:skyvault[.]fun",
+      "target": "ip:172[.]67[.]172[.]19",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:i[.]ibb[.]co",
+      "target": "ip:45[.]43[.]142[.]2",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:i[.]ibb[.]co",
+      "target": "ip:45[.]43[.]142[.]3",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:i[.]ibb[.]co",
+      "target": "ip:45[.]43[.]142[.]4",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:i[.]ibb[.]co",
+      "target": "ip:45[.]43[.]142[.]5",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:trustchecknes[.]com",
+      "target": "ip:104[.]21[.]52[.]200",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:trustchecknes[.]com",
+      "target": "ip:172[.]67[.]203[.]95",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:seasquadshipping[.]com",
+      "target": "ip:65[.]108[.]198[.]197",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:detek[.]com[.]mx",
+      "target": "ip:192[.]185[.]183[.]204",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:denizcerceve[.]com",
+      "target": "ip:94[.]138[.]203[.]135",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:www[.]runeliteplus[.]net",
+      "target": "ip:192[.]142[.]10[.]5",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:fastly[.]jsdelivr[.]net",
+      "target": "ip:151[.]101[.]1[.]229",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:fastly[.]jsdelivr[.]net",
+      "target": "ip:151[.]101[.]129[.]229",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:fastly[.]jsdelivr[.]net",
+      "target": "ip:151[.]101[.]193[.]229",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:fastly[.]jsdelivr[.]net",
+      "target": "ip:151[.]101[.]65[.]229",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:sugarfreedcupcake[.]co[.]za",
+      "target": "ip:102[.]68[.]98[.]222",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:soniamart[.]com",
+      "target": "ip:103[.]17[.]37[.]252",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:sugarfreedcup[.]co[.]za",
+      "target": "ip:102[.]68[.]98[.]148",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:crackedclients[.]online",
+      "target": "ip:198[.]54[.]117[.]242",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:bioprot[.]com[.]ar",
+      "target": "ip:69[.]46[.]16[.]210",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:crojam[.]com",
+      "target": "ip:147[.]79[.]69[.]10",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:crojam[.]com",
+      "target": "ip:93[.]127[.]173[.]242",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:hanasrmt[.]ca",
+      "target": "ip:167[.]114[.]83[.]239",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:purelypulse[.]media",
+      "target": "ip:185[.]181[.]255[.]109",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:publiempresa[.]es",
+      "target": "ip:94[.]143[.]137[.]204",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:cdn4324[.]com",
+      "target": "ip:104[.]21[.]90[.]142",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:cdn4324[.]com",
+      "target": "ip:172[.]67[.]157[.]191",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:ela-bo[.]com",
+      "target": "ip:209[.]145[.]55[.]118",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:res[.]cloudinary[.]com",
+      "target": "ip:23[.]222[.]30[.]47",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:policysync[.]pro",
+      "target": "ip:104[.]21[.]94[.]119",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:policysync[.]pro",
+      "target": "ip:172[.]67[.]223[.]68",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:adiyamancamkornis[.]com[.]tr",
+      "target": "ip:89[.]252[.]182[.]2",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:tycons[.]com",
+      "target": "ip:203[.]159[.]95[.]26",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:user-iota-lake[.]vercel[.]app",
+      "target": "ip:216[.]198[.]79[.]67",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:user-iota-lake[.]vercel[.]app",
+      "target": "ip:64[.]29[.]17[.]67",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:bvmatqnam[.]com[.]vn",
+      "target": "ip:14[.]225[.]23[.]19",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:c--617b5f35-a107-4800-9047-a429934c0483-prod[.]lovable[.]cloud",
+      "target": "ip:104[.]21[.]45[.]161",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:c--617b5f35-a107-4800-9047-a429934c0483-prod[.]lovable[.]cloud",
+      "target": "ip:172[.]67[.]216[.]163",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:www[.]tmcksa[.]com",
+      "target": "ip:192[.]254[.]185[.]123",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:modhollow[.]netlify[.]app",
+      "target": "ip:13[.]215[.]239[.]219",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:modhollow[.]netlify[.]app",
+      "target": "ip:52[.]74[.]6[.]109",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:0807[.]st",
+      "target": "ip:104[.]21[.]10[.]213",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:0807[.]st",
+      "target": "ip:172[.]67[.]164[.]136",
+      "relation": "resolves_to"
+    }
+  ]
+}

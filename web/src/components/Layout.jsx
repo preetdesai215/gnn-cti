@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import {
   BarChart3, BookOpen, Brain, Clock, FileText, Menu, Network, Radar, Search, ShieldHalf, Siren, X,
 } from "lucide-react";
+import { FreshnessProvider, timeAgo, useFreshness } from "./freshness";
 
 const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: BarChart3 },
@@ -53,6 +54,7 @@ function useUtcClock() {
 
 function TopBar({ title }) {
   const clock = useUtcClock();
+  const { generated } = useFreshness();
   const navigate = useNavigate();
   const [q, setQ] = useState("");
 
@@ -68,7 +70,7 @@ function TopBar({ title }) {
     <div className="sticky top-0 z-20 -mx-8 mb-6 hidden items-center gap-4 border-b border-red-500/10 bg-navy-950/85 px-8 py-3 backdrop-blur md:flex">
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-semibold text-white">{title}</p>
-        <p className="text-[11px] uppercase tracking-wider text-amber-300/80">Simulated data</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500">URLhaus · OpenPhish · local history only</p>
       </div>
       <form onSubmit={lookup} className="relative w-full max-w-md" role="search">
         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
@@ -80,15 +82,20 @@ function TopBar({ title }) {
           aria-label="Quick indicator lookup"
         />
       </form>
-      <div className="hidden items-center gap-2 text-xs text-slate-400 xl:flex">
+      <div className="hidden items-center gap-3 font-mono text-xs text-slate-400 xl:flex">
+        <span className="flex items-center gap-2" title="Checked every five minutes">
+          <span className={`live-dot h-2 w-2 rounded-full ${generated ? "bg-emerald-400" : "bg-slate-600"}`} />
+          {generated ? `data updated ${timeAgo(generated)}` : "data not loaded"}
+        </span>
+        <span className="text-slate-700">|</span>
         <Clock className="h-3.5 w-3.5" />
-        <span className="font-mono">{clock}</span>
+        <span>{clock}</span>
       </div>
     </div>
   );
 }
 
-export default function Layout() {
+function Shell() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const title = currentTitle(pathname);
@@ -132,9 +139,19 @@ export default function Layout() {
 
       <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 md:px-8 md:py-8">
         <TopBar title={title} />
-        <Outlet />
+        <div key={pathname} className="fade-in">
+          <Outlet />
+        </div>
       </main>
     </div>
+  );
+}
+
+export default function Layout() {
+  return (
+    <FreshnessProvider>
+      <Shell />
+    </FreshnessProvider>
   );
 }
 
@@ -155,7 +172,7 @@ function Brand({ compact }) {
 function Footer() {
   return (
     <div className="mt-auto rounded-xl border border-amber-400/20 bg-amber-400/5 p-3 text-xs text-amber-200/90">
-      Demo mode. All data is simulated.
+      Sources: URLhaus (abuse.ch), the OpenPhish community feed (non-commercial), and the Tranco list. Lookups use local data only.
     </div>
   );
 }

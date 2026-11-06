@@ -4,32 +4,41 @@
 
 @layer base {
   body {
-    @apply bg-navy-950 text-slate-200 antialiased;
+    @apply bg-navy-950 text-slate-300 antialiased;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 44px 44px;
+    background-attachment: fixed;
   }
 }
 
 @layer components {
+  /* Console panel: solid surface, hairline border, no heavy glow */
   .glass {
-    @apply bg-white/[0.04] backdrop-blur-xl border border-red-400/10 rounded-2xl shadow-[0_0_30px_-12px_rgba(255,92,108,0.25)];
+    @apply rounded-lg border border-white/[0.07] bg-navy-900/90 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)];
   }
   .glass-hover {
-    @apply transition-all duration-300 hover:border-red-400/40 hover:-translate-y-0.5 hover:shadow-[0_0_30px_-8px_rgba(225,29,46,0.35)];
+    @apply transition duration-200 hover:border-accent/40;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-accent/90 to-accent-light/90 px-5 py-2.5 font-semibold text-white transition hover:brightness-110 hover:shadow-[0_0_25px_-5px_rgba(225,29,46,0.6)];
+    @apply inline-flex items-center gap-2 rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white transition hover:bg-accent-light disabled:opacity-50;
   }
   .btn-ghost {
-    @apply inline-flex items-center gap-2 rounded-xl border border-red-400/30 px-5 py-2.5 font-medium text-red-200 transition hover:bg-red-400/10;
+    @apply inline-flex items-center gap-2 rounded-md border border-white/10 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-accent/40 hover:text-white;
   }
   .input {
-    @apply w-full rounded-xl border border-red-400/20 bg-navy-900/70 px-4 py-2.5 text-slate-100 placeholder-slate-500 outline-none transition focus:border-accent-light focus:shadow-[0_0_0_3px_rgba(255,92,108,0.15)];
+    @apply w-full rounded-md border border-white/10 bg-navy-950 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 outline-none transition focus:border-accent-light focus:shadow-[0_0_0_3px_rgba(255,77,94,0.15)];
   }
   .label-eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-accent-light/80;
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-accent-light/90;
+  }
+  .num {
+    @apply font-mono tabular-nums;
   }
 }
 
-/* Animated network background used on the landing page */
+/* Motion */
 @keyframes drift {
   0% { transform: translate(0, 0); }
   50% { transform: translate(12px, -8px); }
@@ -38,29 +47,43 @@
 @keyframes flow {
   to { stroke-dashoffset: -40; }
 }
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes live-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.55); }
+  50% { box-shadow: 0 0 0 5px rgba(52, 211, 153, 0); }
+}
 .animate-drift { animation: drift 9s ease-in-out infinite; }
 .animate-flow { stroke-dasharray: 6 10; animation: flow 2.5s linear infinite; }
+.fade-in { animation: fade-up 0.35s ease-out both; }
+.live-dot { animation: live-pulse 2.4s ease-in-out infinite; }
 
-/* React Flow theming to match the dashboard */
-.react-flow__controls button {
-  background: #101d36;
-  border-color: rgba(34, 211, 238, 0.2);
-  fill: #a5f3fc;
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .live-dot, .animate-drift, .animate-flow { animation: none; }
 }
-.react-flow__controls button:hover { background: #18294a; }
-.react-flow__minimap { background: #0a1428 !important; }
+
+/* React Flow theming to match the console */
+.react-flow__controls button {
+  background: #0b0e13;
+  border-color: rgba(255, 255, 255, 0.1);
+  fill: #cbd5e1;
+}
+.react-flow__controls button:hover { background: #151a22; }
+.react-flow__minimap { background: #0b0e13 !important; }
 
 /* Print / PDF export: show only the report, on a white page */
 @media print {
-  body { background: #fff !important; color: #111 !important; }
+  body { background: #fff !important; color: #111 !important; background-image: none !important; }
   .no-print, aside, header, footer { display: none !important; }
-  .report-print { background: #fff !important; border: none !important; box-shadow: none !important; color: #111 !important; backdrop-filter: none !important; }
+  .report-print { background: #fff !important; border: none !important; box-shadow: none !important; color: #111 !important; }
   .report-print * { color: #111 !important; }
   main { padding: 0 !important; }
 }
 
 /* Keyboard focus visible on every control */
 :focus-visible {
-  outline: 2px solid #ff5c6c;
+  outline: 2px solid #ff4d5e;
   outline-offset: 2px;
 }

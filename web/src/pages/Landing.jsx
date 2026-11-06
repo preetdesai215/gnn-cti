@@ -51,7 +51,7 @@ export default function Landing() {
             <span className="font-bold text-white">GNN-CTI</span>
           </div>
           <span className="rounded-full border border-amber-400/30 bg-amber-400/5 px-3 py-1 text-xs text-amber-200">
-            Simulated demo data
+            Real URLhaus feed data
           </span>
         </header>
 
@@ -88,7 +88,7 @@ export default function Landing() {
         </main>
 
         <footer className="text-center text-xs text-slate-600">
-          Demo interface. Indicators use reserved example names and documentation IP ranges. No live scanning.
+          Built on the public URLhaus feed. Nothing is scanned or contacted: lookups use your local history only.
         </footer>
       </div>
     </div>
