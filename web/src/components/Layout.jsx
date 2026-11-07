@@ -68,6 +68,7 @@ function TopBar({ title }) {
 
   return (
     <div className="sticky top-0 z-20 -mx-8 mb-6 hidden items-center gap-4 border-b border-red-500/10 bg-navy-950/85 px-8 py-3 backdrop-blur md:flex">
+      <span aria-hidden="true" className="scan-line pointer-events-none absolute bottom-0 left-0 h-px" />
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-semibold text-white">{title}</p>
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500">URLhaus · OpenPhish · local history only</p>

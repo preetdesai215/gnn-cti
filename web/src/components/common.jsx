@@ -53,9 +53,10 @@ export function PageHeader({ eyebrow, title, description, right }) {
   );
 }
 
-export function StatCard({ icon: Icon, label, value, hint, accent = "text-accent-light" }) {
+// `i` staggers the entrance: cards with a higher index appear a little later.
+export function StatCard({ icon: Icon, label, value, hint, accent = "text-accent-light", i = 0 }) {
   return (
-    <div className="glass glass-hover p-5">
+    <div className="glass glass-hover reveal p-5" style={{ "--i": i }}>
       <div className="flex items-center justify-between gap-2">
         <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-slate-500">{label}</p>
         {Icon && <Icon className={`h-4 w-4 shrink-0 ${accent}`} />}
