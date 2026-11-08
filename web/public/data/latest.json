@@ -1,18 +1,18 @@
 {
-  "generated_utc": "2026-11-07T04:35:34+00:00",
+  "generated_utc": "2026-11-08T04:44:03+00:00",
   "data_source": "URLhaus public feed, accumulated history",
   "simulated": false,
   "history": {
-    "urls": 127868,
-    "collection_days": 3,
+    "urls": 128914,
+    "collection_days": 4,
     "first_collected": "2026-11-05",
-    "last_collected": "2026-11-07"
+    "last_collected": "2026-11-08"
   },
   "entity_counts": {
-    "domains": 774,
-    "ip_hosts": 5921,
-    "domains_with_dns_ip": 538,
-    "unique_resolved_ips": 690
+    "domains": 783,
+    "ip_hosts": 6092,
+    "domains_with_dns_ip": 547,
+    "unique_resolved_ips": 699
   },
   "daily_additions": [
     {
@@ -26,30 +26,34 @@
     {
       "day": "2026-11-07",
       "new_urls": 824
+    },
+    {
+      "day": "2026-11-08",
+      "new_urls": 1046
     }
   ],
   "threat_types": [
     {
       "threat": "malware_download",
-      "urls": 127868
+      "urls": 128914
     }
   ],
   "top_hosts_defanged": [
     {
       "host": "raw[.]githubusercontent[.]com",
-      "urls": 57111
+      "urls": 57192
     },
     {
       "host": "github[.]com",
-      "urls": 53464
+      "urls": 53859
     },
     {
       "host": "gitlab[.]com",
-      "urls": 823
+      "urls": 824
     },
     {
       "host": "cdn[.]discordapp[.]com",
-      "urls": 276
+      "urls": 277
     },
     {
       "host": "107[.]175[.]82[.]242",
@@ -69,7 +73,7 @@
     },
     {
       "host": "45[.]153[.]34[.]235",
-      "urls": 69
+      "urls": 87
     },
     {
       "host": "5[.]39[.]10[.]241",
@@ -78,6 +82,10 @@
     {
       "host": "play[.]nopixel-rp[.]ir",
       "urls": 60
+    },
+    {
+      "host": "141[.]98[.]10[.]86",
+      "urls": 58
     },
     {
       "host": "154[.]83[.]85[.]63",
@@ -110,235 +118,231 @@
     {
       "host": "www[.]dropbox[.]com",
       "urls": 45
-    },
-    {
-      "host": "176[.]65[.]139[.]201",
-      "urls": 41
     }
   ],
   "phishing_feed": {
-    "urls": 600,
-    "collection_days": 2,
+    "urls": 900,
+    "collection_days": 3,
     "first_collected": "2026-11-06",
-    "last_collected": "2026-11-07",
+    "last_collected": "2026-11-08",
     "source": "OpenPhish community feed (non-commercial use only)"
   },
   "platform_comparison": {
     "setup": {
       "feed": "/home/stingray/projects/gnn-cti/data/processed/urlhaus_history.csv",
-      "domain_hosted_urls_before_cap": 113489,
-      "after_cap": 2606,
-      "shared_hosting_urls_removed": 1125,
-      "remaining_urls": 1481,
+      "domain_hosted_urls_before_cap": 114029,
+      "after_cap": 2668,
+      "shared_hosting_urls_removed": 1126,
+      "remaining_urls": 1542,
       "shared_hosting_domains": 26,
       "grouped_split_seeds": 10,
       "cap_per_registered_domain": 200
     },
     "A_all_malicious_including_platforms": {
-      "malicious_urls": 2606,
-      "benign_urls": 2606,
+      "malicious_urls": 2668,
+      "benign_urls": 2668,
       "pr_auc": {
-        "mean": 0.8302,
-        "std": 0.1168,
-        "min": 0.6373,
-        "max": 0.9507
+        "mean": 0.885,
+        "std": 0.0349,
+        "min": 0.8259,
+        "max": 0.9312
       },
       "f1_at_0.5": {
-        "mean": 0.706,
-        "std": 0.1433,
-        "min": 0.478,
-        "max": 0.8795
+        "mean": 0.7695,
+        "std": 0.0516,
+        "min": 0.6928,
+        "max": 0.8371
       },
       "share_families_detected": {
-        "mean": 0.39,
-        "std": 0.057,
-        "min": 0.275,
-        "max": 0.5083
+        "mean": 0.386,
+        "std": 0.0351,
+        "min": 0.3388,
+        "max": 0.4463
       },
       "per_seed": [
         {
           "seed": 0,
-          "pr_auc": 0.6734,
-          "f1_at_0.5": 0.5255,
-          "n_test_malicious": 246,
-          "share_families_detected": 0.3667,
+          "pr_auc": 0.9286,
+          "f1_at_0.5": 0.825,
+          "n_test_malicious": 510,
+          "share_families_detected": 0.4463,
           "median_family_recall": 0.0
         },
         {
           "seed": 1,
-          "pr_auc": 0.8008,
-          "f1_at_0.5": 0.6554,
-          "n_test_malicious": 504,
-          "share_families_detected": 0.3697,
+          "pr_auc": 0.8672,
+          "f1_at_0.5": 0.7257,
+          "n_test_malicious": 595,
+          "share_families_detected": 0.4132,
           "median_family_recall": 0.0
         },
         {
           "seed": 2,
-          "pr_auc": 0.8878,
-          "f1_at_0.5": 0.7647,
-          "n_test_malicious": 716,
-          "share_families_detected": 0.3833,
+          "pr_auc": 0.8523,
+          "f1_at_0.5": 0.7089,
+          "n_test_malicious": 469,
+          "share_families_detected": 0.3554,
           "median_family_recall": 0.0
         },
         {
           "seed": 3,
-          "pr_auc": 0.9507,
-          "f1_at_0.5": 0.8795,
-          "n_test_malicious": 955,
-          "share_families_detected": 0.4202,
+          "pr_auc": 0.8805,
+          "f1_at_0.5": 0.7559,
+          "n_test_malicious": 735,
+          "share_families_detected": 0.3554,
           "median_family_recall": 0.0
         },
         {
           "seed": 4,
-          "pr_auc": 0.6373,
-          "f1_at_0.5": 0.478,
-          "n_test_malicious": 276,
-          "share_families_detected": 0.275,
+          "pr_auc": 0.8259,
+          "f1_at_0.5": 0.6928,
+          "n_test_malicious": 409,
+          "share_families_detected": 0.3388,
           "median_family_recall": 0.0
         },
         {
           "seed": 5,
-          "pr_auc": 0.9282,
-          "f1_at_0.5": 0.8205,
-          "n_test_malicious": 707,
-          "share_families_detected": 0.3529,
+          "pr_auc": 0.886,
+          "f1_at_0.5": 0.7542,
+          "n_test_malicious": 472,
+          "share_families_detected": 0.3471,
           "median_family_recall": 0.0
         },
         {
           "seed": 6,
-          "pr_auc": 0.6776,
-          "f1_at_0.5": 0.5144,
-          "n_test_malicious": 313,
-          "share_families_detected": 0.3833,
+          "pr_auc": 0.8478,
+          "f1_at_0.5": 0.7437,
+          "n_test_malicious": 449,
+          "share_families_detected": 0.3884,
           "median_family_recall": 0.0
         },
         {
           "seed": 7,
-          "pr_auc": 0.8863,
-          "f1_at_0.5": 0.7556,
-          "n_test_malicious": 690,
-          "share_families_detected": 0.4118,
+          "pr_auc": 0.9141,
+          "f1_at_0.5": 0.8212,
+          "n_test_malicious": 656,
+          "share_families_detected": 0.3802,
           "median_family_recall": 0.0
         },
         {
           "seed": 8,
-          "pr_auc": 0.9351,
-          "f1_at_0.5": 0.8285,
-          "n_test_malicious": 845,
-          "share_families_detected": 0.4286,
+          "pr_auc": 0.9312,
+          "f1_at_0.5": 0.8307,
+          "n_test_malicious": 705,
+          "share_families_detected": 0.405,
           "median_family_recall": 0.0
         },
         {
           "seed": 9,
-          "pr_auc": 0.9243,
-          "f1_at_0.5": 0.8375,
-          "n_test_malicious": 712,
-          "share_families_detected": 0.5083,
-          "median_family_recall": 0.5
+          "pr_auc": 0.9164,
+          "f1_at_0.5": 0.8371,
+          "n_test_malicious": 615,
+          "share_families_detected": 0.4298,
+          "median_family_recall": 0.0
         }
       ]
     },
     "B_excluding_shared_hosting": {
-      "malicious_urls": 1481,
-      "benign_urls": 1481,
+      "malicious_urls": 1542,
+      "benign_urls": 1542,
       "pr_auc": {
-        "mean": 0.7298,
-        "std": 0.0345,
-        "min": 0.6626,
-        "max": 0.7819
+        "mean": 0.7439,
+        "std": 0.0365,
+        "min": 0.6991,
+        "max": 0.8216
       },
       "f1_at_0.5": {
-        "mean": 0.5903,
-        "std": 0.0441,
-        "min": 0.5087,
-        "max": 0.6722
+        "mean": 0.5958,
+        "std": 0.0384,
+        "min": 0.5376,
+        "max": 0.6824
       },
       "share_families_detected": {
-        "mean": 0.5102,
-        "std": 0.056,
-        "min": 0.4188,
-        "max": 0.5897
+        "mean": 0.4746,
+        "std": 0.0553,
+        "min": 0.4068,
+        "max": 0.5763
       },
       "per_seed": [
         {
           "seed": 0,
-          "pr_auc": 0.73,
-          "f1_at_0.5": 0.5595,
-          "n_test_malicious": 322,
-          "share_families_detected": 0.4957,
-          "median_family_recall": 0.2857
-        },
-        {
-          "seed": 1,
-          "pr_auc": 0.756,
-          "f1_at_0.5": 0.638,
-          "n_test_malicious": 284,
-          "share_families_detected": 0.4274,
+          "pr_auc": 0.7418,
+          "f1_at_0.5": 0.6085,
+          "n_test_malicious": 282,
+          "share_families_detected": 0.4068,
           "median_family_recall": 0.0
         },
         {
+          "seed": 1,
+          "pr_auc": 0.7839,
+          "f1_at_0.5": 0.6173,
+          "n_test_malicious": 378,
+          "share_families_detected": 0.5,
+          "median_family_recall": 0.25
+        },
+        {
           "seed": 2,
-          "pr_auc": 0.7438,
-          "f1_at_0.5": 0.5799,
-          "n_test_malicious": 336,
-          "share_families_detected": 0.547,
-          "median_family_recall": 0.5
+          "pr_auc": 0.7014,
+          "f1_at_0.5": 0.5658,
+          "n_test_malicious": 266,
+          "share_families_detected": 0.4153,
+          "median_family_recall": 0.0
         },
         {
           "seed": 3,
-          "pr_auc": 0.7329,
-          "f1_at_0.5": 0.6123,
-          "n_test_malicious": 288,
-          "share_families_detected": 0.5299,
-          "median_family_recall": 0.6667
+          "pr_auc": 0.7338,
+          "f1_at_0.5": 0.6279,
+          "n_test_malicious": 291,
+          "share_families_detected": 0.5593,
+          "median_family_recall": 1.0
         },
         {
           "seed": 4,
-          "pr_auc": 0.6894,
-          "f1_at_0.5": 0.5087,
-          "n_test_malicious": 312,
-          "share_families_detected": 0.453,
+          "pr_auc": 0.6991,
+          "f1_at_0.5": 0.5376,
+          "n_test_malicious": 268,
+          "share_families_detected": 0.4407,
           "median_family_recall": 0.0
         },
         {
           "seed": 5,
-          "pr_auc": 0.7628,
-          "f1_at_0.5": 0.5794,
-          "n_test_malicious": 340,
-          "share_families_detected": 0.5641,
-          "median_family_recall": 1.0
+          "pr_auc": 0.7585,
+          "f1_at_0.5": 0.5726,
+          "n_test_malicious": 282,
+          "share_families_detected": 0.4661,
+          "median_family_recall": 0.0
         },
         {
           "seed": 6,
-          "pr_auc": 0.6626,
-          "f1_at_0.5": 0.564,
-          "n_test_malicious": 266,
-          "share_families_detected": 0.4188,
+          "pr_auc": 0.7352,
+          "f1_at_0.5": 0.5779,
+          "n_test_malicious": 260,
+          "share_families_detected": 0.4322,
           "median_family_recall": 0.0
         },
         {
           "seed": 7,
-          "pr_auc": 0.7819,
-          "f1_at_0.5": 0.6722,
-          "n_test_malicious": 268,
-          "share_families_detected": 0.547,
-          "median_family_recall": 1.0
+          "pr_auc": 0.7071,
+          "f1_at_0.5": 0.5755,
+          "n_test_malicious": 286,
+          "share_families_detected": 0.5,
+          "median_family_recall": 0.25
         },
         {
           "seed": 8,
-          "pr_auc": 0.7402,
-          "f1_at_0.5": 0.6214,
-          "n_test_malicious": 353,
-          "share_families_detected": 0.5897,
+          "pr_auc": 0.8216,
+          "f1_at_0.5": 0.6824,
+          "n_test_malicious": 461,
+          "share_families_detected": 0.5763,
           "median_family_recall": 1.0
         },
         {
           "seed": 9,
-          "pr_auc": 0.6986,
-          "f1_at_0.5": 0.5677,
-          "n_test_malicious": 320,
-          "share_families_detected": 0.5299,
-          "median_family_recall": 1.0
+          "pr_auc": 0.7564,
+          "f1_at_0.5": 0.5926,
+          "n_test_malicious": 295,
+          "share_families_detected": 0.4492,
+          "median_family_recall": 0.0
         }
       ]
     }
@@ -493,201 +497,201 @@
   },
   "phishing_experiment": {
     "setup": {
-      "phishing_urls_in_history": 600,
+      "phishing_urls_in_history": 900,
       "ip_hosts_excluded": 0,
-      "after_cap": 600,
-      "free_hosting_urls_excluded_from_headline": 284,
-      "hosts_in_headline": 263,
+      "after_cap": 876,
+      "free_hosting_urls_excluded_from_headline": 383,
+      "hosts_in_headline": 376,
       "platform_domains": 42,
       "cap_per_registered_domain": 200,
       "grouped_split_seeds": 10,
       "warning": null
     },
     "headline_excluding_free_hosting": {
-      "malicious_urls": 316,
-      "benign_hosts": 316,
+      "malicious_urls": 493,
+      "benign_hosts": 493,
       "pr_auc": {
-        "mean": 0.9008,
-        "std": 0.0359,
-        "min": 0.8129,
-        "max": 0.943
+        "mean": 0.8751,
+        "std": 0.0401,
+        "min": 0.7991,
+        "max": 0.9321
       },
       "f1_at_0.5": {
-        "mean": 0.7894,
-        "std": 0.0521,
-        "min": 0.7156,
-        "max": 0.8824
+        "mean": 0.7763,
+        "std": 0.0349,
+        "min": 0.7126,
+        "max": 0.828
       },
       "share_families_detected": {
-        "mean": 0.7325,
-        "std": 0.0501,
-        "min": 0.65,
-        "max": 0.825
+        "mean": 0.7298,
+        "std": 0.0545,
+        "min": 0.6491,
+        "max": 0.8596
       },
       "per_seed": [
         {
           "seed": 0,
-          "pr_auc": 0.8129,
-          "f1_at_0.5": 0.7156,
-          "n_test_malicious": 56,
-          "share_families_detected": 0.7
+          "pr_auc": 0.8748,
+          "f1_at_0.5": 0.7651,
+          "n_test_malicious": 82,
+          "share_families_detected": 0.7193
         },
         {
           "seed": 1,
-          "pr_auc": 0.8862,
-          "f1_at_0.5": 0.7273,
-          "n_test_malicious": 54,
-          "share_families_detected": 0.65
+          "pr_auc": 0.8922,
+          "f1_at_0.5": 0.7836,
+          "n_test_malicious": 87,
+          "share_families_detected": 0.7018
         },
         {
           "seed": 2,
-          "pr_auc": 0.8758,
-          "f1_at_0.5": 0.7603,
-          "n_test_malicious": 62,
-          "share_families_detected": 0.675
+          "pr_auc": 0.8873,
+          "f1_at_0.5": 0.7841,
+          "n_test_malicious": 94,
+          "share_families_detected": 0.7719
         },
         {
           "seed": 3,
-          "pr_auc": 0.9232,
-          "f1_at_0.5": 0.7966,
-          "n_test_malicious": 61,
-          "share_families_detected": 0.75
+          "pr_auc": 0.9321,
+          "f1_at_0.5": 0.796,
+          "n_test_malicious": 106,
+          "share_families_detected": 0.7193
         },
         {
           "seed": 4,
-          "pr_auc": 0.941,
-          "f1_at_0.5": 0.878,
-          "n_test_malicious": 83,
-          "share_families_detected": 0.75
+          "pr_auc": 0.8819,
+          "f1_at_0.5": 0.8,
+          "n_test_malicious": 76,
+          "share_families_detected": 0.7368
         },
         {
           "seed": 5,
-          "pr_auc": 0.9039,
-          "f1_at_0.5": 0.7874,
-          "n_test_malicious": 73,
-          "share_families_detected": 0.725
+          "pr_auc": 0.9292,
+          "f1_at_0.5": 0.828,
+          "n_test_malicious": 93,
+          "share_families_detected": 0.7544
         },
         {
           "seed": 6,
-          "pr_auc": 0.896,
-          "f1_at_0.5": 0.7719,
-          "n_test_malicious": 56,
-          "share_families_detected": 0.775
+          "pr_auc": 0.8528,
+          "f1_at_0.5": 0.7417,
+          "n_test_malicious": 79,
+          "share_families_detected": 0.6842
         },
         {
           "seed": 7,
-          "pr_auc": 0.906,
-          "f1_at_0.5": 0.7805,
-          "n_test_malicious": 63,
-          "share_families_detected": 0.7
+          "pr_auc": 0.8823,
+          "f1_at_0.5": 0.8152,
+          "n_test_malicious": 91,
+          "share_families_detected": 0.8596
         },
         {
           "seed": 8,
-          "pr_auc": 0.943,
-          "f1_at_0.5": 0.8824,
-          "n_test_malicious": 69,
-          "share_families_detected": 0.825
+          "pr_auc": 0.8196,
+          "f1_at_0.5": 0.7368,
+          "n_test_malicious": 105,
+          "share_families_detected": 0.7018
         },
         {
           "seed": 9,
-          "pr_auc": 0.9204,
-          "f1_at_0.5": 0.7937,
-          "n_test_malicious": 67,
-          "share_families_detected": 0.775
+          "pr_auc": 0.7991,
+          "f1_at_0.5": 0.7126,
+          "n_test_malicious": 93,
+          "share_families_detected": 0.6491
         }
       ]
     },
     "reference_including_free_hosting": {
-      "malicious_urls": 600,
-      "benign_hosts": 600,
+      "malicious_urls": 876,
+      "benign_hosts": 876,
       "pr_auc": {
-        "mean": 0.9476,
-        "std": 0.0451,
-        "min": 0.8547,
-        "max": 0.9933
+        "mean": 0.9066,
+        "std": 0.0376,
+        "min": 0.8568,
+        "max": 0.9763
       },
       "f1_at_0.5": {
-        "mean": 0.8756,
-        "std": 0.0677,
-        "min": 0.7387,
-        "max": 0.9524
+        "mean": 0.8155,
+        "std": 0.0571,
+        "min": 0.7476,
+        "max": 0.9238
       },
       "share_families_detected": {
-        "mean": 0.731,
-        "std": 0.0413,
-        "min": 0.6429,
-        "max": 0.7857
+        "mean": 0.77,
+        "std": 0.0371,
+        "min": 0.7,
+        "max": 0.85
       },
       "per_seed": [
         {
           "seed": 0,
-          "pr_auc": 0.9528,
-          "f1_at_0.5": 0.8851,
-          "n_test_malicious": 88,
-          "share_families_detected": 0.7381
+          "pr_auc": 0.9182,
+          "f1_at_0.5": 0.8163,
+          "n_test_malicious": 104,
+          "share_families_detected": 0.7667
         },
         {
           "seed": 1,
-          "pr_auc": 0.9914,
-          "f1_at_0.5": 0.9524,
-          "n_test_malicious": 267,
-          "share_families_detected": 0.7143
+          "pr_auc": 0.8929,
+          "f1_at_0.5": 0.748,
+          "n_test_malicious": 144,
+          "share_families_detected": 0.7
         },
         {
           "seed": 2,
-          "pr_auc": 0.9665,
-          "f1_at_0.5": 0.8836,
-          "n_test_malicious": 150,
-          "share_families_detected": 0.7381
+          "pr_auc": 0.8719,
+          "f1_at_0.5": 0.7476,
+          "n_test_malicious": 113,
+          "share_families_detected": 0.75
         },
         {
           "seed": 3,
-          "pr_auc": 0.9201,
-          "f1_at_0.5": 0.8712,
-          "n_test_malicious": 85,
-          "share_families_detected": 0.6905
+          "pr_auc": 0.9068,
+          "f1_at_0.5": 0.7925,
+          "n_test_malicious": 141,
+          "share_families_detected": 0.7833
         },
         {
           "seed": 4,
-          "pr_auc": 0.8858,
-          "f1_at_0.5": 0.8077,
-          "n_test_malicious": 55,
-          "share_families_detected": 0.7381
+          "pr_auc": 0.8568,
+          "f1_at_0.5": 0.7807,
+          "n_test_malicious": 93,
+          "share_families_detected": 0.8
         },
         {
           "seed": 5,
-          "pr_auc": 0.8547,
-          "f1_at_0.5": 0.7387,
-          "n_test_malicious": 67,
-          "share_families_detected": 0.6429
+          "pr_auc": 0.864,
+          "f1_at_0.5": 0.8134,
+          "n_test_malicious": 111,
+          "share_families_detected": 0.7833
         },
         {
           "seed": 6,
-          "pr_auc": 0.9933,
-          "f1_at_0.5": 0.952,
-          "n_test_malicious": 288,
-          "share_families_detected": 0.7143
+          "pr_auc": 0.9637,
+          "f1_at_0.5": 0.9032,
+          "n_test_malicious": 316,
+          "share_families_detected": 0.85
         },
         {
           "seed": 7,
-          "pr_auc": 0.9815,
-          "f1_at_0.5": 0.922,
-          "n_test_malicious": 147,
-          "share_families_detected": 0.7857
+          "pr_auc": 0.9183,
+          "f1_at_0.5": 0.8479,
+          "n_test_malicious": 112,
+          "share_families_detected": 0.7667
         },
         {
           "seed": 8,
-          "pr_auc": 0.9425,
-          "f1_at_0.5": 0.8065,
-          "n_test_malicious": 62,
-          "share_families_detected": 0.7857
+          "pr_auc": 0.8969,
+          "f1_at_0.5": 0.7812,
+          "n_test_malicious": 105,
+          "share_families_detected": 0.75
         },
         {
           "seed": 9,
-          "pr_auc": 0.9877,
-          "f1_at_0.5": 0.9364,
-          "n_test_malicious": 240,
-          "share_families_detected": 0.7619
+          "pr_auc": 0.9763,
+          "f1_at_0.5": 0.9238,
+          "n_test_malicious": 312,
+          "share_families_detected": 0.75
         }
       ]
     }
