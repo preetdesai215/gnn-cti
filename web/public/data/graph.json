@@ -1,33 +1,40 @@
 {
-  "generated_utc": "2026-11-08T04:44:03+00:00",
+  "generated_utc": "2026-11-09T03:16:06+00:00",
   "note": "Top domains by URL count and the IPs they resolved to. Risk is relative URL count, not a model score.",
   "nodes": [
     {
       "id": "domain:raw[.]githubusercontent[.]com",
       "type": "domain",
       "value": "raw[.]githubusercontent[.]com",
-      "urls": 57192,
+      "urls": 57335,
       "risk": 100
     },
     {
       "id": "domain:github[.]com",
       "type": "domain",
       "value": "github[.]com",
-      "urls": 53859,
+      "urls": 53965,
       "risk": 94
     },
     {
       "id": "domain:gitlab[.]com",
       "type": "domain",
       "value": "gitlab[.]com",
-      "urls": 824,
+      "urls": 827,
       "risk": 1
     },
     {
       "id": "domain:cdn[.]discordapp[.]com",
       "type": "domain",
       "value": "cdn[.]discordapp[.]com",
-      "urls": 277,
+      "urls": 285,
+      "risk": 0
+    },
+    {
+      "id": "domain:www[.]complianceportals[.]com",
+      "type": "domain",
+      "value": "www[.]complianceportals[.]com",
+      "urls": 268,
       "risk": 0
     },
     {
@@ -48,7 +55,7 @@
       "id": "domain:www[.]dropbox[.]com",
       "type": "domain",
       "value": "www[.]dropbox[.]com",
-      "urls": 45,
+      "urls": 47,
       "risk": 0
     },
     {
@@ -171,6 +178,13 @@
       "risk": 0
     },
     {
+      "id": "domain:www[.]mediafire[.]com",
+      "type": "domain",
+      "value": "www[.]mediafire[.]com",
+      "urls": 13,
+      "risk": 0
+    },
+    {
       "id": "domain:donutclients[.]space",
       "type": "domain",
       "value": "donutclients[.]space",
@@ -255,13 +269,6 @@
       "risk": 0
     },
     {
-      "id": "domain:www[.]mediafire[.]com",
-      "type": "domain",
-      "value": "www[.]mediafire[.]com",
-      "urls": 10,
-      "risk": 0
-    },
-    {
       "id": "domain:mc-modhub[.]vercel[.]app",
       "type": "domain",
       "value": "mc-modhub[.]vercel[.]app",
@@ -297,6 +304,13 @@
       "risk": 0
     },
     {
+      "id": "domain:complianceportals[.]com",
+      "type": "domain",
+      "value": "complianceportals[.]com",
+      "urls": 9,
+      "risk": 0
+    },
+    {
       "id": "domain:dellabetgiris[.]live",
       "type": "domain",
       "value": "dellabetgiris[.]live",
@@ -308,6 +322,20 @@
       "type": "domain",
       "value": "vtivision-fi[.]com",
       "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "domain:aranos1[.]duckdns[.]org",
+      "type": "domain",
+      "value": "aranos1[.]duckdns[.]org",
+      "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "domain:adcentral[.]com[.]mx",
+      "type": "domain",
+      "value": "adcentral[.]com[.]mx",
+      "urls": 7,
       "risk": 0
     },
     {
@@ -385,13 +413,6 @@
       "type": "domain",
       "value": "antibotchecker[.]pro",
       "urls": 6,
-      "risk": 0
-    },
-    {
-      "id": "domain:adcentral[.]com[.]mx",
-      "type": "domain",
-      "value": "adcentral[.]com[.]mx",
-      "urls": 5,
       "risk": 0
     },
     {
@@ -661,6 +682,13 @@
       "risk": 0
     },
     {
+      "id": "domain:pub-ef44c35b13984ebc836b5bb28bb93c95[.]r2[.]dev",
+      "type": "domain",
+      "value": "pub-ef44c35b13984ebc836b5bb28bb93c95[.]r2[.]dev",
+      "urls": 3,
+      "risk": 0
+    },
+    {
       "id": "domain:fastly[.]jsdelivr[.]net",
       "type": "domain",
       "value": "fastly[.]jsdelivr[.]net",
@@ -815,108 +843,87 @@
       "risk": 0
     },
     {
-      "id": "domain:gitsl[.]xyz",
-      "type": "domain",
-      "value": "gitsl[.]xyz",
-      "urls": 3,
-      "risk": 0
-    },
-    {
-      "id": "domain:viewgit[.]sbs",
-      "type": "domain",
-      "value": "viewgit[.]sbs",
-      "urls": 3,
-      "risk": 0
-    },
-    {
-      "id": "domain:api[.]recapcha[.]fun",
-      "type": "domain",
-      "value": "api[.]recapcha[.]fun",
-      "urls": 3,
-      "risk": 0
-    },
-    {
-      "id": "domain:autohaus-bender[.]de",
-      "type": "domain",
-      "value": "autohaus-bender[.]de",
-      "urls": 3,
-      "risk": 0
-    },
-    {
       "id": "ip:185[.]199[.]108[.]133",
       "type": "ip",
       "value": "185[.]199[.]108[.]133",
-      "urls": 57199,
+      "urls": 57342,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]109[.]133",
       "type": "ip",
       "value": "185[.]199[.]109[.]133",
-      "urls": 57199,
+      "urls": 57342,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]110[.]133",
       "type": "ip",
       "value": "185[.]199[.]110[.]133",
-      "urls": 57199,
+      "urls": 57342,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]111[.]133",
       "type": "ip",
       "value": "185[.]199[.]111[.]133",
-      "urls": 57199,
+      "urls": 57342,
       "risk": 100
     },
     {
       "id": "ip:20[.]207[.]73[.]82",
       "type": "ip",
       "value": "20[.]207[.]73[.]82",
-      "urls": 53859,
+      "urls": 53965,
       "risk": 94
     },
     {
       "id": "ip:172[.]65[.]251[.]78",
       "type": "ip",
       "value": "172[.]65[.]251[.]78",
-      "urls": 824,
+      "urls": 827,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]129[.]233",
       "type": "ip",
       "value": "162[.]159[.]129[.]233",
-      "urls": 277,
+      "urls": 285,
       "risk": 0
     },
     {
       "id": "ip:162[.]159[.]130[.]233",
       "type": "ip",
       "value": "162[.]159[.]130[.]233",
-      "urls": 277,
+      "urls": 285,
       "risk": 0
     },
     {
       "id": "ip:162[.]159[.]133[.]233",
       "type": "ip",
       "value": "162[.]159[.]133[.]233",
-      "urls": 277,
+      "urls": 285,
       "risk": 0
     },
     {
       "id": "ip:162[.]159[.]134[.]233",
       "type": "ip",
       "value": "162[.]159[.]134[.]233",
-      "urls": 277,
+      "urls": 285,
       "risk": 0
     },
     {
       "id": "ip:162[.]159[.]135[.]233",
       "type": "ip",
       "value": "162[.]159[.]135[.]233",
-      "urls": 277,
+      "urls": 285,
+      "risk": 0
+    },
+    {
+      "id": "ip:46[.]19[.]140[.]50",
+      "type": "ip",
+      "value": "46[.]19[.]140[.]50",
+      "urls": 285,
       "risk": 0
     },
     {
@@ -930,7 +937,7 @@
       "id": "ip:162[.]125[.]81[.]18",
       "type": "ip",
       "value": "162[.]125[.]81[.]18",
-      "urls": 45,
+      "urls": 47,
       "risk": 0
     },
     {
@@ -1018,6 +1025,20 @@
       "risk": 0
     },
     {
+      "id": "ip:104[.]18[.]213[.]225",
+      "type": "ip",
+      "value": "104[.]18[.]213[.]225",
+      "urls": 13,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]18[.]214[.]225",
+      "type": "ip",
+      "value": "104[.]18[.]214[.]225",
+      "urls": 13,
+      "risk": 0
+    },
+    {
       "id": "ip:104[.]21[.]48[.]76",
       "type": "ip",
       "value": "104[.]21[.]48[.]76",
@@ -1095,20 +1116,6 @@
       "risk": 0
     },
     {
-      "id": "ip:104[.]18[.]213[.]225",
-      "type": "ip",
-      "value": "104[.]18[.]213[.]225",
-      "urls": 10,
-      "risk": 0
-    },
-    {
-      "id": "ip:104[.]18[.]214[.]225",
-      "type": "ip",
-      "value": "104[.]18[.]214[.]225",
-      "urls": 10,
-      "risk": 0
-    },
-    {
       "id": "ip:216[.]198[.]79[.]131",
       "type": "ip",
       "value": "216[.]198[.]79[.]131",
@@ -1169,6 +1176,13 @@
       "type": "ip",
       "value": "209[.]182[.]195[.]215",
       "urls": 8,
+      "risk": 0
+    },
+    {
+      "id": "ip:192[.]254[.]185[.]223",
+      "type": "ip",
+      "value": "192[.]254[.]185[.]223",
+      "urls": 7,
       "risk": 0
     },
     {
@@ -1246,13 +1260,6 @@
       "type": "ip",
       "value": "172[.]67[.]176[.]164",
       "urls": 6,
-      "risk": 0
-    },
-    {
-      "id": "ip:192[.]254[.]185[.]223",
-      "type": "ip",
-      "value": "192[.]254[.]185[.]223",
-      "urls": 5,
       "risk": 0
     },
     {
@@ -1462,6 +1469,20 @@
       "id": "ip:192[.]142[.]10[.]5",
       "type": "ip",
       "value": "192[.]142[.]10[.]5",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]18[.]50[.]34",
+      "type": "ip",
+      "value": "104[.]18[.]50[.]34",
+      "urls": 3,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]18[.]54[.]45",
+      "type": "ip",
+      "value": "104[.]18[.]54[.]45",
       "urls": 3,
       "risk": 0
     },
@@ -1698,6 +1719,11 @@
       "relation": "resolves_to"
     },
     {
+      "source": "domain:www[.]complianceportals[.]com",
+      "target": "ip:46[.]19[.]140[.]50",
+      "relation": "resolves_to"
+    },
+    {
       "source": "domain:drive[.]google[.]com",
       "target": "ip:142[.]251[.]221[.]142",
       "relation": "resolves_to"
@@ -1773,6 +1799,16 @@
       "relation": "resolves_to"
     },
     {
+      "source": "domain:www[.]mediafire[.]com",
+      "target": "ip:104[.]18[.]213[.]225",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:www[.]mediafire[.]com",
+      "target": "ip:104[.]18[.]214[.]225",
+      "relation": "resolves_to"
+    },
+    {
       "source": "domain:donutclients[.]space",
       "target": "ip:104[.]21[.]48[.]76",
       "relation": "resolves_to"
@@ -1828,16 +1864,6 @@
       "relation": "resolves_to"
     },
     {
-      "source": "domain:www[.]mediafire[.]com",
-      "target": "ip:104[.]18[.]213[.]225",
-      "relation": "resolves_to"
-    },
-    {
-      "source": "domain:www[.]mediafire[.]com",
-      "target": "ip:104[.]18[.]214[.]225",
-      "relation": "resolves_to"
-    },
-    {
       "source": "domain:mc-modhub[.]vercel[.]app",
       "target": "ip:216[.]198[.]79[.]131",
       "relation": "resolves_to"
@@ -1868,6 +1894,11 @@
       "relation": "resolves_to"
     },
     {
+      "source": "domain:complianceportals[.]com",
+      "target": "ip:46[.]19[.]140[.]50",
+      "relation": "resolves_to"
+    },
+    {
       "source": "domain:dellabetgiris[.]live",
       "target": "ip:104[.]21[.]7[.]56",
       "relation": "resolves_to"
@@ -1880,6 +1911,16 @@
     {
       "source": "domain:vtivision-fi[.]com",
       "target": "ip:209[.]182[.]195[.]215",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:aranos1[.]duckdns[.]org",
+      "target": "ip:46[.]19[.]140[.]50",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:adcentral[.]com[.]mx",
+      "target": "ip:192[.]254[.]185[.]223",
       "relation": "resolves_to"
     },
     {
@@ -1965,11 +2006,6 @@
     {
       "source": "domain:antibotchecker[.]pro",
       "target": "ip:172[.]67[.]176[.]164",
-      "relation": "resolves_to"
-    },
-    {
-      "source": "domain:adcentral[.]com[.]mx",
-      "target": "ip:192[.]254[.]185[.]223",
       "relation": "resolves_to"
     },
     {
@@ -2165,6 +2201,16 @@
     {
       "source": "domain:www[.]runeliteplus[.]net",
       "target": "ip:192[.]142[.]10[.]5",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:pub-ef44c35b13984ebc836b5bb28bb93c95[.]r2[.]dev",
+      "target": "ip:104[.]18[.]50[.]34",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:pub-ef44c35b13984ebc836b5bb28bb93c95[.]r2[.]dev",
+      "target": "ip:104[.]18[.]54[.]45",
       "relation": "resolves_to"
     },
     {
