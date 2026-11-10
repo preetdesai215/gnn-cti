@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-09T03:16:06+00:00",
+  "generated_utc": "2026-11-10T02:10:52+00:00",
   "window_days": 7,
   "alerts": [
     {
@@ -10,7 +10,7 @@
       "severity": "critical",
       "risk": 100,
       "status": "open",
-      "urls": 57335,
+      "urls": 57396,
       "threat": "malware_download",
       "tags": [
         "github",
@@ -19,7 +19,7 @@
         "LuaJIT-loader",
         "SalatStealer"
       ],
-      "time": "2026-11-09T00:00:00Z"
+      "time": "2026-11-10T00:00:00Z"
     },
     {
       "id": "feed-2",
@@ -29,7 +29,7 @@
       "severity": "critical",
       "risk": 100,
       "status": "open",
-      "urls": 53965,
+      "urls": 54358,
       "threat": "malware_download",
       "tags": [
         "github",
@@ -38,7 +38,7 @@
         "zip",
         "SmartLoader"
       ],
-      "time": "2026-11-09T00:00:00Z"
+      "time": "2026-11-10T00:00:00Z"
     },
     {
       "id": "feed-3",
@@ -48,7 +48,7 @@
       "severity": "critical",
       "risk": 100,
       "status": "open",
-      "urls": 827,
+      "urls": 829,
       "threat": "malware_download",
       "tags": [
         "gitlab",
@@ -57,7 +57,7 @@
         "exe",
         "LummaStealer"
       ],
-      "time": "2026-11-09T00:00:00Z"
+      "time": "2026-11-10T00:00:00Z"
     },
     {
       "id": "feed-4",
@@ -67,7 +67,7 @@
       "severity": "critical",
       "risk": 100,
       "status": "open",
-      "urls": 285,
+      "urls": 295,
       "threat": "malware_download",
       "tags": [
         "IRAHook",
@@ -76,7 +76,7 @@
         "funrat",
         "java"
       ],
-      "time": "2026-11-09T00:00:00Z"
+      "time": "2026-11-10T00:00:00Z"
     },
     {
       "id": "feed-5",
@@ -163,6 +163,25 @@
     },
     {
       "id": "feed-10",
+      "title": "malware_download \u00b7 drive[.]google[.]com",
+      "host": "drive[.]google[.]com",
+      "kind": "domain",
+      "severity": "critical",
+      "risk": 100,
+      "status": "open",
+      "urls": 127,
+      "threat": "malware_download",
+      "tags": [
+        "GuLoader",
+        "rat",
+        "RemcosRAT",
+        "ascii",
+        "Encoded"
+      ],
+      "time": "2026-11-10T00:00:00Z"
+    },
+    {
+      "id": "feed-11",
       "title": "malware_download \u00b7 46[.]19[.]140[.]50",
       "host": "46[.]19[.]140[.]50",
       "kind": "ip",
@@ -175,25 +194,6 @@
         "None"
       ],
       "time": "2026-11-09T00:00:00Z"
-    },
-    {
-      "id": "feed-11",
-      "title": "malware_download \u00b7 drive[.]google[.]com",
-      "host": "drive[.]google[.]com",
-      "kind": "domain",
-      "severity": "critical",
-      "risk": 100,
-      "status": "open",
-      "urls": 111,
-      "threat": "malware_download",
-      "tags": [
-        "GuLoader",
-        "rat",
-        "RemcosRAT",
-        "ascii",
-        "Encoded"
-      ],
-      "time": "2026-11-07T00:00:00Z"
     },
     {
       "id": "feed-12",
@@ -303,6 +303,25 @@
     },
     {
       "id": "feed-18",
+      "title": "malware_download \u00b7 www[.]dropbox[.]com",
+      "host": "www[.]dropbox[.]com",
+      "kind": "domain",
+      "severity": "critical",
+      "risk": 100,
+      "status": "open",
+      "urls": 50,
+      "threat": "malware_download",
+      "tags": [
+        "IRAHook",
+        "stealer",
+        "None",
+        "rat",
+        "java"
+      ],
+      "time": "2026-11-10T00:00:00Z"
+    },
+    {
+      "id": "feed-19",
       "title": "malware_download \u00b7 130[.]12[.]180[.]212",
       "host": "130[.]12[.]180[.]212",
       "kind": "ip",
@@ -321,7 +340,7 @@
       "time": "2026-11-05T00:00:00Z"
     },
     {
-      "id": "feed-19",
+      "id": "feed-20",
       "title": "malware_download \u00b7 176[.]65[.]139[.]51",
       "host": "176[.]65[.]139[.]51",
       "kind": "ip",
@@ -340,7 +359,7 @@
       "time": "2026-11-05T00:00:00Z"
     },
     {
-      "id": "feed-20",
+      "id": "feed-21",
       "title": "malware_download \u00b7 45[.]135[.]194[.]96",
       "host": "45[.]135[.]194[.]96",
       "kind": "ip",
@@ -357,25 +376,6 @@
         "sh"
       ],
       "time": "2026-11-05T00:00:00Z"
-    },
-    {
-      "id": "feed-21",
-      "title": "malware_download \u00b7 www[.]dropbox[.]com",
-      "host": "www[.]dropbox[.]com",
-      "kind": "domain",
-      "severity": "critical",
-      "risk": 100,
-      "status": "open",
-      "urls": 47,
-      "threat": "malware_download",
-      "tags": [
-        "IRAHook",
-        "stealer",
-        "None",
-        "rat",
-        "java"
-      ],
-      "time": "2026-11-09T00:00:00Z"
     },
     {
       "id": "feed-22",
