@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-10T02:10:52+00:00",
+  "generated_utc": "2026-11-11T03:40:57+00:00",
   "window_days": 7,
   "alerts": [
     {
@@ -10,7 +10,7 @@
       "severity": "critical",
       "risk": 100,
       "status": "open",
-      "urls": 57396,
+      "urls": 57487,
       "threat": "malware_download",
       "tags": [
         "github",
@@ -19,7 +19,7 @@
         "LuaJIT-loader",
         "SalatStealer"
       ],
-      "time": "2026-11-10T00:00:00Z"
+      "time": "2026-11-11T00:00:00Z"
     },
     {
       "id": "feed-2",
@@ -29,7 +29,7 @@
       "severity": "critical",
       "risk": 100,
       "status": "open",
-      "urls": 54358,
+      "urls": 54495,
       "threat": "malware_download",
       "tags": [
         "github",
@@ -38,7 +38,7 @@
         "zip",
         "SmartLoader"
       ],
-      "time": "2026-11-10T00:00:00Z"
+      "time": "2026-11-11T00:00:00Z"
     },
     {
       "id": "feed-3",
@@ -48,7 +48,7 @@
       "severity": "critical",
       "risk": 100,
       "status": "open",
-      "urls": 829,
+      "urls": 840,
       "threat": "malware_download",
       "tags": [
         "gitlab",
@@ -57,7 +57,7 @@
         "exe",
         "LummaStealer"
       ],
-      "time": "2026-11-10T00:00:00Z"
+      "time": "2026-11-11T00:00:00Z"
     },
     {
       "id": "feed-4",
@@ -67,7 +67,7 @@
       "severity": "critical",
       "risk": 100,
       "status": "open",
-      "urls": 295,
+      "urls": 302,
       "threat": "malware_download",
       "tags": [
         "IRAHook",
@@ -76,7 +76,7 @@
         "funrat",
         "java"
       ],
-      "time": "2026-11-10T00:00:00Z"
+      "time": "2026-11-11T00:00:00Z"
     },
     {
       "id": "feed-5",
@@ -144,6 +144,25 @@
     },
     {
       "id": "feed-9",
+      "title": "malware_download \u00b7 drive[.]google[.]com",
+      "host": "drive[.]google[.]com",
+      "kind": "domain",
+      "severity": "critical",
+      "risk": 100,
+      "status": "open",
+      "urls": 130,
+      "threat": "malware_download",
+      "tags": [
+        "GuLoader",
+        "rat",
+        "RemcosRAT",
+        "ascii",
+        "Encoded"
+      ],
+      "time": "2026-11-11T00:00:00Z"
+    },
+    {
+      "id": "feed-10",
       "title": "malware_download \u00b7 31[.]56[.]209[.]86",
       "host": "31[.]56[.]209[.]86",
       "kind": "ip",
@@ -160,25 +179,6 @@
         "mirai"
       ],
       "time": "2026-11-05T00:00:00Z"
-    },
-    {
-      "id": "feed-10",
-      "title": "malware_download \u00b7 drive[.]google[.]com",
-      "host": "drive[.]google[.]com",
-      "kind": "domain",
-      "severity": "critical",
-      "risk": 100,
-      "status": "open",
-      "urls": 127,
-      "threat": "malware_download",
-      "tags": [
-        "GuLoader",
-        "rat",
-        "RemcosRAT",
-        "ascii",
-        "Encoded"
-      ],
-      "time": "2026-11-10T00:00:00Z"
     },
     {
       "id": "feed-11",
@@ -287,6 +287,25 @@
     },
     {
       "id": "feed-17",
+      "title": "malware_download \u00b7 www[.]dropbox[.]com",
+      "host": "www[.]dropbox[.]com",
+      "kind": "domain",
+      "severity": "critical",
+      "risk": 100,
+      "status": "open",
+      "urls": 56,
+      "threat": "malware_download",
+      "tags": [
+        "IRAHook",
+        "stealer",
+        "None",
+        "rat",
+        "java"
+      ],
+      "time": "2026-11-11T00:00:00Z"
+    },
+    {
+      "id": "feed-18",
       "title": "malware_download \u00b7 154[.]83[.]85[.]63",
       "host": "154[.]83[.]85[.]63",
       "kind": "ip",
@@ -300,25 +319,6 @@
         "script"
       ],
       "time": "2026-11-05T00:00:00Z"
-    },
-    {
-      "id": "feed-18",
-      "title": "malware_download \u00b7 www[.]dropbox[.]com",
-      "host": "www[.]dropbox[.]com",
-      "kind": "domain",
-      "severity": "critical",
-      "risk": 100,
-      "status": "open",
-      "urls": 50,
-      "threat": "malware_download",
-      "tags": [
-        "IRAHook",
-        "stealer",
-        "None",
-        "rat",
-        "java"
-      ],
-      "time": "2026-11-10T00:00:00Z"
     },
     {
       "id": "feed-19",
@@ -772,6 +772,25 @@
     },
     {
       "id": "feed-44",
+      "title": "malware_download \u00b7 37[.]221[.]79[.]128",
+      "host": "37[.]221[.]79[.]128",
+      "kind": "ip",
+      "severity": "critical",
+      "risk": 100,
+      "status": "open",
+      "urls": 32,
+      "threat": "malware_download",
+      "tags": [
+        "elf",
+        "ua-wget",
+        "37-221-79-128",
+        "honeypot",
+        "iot"
+      ],
+      "time": "2026-11-11T00:00:00Z"
+    },
+    {
+      "id": "feed-45",
       "title": "malware_download \u00b7 94[.]183[.]174[.]71",
       "host": "94[.]183[.]174[.]71",
       "kind": "ip",
@@ -790,7 +809,7 @@
       "time": "2026-11-05T00:00:00Z"
     },
     {
-      "id": "feed-45",
+      "id": "feed-46",
       "title": "malware_download \u00b7 donutclients[.]st",
       "host": "donutclients[.]st",
       "kind": "domain",
@@ -808,7 +827,7 @@
       "time": "2026-11-05T00:00:00Z"
     },
     {
-      "id": "feed-46",
+      "id": "feed-47",
       "title": "malware_download \u00b7 176[.]65[.]139[.]166",
       "host": "176[.]65[.]139[.]166",
       "kind": "ip",
@@ -826,7 +845,7 @@
       "time": "2026-11-05T00:00:00Z"
     },
     {
-      "id": "feed-47",
+      "id": "feed-48",
       "title": "malware_download \u00b7 45[.]61[.]161[.]85",
       "host": "45[.]61[.]161[.]85",
       "kind": "ip",
@@ -844,7 +863,7 @@
       "time": "2026-11-05T00:00:00Z"
     },
     {
-      "id": "feed-48",
+      "id": "feed-49",
       "title": "malware_download \u00b7 45[.]90[.]163[.]37",
       "host": "45[.]90[.]163[.]37",
       "kind": "ip",
@@ -863,7 +882,7 @@
       "time": "2026-11-09T00:00:00Z"
     },
     {
-      "id": "feed-49",
+      "id": "feed-50",
       "title": "malware_download \u00b7 181[.]214[.]147[.]11",
       "host": "181[.]214[.]147[.]11",
       "kind": "ip",
@@ -875,25 +894,6 @@
       "tags": [
         "botnet",
         "cowrie"
-      ],
-      "time": "2026-11-05T00:00:00Z"
-    },
-    {
-      "id": "feed-50",
-      "title": "malware_download \u00b7 5[.]230[.]154[.]106",
-      "host": "5[.]230[.]154[.]106",
-      "kind": "ip",
-      "severity": "critical",
-      "risk": 100,
-      "status": "open",
-      "urls": 28,
-      "threat": "malware_download",
-      "tags": [
-        "5-230-154-106-8080",
-        "ua-wget",
-        "elf",
-        "mirai",
-        "sh"
       ],
       "time": "2026-11-05T00:00:00Z"
     }
