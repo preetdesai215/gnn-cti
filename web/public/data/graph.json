@@ -1,19 +1,19 @@
 {
-  "generated_utc": "2026-11-11T03:40:57+00:00",
+  "generated_utc": "2026-11-12T04:37:42+00:00",
   "note": "Top domains by URL count and the IPs they resolved to. Risk is relative URL count, not a model score.",
   "nodes": [
     {
       "id": "domain:raw[.]githubusercontent[.]com",
       "type": "domain",
       "value": "raw[.]githubusercontent[.]com",
-      "urls": 57487,
+      "urls": 57497,
       "risk": 100
     },
     {
       "id": "domain:github[.]com",
       "type": "domain",
       "value": "github[.]com",
-      "urls": 54495,
+      "urls": 54607,
       "risk": 95
     },
     {
@@ -27,7 +27,7 @@
       "id": "domain:cdn[.]discordapp[.]com",
       "type": "domain",
       "value": "cdn[.]discordapp[.]com",
-      "urls": 302,
+      "urls": 310,
       "risk": 1
     },
     {
@@ -41,7 +41,7 @@
       "id": "domain:drive[.]google[.]com",
       "type": "domain",
       "value": "drive[.]google[.]com",
-      "urls": 130,
+      "urls": 132,
       "risk": 0
     },
     {
@@ -297,6 +297,13 @@
       "risk": 0
     },
     {
+      "id": "domain:tmcksa[.]com",
+      "type": "domain",
+      "value": "tmcksa[.]com",
+      "urls": 9,
+      "risk": 0
+    },
+    {
       "id": "domain:donutsmpclients[.]store",
       "type": "domain",
       "value": "donutsmpclients[.]store",
@@ -346,13 +353,6 @@
       "risk": 0
     },
     {
-      "id": "domain:tmcksa[.]com",
-      "type": "domain",
-      "value": "tmcksa[.]com",
-      "urls": 7,
-      "risk": 0
-    },
-    {
       "id": "domain:release-assets[.]githubusercontent[.]com",
       "type": "domain",
       "value": "release-assets[.]githubusercontent[.]com",
@@ -398,6 +398,13 @@
       "id": "domain:t-trustresnew[.]com",
       "type": "domain",
       "value": "t-trustresnew[.]com",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
+      "type": "domain",
+      "value": "royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
       "urls": 7,
       "risk": 0
     },
@@ -482,6 +489,13 @@
       "id": "domain:donutsmphackclient[.]netlify[.]app",
       "type": "domain",
       "value": "donutsmphackclient[.]netlify[.]app",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:sugarfreedcupcake[.]co[.]za",
+      "type": "domain",
+      "value": "sugarfreedcupcake[.]co[.]za",
       "urls": 5,
       "risk": 0
     },
@@ -738,13 +752,6 @@
       "risk": 0
     },
     {
-      "id": "domain:sugarfreedcupcake[.]co[.]za",
-      "type": "domain",
-      "value": "sugarfreedcupcake[.]co[.]za",
-      "urls": 3,
-      "risk": 0
-    },
-    {
       "id": "domain:soniamart[.]com",
       "type": "domain",
       "value": "soniamart[.]com",
@@ -836,45 +843,38 @@
       "risk": 0
     },
     {
-      "id": "domain:adiyamancamkornis[.]com[.]tr",
-      "type": "domain",
-      "value": "adiyamancamkornis[.]com[.]tr",
-      "urls": 3,
-      "risk": 0
-    },
-    {
       "id": "ip:185[.]199[.]108[.]133",
       "type": "ip",
       "value": "185[.]199[.]108[.]133",
-      "urls": 57494,
+      "urls": 57504,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]109[.]133",
       "type": "ip",
       "value": "185[.]199[.]109[.]133",
-      "urls": 57494,
+      "urls": 57504,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]110[.]133",
       "type": "ip",
       "value": "185[.]199[.]110[.]133",
-      "urls": 57494,
+      "urls": 57504,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]111[.]133",
       "type": "ip",
       "value": "185[.]199[.]111[.]133",
-      "urls": 57494,
+      "urls": 57504,
       "risk": 100
     },
     {
       "id": "ip:20[.]207[.]73[.]82",
       "type": "ip",
       "value": "20[.]207[.]73[.]82",
-      "urls": 54495,
+      "urls": 54607,
       "risk": 95
     },
     {
@@ -888,35 +888,35 @@
       "id": "ip:162[.]159[.]129[.]233",
       "type": "ip",
       "value": "162[.]159[.]129[.]233",
-      "urls": 302,
+      "urls": 310,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]130[.]233",
       "type": "ip",
       "value": "162[.]159[.]130[.]233",
-      "urls": 302,
+      "urls": 310,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]133[.]233",
       "type": "ip",
       "value": "162[.]159[.]133[.]233",
-      "urls": 302,
+      "urls": 310,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]134[.]233",
       "type": "ip",
       "value": "162[.]159[.]134[.]233",
-      "urls": 302,
+      "urls": 310,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]135[.]233",
       "type": "ip",
       "value": "162[.]159[.]135[.]233",
-      "urls": 302,
+      "urls": 310,
       "risk": 1
     },
     {
@@ -930,7 +930,7 @@
       "id": "ip:142[.]251[.]221[.]142",
       "type": "ip",
       "value": "142[.]251[.]221[.]142",
-      "urls": 130,
+      "urls": 132,
       "risk": 0
     },
     {
@@ -1151,6 +1151,13 @@
       "risk": 0
     },
     {
+      "id": "ip:192[.]254[.]185[.]123",
+      "type": "ip",
+      "value": "192[.]254[.]185[.]123",
+      "urls": 9,
+      "risk": 0
+    },
+    {
       "id": "ip:185[.]41[.]148[.]1",
       "type": "ip",
       "value": "185[.]41[.]148[.]1",
@@ -1189,13 +1196,6 @@
       "id": "ip:192[.]254[.]185[.]223",
       "type": "ip",
       "value": "192[.]254[.]185[.]223",
-      "urls": 7,
-      "risk": 0
-    },
-    {
-      "id": "ip:192[.]254[.]185[.]123",
-      "type": "ip",
-      "value": "192[.]254[.]185[.]123",
       "urls": 7,
       "risk": 0
     },
@@ -1252,6 +1252,20 @@
       "id": "ip:172[.]67[.]182[.]117",
       "type": "ip",
       "value": "172[.]67[.]182[.]117",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]81[.]135",
+      "type": "ip",
+      "value": "104[.]21[.]81[.]135",
+      "urls": 7,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]189[.]155",
+      "type": "ip",
+      "value": "172[.]67[.]189[.]155",
       "urls": 7,
       "risk": 0
     },
@@ -1337,6 +1351,13 @@
       "type": "ip",
       "value": "92[.]42[.]104[.]18",
       "urls": 9,
+      "risk": 0
+    },
+    {
+      "id": "ip:102[.]68[.]98[.]222",
+      "type": "ip",
+      "value": "102[.]68[.]98[.]222",
+      "urls": 5,
       "risk": 0
     },
     {
@@ -1613,13 +1634,6 @@
       "risk": 0
     },
     {
-      "id": "ip:102[.]68[.]98[.]222",
-      "type": "ip",
-      "value": "102[.]68[.]98[.]222",
-      "urls": 3,
-      "risk": 0
-    },
-    {
       "id": "ip:103[.]17[.]37[.]252",
       "type": "ip",
       "value": "103[.]17[.]37[.]252",
@@ -1721,13 +1735,6 @@
       "id": "ip:172[.]67[.]223[.]68",
       "type": "ip",
       "value": "172[.]67[.]223[.]68",
-      "urls": 3,
-      "risk": 0
-    },
-    {
-      "id": "ip:89[.]252[.]182[.]2",
-      "type": "ip",
-      "value": "89[.]252[.]182[.]2",
       "urls": 3,
       "risk": 0
     }
@@ -1959,6 +1966,11 @@
       "relation": "resolves_to"
     },
     {
+      "source": "domain:tmcksa[.]com",
+      "target": "ip:192[.]254[.]185[.]123",
+      "relation": "resolves_to"
+    },
+    {
       "source": "domain:donutsmpclientts[.]lovable[.]app",
       "target": "ip:185[.]41[.]148[.]1",
       "relation": "resolves_to"
@@ -1996,11 +2008,6 @@
     {
       "source": "domain:adcentral[.]com[.]mx",
       "target": "ip:192[.]254[.]185[.]223",
-      "relation": "resolves_to"
-    },
-    {
-      "source": "domain:tmcksa[.]com",
-      "target": "ip:192[.]254[.]185[.]123",
       "relation": "resolves_to"
     },
     {
@@ -2061,6 +2068,16 @@
     {
       "source": "domain:t-trustresnew[.]com",
       "target": "ip:172[.]67[.]182[.]117",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
+      "target": "ip:104[.]21[.]81[.]135",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
+      "target": "ip:172[.]67[.]189[.]155",
       "relation": "resolves_to"
     },
     {
@@ -2141,6 +2158,11 @@
     {
       "source": "domain:donutsmphackclient[.]netlify[.]app",
       "target": "ip:52[.]74[.]6[.]109",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:sugarfreedcupcake[.]co[.]za",
+      "target": "ip:102[.]68[.]98[.]222",
       "relation": "resolves_to"
     },
     {
@@ -2374,11 +2396,6 @@
       "relation": "resolves_to"
     },
     {
-      "source": "domain:sugarfreedcupcake[.]co[.]za",
-      "target": "ip:102[.]68[.]98[.]222",
-      "relation": "resolves_to"
-    },
-    {
       "source": "domain:soniamart[.]com",
       "target": "ip:103[.]17[.]37[.]252",
       "relation": "resolves_to"
@@ -2451,11 +2468,6 @@
     {
       "source": "domain:policysync[.]pro",
       "target": "ip:172[.]67[.]223[.]68",
-      "relation": "resolves_to"
-    },
-    {
-      "source": "domain:adiyamancamkornis[.]com[.]tr",
-      "target": "ip:89[.]252[.]182[.]2",
       "relation": "resolves_to"
     }
   ]
