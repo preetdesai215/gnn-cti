@@ -1,33 +1,33 @@
 {
-  "generated_utc": "2026-11-14T02:34:03+00:00",
+  "generated_utc": "2026-11-15T02:33:05+00:00",
   "note": "Top domains by URL count and the IPs they resolved to. Risk is relative URL count, not a model score.",
   "nodes": [
     {
       "id": "domain:raw[.]githubusercontent[.]com",
       "type": "domain",
       "value": "raw[.]githubusercontent[.]com",
-      "urls": 57524,
+      "urls": 57740,
       "risk": 100
     },
     {
       "id": "domain:github[.]com",
       "type": "domain",
       "value": "github[.]com",
-      "urls": 54799,
+      "urls": 54821,
       "risk": 95
     },
     {
       "id": "domain:gitlab[.]com",
       "type": "domain",
       "value": "gitlab[.]com",
-      "urls": 844,
+      "urls": 849,
       "risk": 1
     },
     {
       "id": "domain:cdn[.]discordapp[.]com",
       "type": "domain",
       "value": "cdn[.]discordapp[.]com",
-      "urls": 327,
+      "urls": 335,
       "risk": 1
     },
     {
@@ -48,7 +48,7 @@
       "id": "domain:www[.]dropbox[.]com",
       "type": "domain",
       "value": "www[.]dropbox[.]com",
-      "urls": 60,
+      "urls": 70,
       "risk": 0
     },
     {
@@ -108,6 +108,13 @@
       "risk": 0
     },
     {
+      "id": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
+      "type": "domain",
+      "value": "royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
+      "urls": 18,
+      "risk": 0
+    },
+    {
       "id": "domain:www[.]mediafire[.]com",
       "type": "domain",
       "value": "www[.]mediafire[.]com",
@@ -125,13 +132,6 @@
       "id": "domain:g6[.]wtf",
       "type": "domain",
       "value": "g6[.]wtf",
-      "urls": 17,
-      "risk": 0
-    },
-    {
-      "id": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
-      "type": "domain",
-      "value": "royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
       "urls": 17,
       "risk": 0
     },
@@ -570,6 +570,20 @@
       "risk": 0
     },
     {
+      "id": "domain:mccl[.]com[.]vn",
+      "type": "domain",
+      "value": "mccl[.]com[.]vn",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "domain:pakdigital[.]org",
+      "type": "domain",
+      "value": "pakdigital[.]org",
+      "urls": 5,
+      "risk": 0
+    },
+    {
       "id": "domain:xsealslogisticsltd[.]com",
       "type": "domain",
       "value": "xsealslogisticsltd[.]com",
@@ -696,16 +710,16 @@
       "risk": 0
     },
     {
-      "id": "domain:mccl[.]com[.]vn",
+      "id": "domain:ruthaiv[.]com",
       "type": "domain",
-      "value": "mccl[.]com[.]vn",
+      "value": "ruthaiv[.]com",
       "urls": 4,
       "risk": 0
     },
     {
-      "id": "domain:ruthaiv[.]com",
+      "id": "domain:2[.]57[.]122[.]176[.]nip[.]io",
       "type": "domain",
-      "value": "ruthaiv[.]com",
+      "value": "2[.]57[.]122[.]176[.]nip[.]io",
       "urls": 4,
       "risk": 0
     },
@@ -829,94 +843,80 @@
       "risk": 0
     },
     {
-      "id": "domain:hanasrmt[.]ca",
-      "type": "domain",
-      "value": "hanasrmt[.]ca",
-      "urls": 3,
-      "risk": 0
-    },
-    {
-      "id": "domain:purelypulse[.]media",
-      "type": "domain",
-      "value": "purelypulse[.]media",
-      "urls": 3,
-      "risk": 0
-    },
-    {
       "id": "ip:185[.]199[.]108[.]133",
       "type": "ip",
       "value": "185[.]199[.]108[.]133",
-      "urls": 57531,
+      "urls": 57747,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]109[.]133",
       "type": "ip",
       "value": "185[.]199[.]109[.]133",
-      "urls": 57531,
+      "urls": 57747,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]110[.]133",
       "type": "ip",
       "value": "185[.]199[.]110[.]133",
-      "urls": 57531,
+      "urls": 57747,
       "risk": 100
     },
     {
       "id": "ip:185[.]199[.]111[.]133",
       "type": "ip",
       "value": "185[.]199[.]111[.]133",
-      "urls": 57531,
+      "urls": 57747,
       "risk": 100
     },
     {
       "id": "ip:20[.]207[.]73[.]82",
       "type": "ip",
       "value": "20[.]207[.]73[.]82",
-      "urls": 54799,
+      "urls": 54821,
       "risk": 95
     },
     {
       "id": "ip:172[.]65[.]251[.]78",
       "type": "ip",
       "value": "172[.]65[.]251[.]78",
-      "urls": 844,
+      "urls": 849,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]129[.]233",
       "type": "ip",
       "value": "162[.]159[.]129[.]233",
-      "urls": 327,
+      "urls": 335,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]130[.]233",
       "type": "ip",
       "value": "162[.]159[.]130[.]233",
-      "urls": 327,
+      "urls": 335,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]133[.]233",
       "type": "ip",
       "value": "162[.]159[.]133[.]233",
-      "urls": 327,
+      "urls": 335,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]134[.]233",
       "type": "ip",
       "value": "162[.]159[.]134[.]233",
-      "urls": 327,
+      "urls": 335,
       "risk": 1
     },
     {
       "id": "ip:162[.]159[.]135[.]233",
       "type": "ip",
       "value": "162[.]159[.]135[.]233",
-      "urls": 327,
+      "urls": 335,
       "risk": 1
     },
     {
@@ -937,7 +937,7 @@
       "id": "ip:162[.]125[.]81[.]18",
       "type": "ip",
       "value": "162[.]125[.]81[.]18",
-      "urls": 60,
+      "urls": 70,
       "risk": 0
     },
     {
@@ -1011,6 +1011,20 @@
       "risk": 0
     },
     {
+      "id": "ip:104[.]21[.]81[.]135",
+      "type": "ip",
+      "value": "104[.]21[.]81[.]135",
+      "urls": 18,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]189[.]155",
+      "type": "ip",
+      "value": "172[.]67[.]189[.]155",
+      "urls": 18,
+      "risk": 0
+    },
+    {
       "id": "ip:104[.]18[.]213[.]225",
       "type": "ip",
       "value": "104[.]18[.]213[.]225",
@@ -1035,20 +1049,6 @@
       "id": "ip:160[.]119[.]71[.]27",
       "type": "ip",
       "value": "160[.]119[.]71[.]27",
-      "urls": 17,
-      "risk": 0
-    },
-    {
-      "id": "ip:104[.]21[.]81[.]135",
-      "type": "ip",
-      "value": "104[.]21[.]81[.]135",
-      "urls": 17,
-      "risk": 0
-    },
-    {
-      "id": "ip:172[.]67[.]189[.]155",
-      "type": "ip",
-      "value": "172[.]67[.]189[.]155",
       "urls": 17,
       "risk": 0
     },
@@ -1487,6 +1487,27 @@
       "risk": 0
     },
     {
+      "id": "ip:103[.]130[.]212[.]57",
+      "type": "ip",
+      "value": "103[.]130[.]212[.]57",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "ip:104[.]21[.]27[.]27",
+      "type": "ip",
+      "value": "104[.]21[.]27[.]27",
+      "urls": 5,
+      "risk": 0
+    },
+    {
+      "id": "ip:172[.]67[.]140[.]241",
+      "type": "ip",
+      "value": "172[.]67[.]140[.]241",
+      "urls": 5,
+      "risk": 0
+    },
+    {
       "id": "ip:185[.]53[.]179[.]149",
       "type": "ip",
       "value": "185[.]53[.]179[.]149",
@@ -1557,13 +1578,6 @@
       "risk": 0
     },
     {
-      "id": "ip:103[.]130[.]212[.]57",
-      "type": "ip",
-      "value": "103[.]130[.]212[.]57",
-      "urls": 4,
-      "risk": 0
-    },
-    {
       "id": "ip:104[.]21[.]50[.]167",
       "type": "ip",
       "value": "104[.]21[.]50[.]167",
@@ -1574,6 +1588,13 @@
       "id": "ip:172[.]67[.]164[.]101",
       "type": "ip",
       "value": "172[.]67[.]164[.]101",
+      "urls": 4,
+      "risk": 0
+    },
+    {
+      "id": "ip:2[.]57[.]122[.]176",
+      "type": "ip",
+      "value": "2[.]57[.]122[.]176",
       "urls": 4,
       "risk": 0
     },
@@ -1807,20 +1828,6 @@
       "value": "93[.]127[.]173[.]242",
       "urls": 3,
       "risk": 0
-    },
-    {
-      "id": "ip:167[.]114[.]83[.]239",
-      "type": "ip",
-      "value": "167[.]114[.]83[.]239",
-      "urls": 3,
-      "risk": 0
-    },
-    {
-      "id": "ip:185[.]181[.]255[.]109",
-      "type": "ip",
-      "value": "185[.]181[.]255[.]109",
-      "urls": 3,
-      "risk": 0
     }
   ],
   "edges": [
@@ -1945,6 +1952,16 @@
       "relation": "resolves_to"
     },
     {
+      "source": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
+      "target": "ip:104[.]21[.]81[.]135",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
+      "target": "ip:172[.]67[.]189[.]155",
+      "relation": "resolves_to"
+    },
+    {
       "source": "domain:www[.]mediafire[.]com",
       "target": "ip:104[.]18[.]213[.]225",
       "relation": "resolves_to"
@@ -1962,16 +1979,6 @@
     {
       "source": "domain:g6[.]wtf",
       "target": "ip:160[.]119[.]71[.]27",
-      "relation": "resolves_to"
-    },
-    {
-      "source": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
-      "target": "ip:104[.]21[.]81[.]135",
-      "relation": "resolves_to"
-    },
-    {
-      "source": "domain:royal-wood-3c0d[.]julianosilvasantospiresrosa[.]workers[.]dev",
-      "target": "ip:172[.]67[.]189[.]155",
       "relation": "resolves_to"
     },
     {
@@ -2340,6 +2347,21 @@
       "relation": "resolves_to"
     },
     {
+      "source": "domain:mccl[.]com[.]vn",
+      "target": "ip:103[.]130[.]212[.]57",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:pakdigital[.]org",
+      "target": "ip:104[.]21[.]27[.]27",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:pakdigital[.]org",
+      "target": "ip:172[.]67[.]140[.]241",
+      "relation": "resolves_to"
+    },
+    {
       "source": "domain:xsealslogisticsltd[.]com",
       "target": "ip:92[.]42[.]104[.]18",
       "relation": "resolves_to"
@@ -2425,11 +2447,6 @@
       "relation": "resolves_to"
     },
     {
-      "source": "domain:mccl[.]com[.]vn",
-      "target": "ip:103[.]130[.]212[.]57",
-      "relation": "resolves_to"
-    },
-    {
       "source": "domain:ruthaiv[.]com",
       "target": "ip:104[.]21[.]50[.]167",
       "relation": "resolves_to"
@@ -2437,6 +2454,11 @@
     {
       "source": "domain:ruthaiv[.]com",
       "target": "ip:172[.]67[.]164[.]101",
+      "relation": "resolves_to"
+    },
+    {
+      "source": "domain:2[.]57[.]122[.]176[.]nip[.]io",
+      "target": "ip:2[.]57[.]122[.]176",
       "relation": "resolves_to"
     },
     {
@@ -2602,16 +2624,6 @@
     {
       "source": "domain:crojam[.]com",
       "target": "ip:93[.]127[.]173[.]242",
-      "relation": "resolves_to"
-    },
-    {
-      "source": "domain:hanasrmt[.]ca",
-      "target": "ip:167[.]114[.]83[.]239",
-      "relation": "resolves_to"
-    },
-    {
-      "source": "domain:purelypulse[.]media",
-      "target": "ip:185[.]181[.]255[.]109",
       "relation": "resolves_to"
     }
   ]
